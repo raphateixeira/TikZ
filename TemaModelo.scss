@@ -16,6 +16,25 @@ $link-color: $cor-primaria;
 
 /*-- scss:rules --*/
 
+// --- Imagem de destaque (index.qmd) ---
+.hero-figura {
+    text-align: center;
+    margin: 0.5rem 0 2rem;
+
+    img {
+        max-width: 100%;
+        width: 720px;
+        height: auto;
+    }
+}
+
+// --- Categoria sem figuras ainda ---
+.categoria-vazia {
+    color: #888;
+    font-style: italic;
+    padding: 1.5rem 0;
+}
+
 // --- Grid de categorias (index.qmd) ---
 .categoria-grid {
     display: grid;

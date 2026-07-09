@@ -1,0 +1,7 @@
+title: Sistema de geração, transmissão e distribuição em CA
+description: 'Diagrama de blocos do sistema elétrico de potência: geração, elevação
+  de tensão, transmissão, abaixamento e carga.'
+tags:
+- sistema-de-potencia
+- diagrama-de-blocos
+fonte: CircuitosCA/Notas/imgs/tikz/SistemaCA.tikz

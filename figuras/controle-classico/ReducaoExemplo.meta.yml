@@ -1,0 +1,8 @@
+title: Exemplo de redução por álgebra de blocos
+description: Diagrama de blocos com múltiplas malhas aninhadas, para exercício de
+  redução por álgebra de blocos ou regra de Mason.
+tags:
+- algebra-de-blocos
+- regra-de-mason
+- exercicio
+fonte: ControleClassico/Notas/imgs/tikz/ReducaoExemplo.tikz

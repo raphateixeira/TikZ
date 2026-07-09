@@ -1,0 +1,7 @@
+title: Sistema massa-mola-amortecedor
+description: Sistema mecânico massa-mola-amortecedor com força de entrada F(t) e deslocamento
+  x(t), exemplo clássico de modelagem.
+tags:
+- massa-mola-amortecedor
+- modelagem
+fonte: ControleClassico/Notas/imgs/tikz/MassaMolaAmortecedor.tikz

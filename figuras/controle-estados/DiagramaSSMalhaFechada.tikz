@@ -1,0 +1,48 @@
+\tikzset{
+    block/.style = {draw, fill=blue!10, rectangle, minimum height=2.5em, minimum width=2.5em, line width=0.8pt},
+    sum/.style   = {draw, fill=white, circle, inner sep=2pt, line width=0.8pt},
+    dot/.style   = {fill, circle, inner sep=1.2pt}
+}
+\begin{tikzpicture}[auto, node distance=1.2cm, >=Latex, line width=0.8pt]
+    \begin{scope}[arrows={-Latex[scale=0.8]}]
+
+        % --- Malha Direta ---
+        \node (input) at (0,0) {};
+        \node [sum,   right=0.7cm of input]   (sumU)    {$+$};
+        \node [block, right=0.8cm of sumU]    (matrixB) {$B$};
+        \node [sum,   right=0.8cm of matrixB] (sumX)    {$+$};
+        \node [block, right=0.8cm of sumX]    (int)     {$\int$};
+        \node [block, right=1.5cm of int]     (matrixC) {$C$};
+        \node (output) [right=0.7cm of matrixC] {};
+
+        % --- Malhas de Realimentação ---
+        \node [block,                  below=1.0cm of int] (matrixA) {$A$};
+        \node [block, fill=green!10,   below=2.2cm of int] (matrixK) {$K$};
+
+        % --- Conexões ---
+
+        % Referência r(t)
+        \draw [->] (input) -- (sumU) node[left, pos=0] {$r(t)$};
+
+        % u(t)
+        \draw [->] (sumU)    -- node[above, font=\small] {$u(t)$} (matrixB);
+        \draw [->] (matrixB) -- (sumX);
+
+        % Dinâmica de estados
+        \draw [->] (sumX) -- node[above, font=\small] {$\dot{x}$} (int);
+        \draw [->] (int)  -- (matrixC) node[above, pos=0.5, font=\small] {$x$};
+        \draw [->] (matrixC) -- (output) node[right, pos=1] {$y(t)$};
+
+        % Ponto de derivação do estado x
+        \node [dot] (pointX) at ($(int.east)!0.4!(matrixC.west)$) {};
+
+        % Realimentação interna (A)
+        \draw [->] (pointX) |- (matrixA);
+        \draw [->] (matrixA) -| (sumX);
+
+        % Realimentação de controle (K)
+        \draw [->] (pointX) |- (matrixK);
+        \draw [->] (matrixK) -| node[left, pos=0.9, font=\small] {$-$} (sumU);
+
+    \end{scope}
+\end{tikzpicture}

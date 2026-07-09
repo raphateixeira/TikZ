@@ -1,0 +1,8 @@
+title: Observador de Luenberger
+description: Diagrama de blocos do observador de Luenberger estimando o estado x a
+  partir da entrada u e da saída y da planta.
+tags:
+- observador
+- luenberger
+- espaco-de-estados
+fonte: MetodosNumericos/Notas/imgs/tikz/DiagramaObservador.tikz

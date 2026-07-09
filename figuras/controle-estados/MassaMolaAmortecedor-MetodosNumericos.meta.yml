@@ -1,0 +1,8 @@
+title: Sistema massa-mola-amortecedor (variante)
+description: Outra representação gráfica do sistema massa-mola-amortecedor, com força
+  de entrada u(t) e saída y(t).
+tags:
+- massa-mola-amortecedor
+- modelagem
+- espaco-de-estados
+fonte: MetodosNumericos/Notas/imgs/tikz/MassaMolaAmortecedor.tikz

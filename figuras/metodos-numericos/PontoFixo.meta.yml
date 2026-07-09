@@ -1,0 +1,7 @@
+title: Iteração de ponto fixo (cobweb)
+description: Iteração x=g(x) representada como diagrama de teia de aranha (cobweb),
+  convergindo ao ponto fixo x*.
+tags:
+- zeros-de-funcoes
+- ponto-fixo
+fonte: MetodosNumericos/CalculoNumerico/Notas/imgs/tikz/PontoFixo.tikz

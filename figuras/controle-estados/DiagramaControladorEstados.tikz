@@ -1,0 +1,47 @@
+% ---------------------------------------------------------------
+% Realimentação de estados:  u = N r - K x ,  planta x_dot = A x + B u
+% Bibliotecas (chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt,
+  block/.style={draw, minimum width=1.0cm, minimum height=1.0cm, fill=blue!8},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  \node (r)          at (-1.5,0) {$r$};
+  \node[block] (N)   at (0,0)    {$N$};
+  \node[sum]   (si)  at (1.6,0)  {};
+  \node[block] (B)   at (3.1,0)  {$\mathbf{B}$};
+  \node[sum]   (ss)  at (4.6,0)  {};
+  \node[block] (int) at (6.1,0)  {$\displaystyle\int$};
+  \node[block] (C)   at (9.4,0)  {$\mathbf{C}$};
+  \node (y)          at (11.0,0) {$y$};
+
+  \node[block] (A)   at (7.4,-2.0) {$\mathbf{A}$};
+  \node[block] (K)   at (3.1,-3.4) {$\mathbf{K}$};
+
+  \coordinate (x) at (7.4,0);
+
+  % sinais
+  \node[font=\scriptsize] at ($(si)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(si)+(0,-0.42)$)    {$-$};
+  \node[font=\scriptsize] at ($(ss)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(ss)+(0,-0.42)$)    {$+$};
+
+  % cadeia direta
+  \draw[->] (r) -- (N);
+  \draw[->] (N) -- (si);
+  \draw[->] (si) -- (B) node[midway, above] {$u$};
+  \draw[->] (B) -- (ss);
+  \draw[->] (ss) -- (int) node[midway, above] {$\dot{\mathbf{x}}$};
+  \draw[->] (int) -- (C) node[pos=0.42, above] {$\mathbf{x}$};
+  \draw[->] (C) -- (y);
+
+  % realimentação A (+)
+  \fill (x) circle (1.6pt);
+  \draw[-]  (x) -- (A.north);
+  \draw[->] (A.west) -| (ss);
+
+  % realimentação de estados -K
+  \draw[-]  (7.4,0) -- (7.4,-3.4) -- (K.east);
+  \draw[->] (K.west) -| (si);
+
+\end{tikzpicture}

@@ -2,10 +2,234 @@
 title: "Controle Clássico"
 ---
 
-1 figura(s) nesta categoria. Fonte em `figuras/controle-classico/`.
+10 figura(s) nesta categoria. Fonte em `figuras/controle-classico/`.
 
 ````{=html}
 <div class="figura-grid">
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/ComponentesSistema/ComponentesSistema.png" alt="Componentes de um sistema de controle em malha fechada" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Componentes de um sistema de controle em malha fechada</h3>
+    <p>Referência, erro, controlador, planta, perturbação, sensor e saída de um sistema de controle realimentado.</p>
+    <div class="figura-tags"><span class="figura-tag">malha-fechada</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/ComponentesSistema/ComponentesSistema.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/ComponentesSistema/ComponentesSistema.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/ComponentesSistema/ComponentesSistema.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/ComponentesSistema/ComponentesSistema.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/ComponentesSistema/ComponentesSistema.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Componentes de um sistema de controle em malha fechada: referência,
+% erro, controlador, atuador+planta, perturbação, sensor e saída.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt, node distance=1.5cm,
+  bloco/.style={draw, minimum width=2.4cm, minimum height=1.1cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.7cm, inner sep=0pt},
+  seta/.style={-&gt;}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[font=\scriptsize, below=1pt of r] {referência};
+  \node[soma, right=1.2cm of r]     (sum) {};
+  \node[bloco, right=1.5cm of sum]  (c)   {Controlador};
+  \node[soma, right=1.5cm of c]     (sum2) {};
+  \node[bloco, right=1.5cm of sum2] (g)   {Planta};
+  \node[right=1.6cm of g] (y) {$y(t)$};
+  \node[font=\scriptsize, below=1pt of y] {saída};
+  \node[bloco, below=1.6cm of c, xshift=2.0cm]  (h) {Sensor};
+  \node[above=1.0cm of sum2] (d) {$d(t)$};
+  \node[font=\scriptsize, above=1pt of d] {perturbação};
+
+  \draw[seta] (r) -- (sum);
+  \draw[seta] (sum) -- node[above, font=\small]{$e(t)$} (c);
+  \draw[seta] (c) -- node[above, font=\small]{$u(t)$} (sum2);
+  \draw[seta] (d) -- (sum2);
+  \draw[seta] (sum2) -- (g);
+  \draw[seta] (g) -- (y);
+  \draw[seta] (g.south) |- (h.east);
+  \draw[seta] (h.west) -| (sum.south);
+
+  \node[font=\small] at ($(sum.north west)+(-0.15,0.15)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.15,-0.15)$) {$-$};
+  \node[font=\small] at ($(sum2.north west)+(-0.15,0.15)$) {$+$};
+  \node[font=\small] at ($(sum2.north east)+(0.15,0.15)$) {$+$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/MalhaAberta/MalhaAberta.png" alt="Sistema de controle em malha aberta" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Sistema de controle em malha aberta</h3>
+    <p>Estrutura básica de um sistema de controle em malha aberta: controlador seguido da planta, sem realimentação.</p>
+    <div class="figura-tags"><span class="figura-tag">malha-aberta</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/MalhaAberta/MalhaAberta.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/MalhaAberta/MalhaAberta.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/MalhaAberta/MalhaAberta.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/MalhaAberta/MalhaAberta.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/MalhaAberta/MalhaAberta.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Sistema de controle em malha aberta.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt, node distance=1.4cm,
+  bloco/.style={draw, minimum width=2.2cm, minimum height=1.1cm, fill=blue!8},
+  seta/.style={-&gt;}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[bloco, right=of r]   (c) {Controlador};
+  \node[bloco, right=of c]   (g) {Planta};
+  \node[right=of g] (y) {$y(t)$};
+
+  \draw[seta] (r) -- (c);
+  \draw[seta] (c) -- node[above, font=\small]{$u(t)$} (g);
+  \draw[seta] (g) -- (y);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/MalhaFechada/MalhaFechada.png" alt="Sistema de controle em malha fechada" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Sistema de controle em malha fechada</h3>
+    <p>Sistema de controle em malha fechada com realimentação negativa unitária, C(s) e G(s).</p>
+    <div class="figura-tags"><span class="figura-tag">malha-fechada</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/MalhaFechada/MalhaFechada.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/MalhaFechada/MalhaFechada.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/MalhaFechada/MalhaFechada.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/MalhaFechada/MalhaFechada.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/MalhaFechada/MalhaFechada.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Sistema de controle em malha fechada com realimentação negativa.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt, node distance=1.6cm,
+  bloco/.style={draw, minimum width=2.2cm, minimum height=1.1cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.7cm, inner sep=0pt},
+  seta/.style={-&gt;}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[soma, right=1.1cm of r]  (sum) {};
+  \node[bloco, right=1.4cm of sum] (c) {$C(s)$};
+  \node[bloco, right=of c]        (g) {$G(s)$};
+  \node[right=1.4cm of g] (y) {$y(t)$};
+  \node[bloco, below=1.3cm of c]  (h) {$H(s)$};
+
+  \draw[seta] (r) -- (sum);
+  \draw[seta] (sum) -- node[above, font=\small]{$e(t)$} (c);
+  \draw[seta] (c) -- node[above, font=\small]{$u(t)$} (g);
+  \draw[seta] (g) -- (y);
+  \draw[seta] (g.south) |- (h.east);
+  \draw[seta] (h.west) -| (sum.south);
+
+  \node[font=\small] at ($(sum.north west)+(-0.15,0.15)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.15,-0.15)$) {$-$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/MassaMolaAmortecedor/MassaMolaAmortecedor.png" alt="Sistema massa-mola-amortecedor" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Sistema massa-mola-amortecedor</h3>
+    <p>Sistema mecânico massa-mola-amortecedor com força de entrada F(t) e deslocamento x(t), exemplo clássico de modelagem.</p>
+    <div class="figura-tags"><span class="figura-tag">massa-mola-amortecedor</span><span class="figura-tag">modelagem</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/MassaMolaAmortecedor/MassaMolaAmortecedor.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/MassaMolaAmortecedor/MassaMolaAmortecedor.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/MassaMolaAmortecedor/MassaMolaAmortecedor.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/MassaMolaAmortecedor/MassaMolaAmortecedor.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/MassaMolaAmortecedor/MassaMolaAmortecedor.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Sistema mecânico massa-mola-amortecedor (exemplo de modelagem).
+% Requer \usetikzlibrary{decorations.pathmorphing} no chunk .qmd.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt]
+
+  % parede
+  \draw (0,-1.0) -- (0,1.6);
+  \foreach \y in {-0.9,-0.6,...,1.5}
+    \draw (0,\y) -- (-0.25,\y-0.25);
+
+  % mola
+  \draw[decorate, decoration={coil, aspect=0.4, segment length=4pt, amplitude=3pt}]
+    (0,0.9) -- (2.2,0.9);
+  \node[font=\small] at (1.1,1.25) {$k$};
+
+  % amortecedor
+  \draw (0,0.0) -- (0.9,0.0);
+  \draw (0.9,-0.35) rectangle (1.7,0.35);
+  \draw (1.1,0.0) -- (2.2,0.0);
+  \node[font=\small] at (1.3,-0.6) {$b$};
+
+  % massa
+  \draw[fill=blue!8] (2.2,-0.55) rectangle (3.6,1.25);
+  \node at (2.9,0.35) {$m$};
+
+  % força e deslocamento
+  \draw[-&gt;] (3.6,0.35) -- (4.6,0.35) node[right] {$F(t)$};
+  \draw[-&gt;, dashed] (2.9,-1.0) -- (2.9,-1.9) node[below]{};
+  \draw[-&gt;] (2.9,-1.3) -- (4.3,-1.3) node[right, font=\small] {$x(t)$};
+
+  \node[font=\small] at (2.9,1.6) {atrito viscoso $b$, rigidez $k$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/MotorCC/MotorCC.png" alt="Motor CC controlado pela armadura" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Motor CC controlado pela armadura</h3>
+    <p>Circuito elétrico de armadura do motor CC acoplado à carga mecânica, exemplo de modelagem eletromecânica.</p>
+    <div class="figura-tags"><span class="figura-tag">motor-cc</span><span class="figura-tag">modelagem</span><span class="figura-tag">eletromecanica</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/MotorCC/MotorCC.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/MotorCC/MotorCC.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/MotorCC/MotorCC.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/MotorCC/MotorCC.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/MotorCC/MotorCC.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Motor CC controlado pela armadura — circuito elétrico + carga
+% mecânica (exemplo de modelagem eletromecânica).
+% Requer \usetikzlibrary{decorations.pathmorphing} no chunk .qmd.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt]
+
+  % fonte de tensão de armadura
+  \draw (0,0) circle (0.35);
+  \node at (0,0) {$v_a$};
+  \draw (0,0.35) -- (0,1.0) -- (0.9,1.0);
+  \draw (0,-0.35) -- (0,-1.0) -- (2.9,-1.0);
+
+  % resistor de armadura Ra (zigzag manual)
+  \draw (0.9,1.0) -- (1.1,1.15) -- (1.3,0.85) -- (1.5,1.15) -- (1.7,0.85) -- (1.9,1.0);
+  \node[font=\small] at (1.4,1.4) {$R_a$};
+
+  % indutor de armadura La
+  \draw[decorate, decoration={coil, aspect=0.5, segment length=4pt, amplitude=3pt}]
+    (1.9,1.0) -- (3.3,1.0);
+  \node[font=\small] at (2.6,1.4) {$L_a$};
+
+  % motor (rotor)
+  \draw[fill=blue!8] (3.3,1.0) -- (3.3,-1.0) arc (180:-180:0.0);
+  \draw[fill=blue!8] (3.9,0.0) circle (0.6);
+  \node at (3.9,0.0) {$M$};
+  \draw (3.3,1.0) -- (3.9,0.6);
+  \draw (3.3,-1.0) -- (3.9,-0.6);
+  \node[font=\small] at (3.9,-1.4) {f.c.e.m. $e_b = K_b\,\omega$};
+
+  % eixo
+  \draw (4.5,0.0) -- (5.6,0.0);
+  \node[font=\small] at (5.05,0.3) {eixo};
+
+  % carga mecânica: inércia J e atrito b
+  \draw[fill=blue!8] (6.3,0.0) circle (0.7);
+  \node at (6.3,0.0) {$J$};
+  \draw[-&gt;] (6.3,0.7) arc (90:20:0.9);
+  \node[font=\small] at (7.1,1.0) {$b$};
+
+  \draw[-&gt;] (7.0,0.0) -- (8.2,0.0) node[right, font=\small] {$\omega(t) = \dot\theta(t)$};
+
+  \node[font=\small] at (2.1,-1.4) {$i_a(t)$};
+  \draw[-&gt;] (2.1,-1.0) -- (2.1,-1.25);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
 <div class="figura-card">
   <div class="figura-preview"><img src="../_build/controle-classico/PIDBloco/PIDBloco.png" alt="Bloco PID em malha fechada" loading="lazy"></div>
   <div class="figura-body">
@@ -54,6 +278,187 @@ title: "Controle Clássico"
   \node[font=\small] at ($(s2.north east)+(0.12,0.12)$) {$+$};
 
   \node[font=\small, draw, dashed, fit=(p)(i)(d), inner sep=6pt, label={[font=\small]above:Controlador PID}] {};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/ParaleloBlocos/ParaleloBlocos.png" alt="Álgebra de blocos: associação em paralelo" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Álgebra de blocos: associação em paralelo</h3>
+    <p>Redução de dois blocos G1(s) e G2(s) em paralelo para um único bloco equivalente G1(s)+G2(s).</p>
+    <div class="figura-tags"><span class="figura-tag">algebra-de-blocos</span><span class="figura-tag">paralelo</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/ParaleloBlocos/ParaleloBlocos.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/ParaleloBlocos/ParaleloBlocos.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/ParaleloBlocos/ParaleloBlocos.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/ParaleloBlocos/ParaleloBlocos.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/ParaleloBlocos/ParaleloBlocos.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Álgebra de blocos: associação em paralelo.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt, node distance=1.3cm,
+  bloco/.style={draw, minimum width=1.8cm, minimum height=1.0cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.6cm, inner sep=0pt},
+  seta/.style={-&gt;}]
+
+  \node (x) at (0,0) {$X(s)$};
+  \coordinate (bx) at (1.0,0);
+  \node[bloco, right=1.9cm of x, yshift=0.9cm]  (g1) {$G_1(s)$};
+  \node[bloco, right=1.9cm of x, yshift=-0.9cm] (g2) {$G_2(s)$};
+  \node[soma, right=4.6cm of x] (sum) {};
+  \node[right=0.9cm of sum] (y) {$Y(s)$};
+
+  \draw[seta] (x) -- (bx);
+  \draw[seta] (bx) |- (g1.west);
+  \draw[seta] (bx) |- (g2.west);
+  \draw[seta] (g1.east) -| (sum.north);
+  \draw[seta] (g2.east) -| (sum.south);
+  \draw[seta] (sum) -- (y);
+  \node[font=\small] at ($(sum.north west)+(-0.12,0.12)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.12,-0.12)$) {$+$};
+
+  \node[font=\Large, right=1.1cm of y] (eq) {$\equiv$};
+
+  \node[right=1.1cm of eq] (x2) {$X(s)$};
+  \node[bloco, right=of x2, minimum width=2.8cm] (geq) {$G_1(s)+G_2(s)$};
+  \node[right=of geq] (y2) {$Y(s)$};
+  \draw[seta] (x2) -- (geq);
+  \draw[seta] (geq) -- (y2);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/RealimentacaoBlocos/RealimentacaoBlocos.png" alt="Álgebra de blocos: redução de realimentação negativa" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Álgebra de blocos: redução de realimentação negativa</h3>
+    <p>Redução de uma malha de realimentação negativa para o bloco equivalente G(s)/(1+G(s)H(s)).</p>
+    <div class="figura-tags"><span class="figura-tag">algebra-de-blocos</span><span class="figura-tag">realimentacao</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/RealimentacaoBlocos/RealimentacaoBlocos.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/RealimentacaoBlocos/RealimentacaoBlocos.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/RealimentacaoBlocos/RealimentacaoBlocos.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/RealimentacaoBlocos/RealimentacaoBlocos.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/RealimentacaoBlocos/RealimentacaoBlocos.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Álgebra de blocos: redução de uma malha de realimentação negativa.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt, node distance=1.3cm,
+  bloco/.style={draw, minimum width=1.8cm, minimum height=1.0cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.6cm, inner sep=0pt},
+  seta/.style={-&gt;}]
+
+  \node (x) at (0,0) {$X(s)$};
+  \node[soma, right=1.0cm of x] (sum) {};
+  \node[bloco, right=1.1cm of sum] (g) {$G(s)$};
+  \node[right=1.0cm of g] (y) {$Y(s)$};
+  \node[bloco, below=0.9cm of g] (h) {$H(s)$};
+
+  \draw[seta] (x) -- (sum);
+  \draw[seta] (sum) -- (g);
+  \draw[seta] (g) -- (y);
+  \draw[seta] (g.south) -- (h.north);
+  \draw[seta] (h.west) -| (sum.south);
+  \node[font=\small] at ($(sum.north west)+(-0.12,0.12)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.12,-0.12)$) {$-$};
+
+  \node[font=\Large, right=1.1cm of y] (eq) {$\equiv$};
+
+  \node[right=1.1cm of eq] (x2) {$X(s)$};
+  \node[bloco, right=of x2, minimum width=3.2cm] (geq) {$\dfrac{G(s)}{1+G(s)H(s)}$};
+  \node[right=of geq] (y2) {$Y(s)$};
+  \draw[seta] (x2) -- (geq);
+  \draw[seta] (geq) -- (y2);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/ReducaoExemplo/ReducaoExemplo.png" alt="Exemplo de redução por álgebra de blocos" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Exemplo de redução por álgebra de blocos</h3>
+    <p>Diagrama de blocos com múltiplas malhas aninhadas, para exercício de redução por álgebra de blocos ou regra de Mason.</p>
+    <div class="figura-tags"><span class="figura-tag">algebra-de-blocos</span><span class="figura-tag">regra-de-mason</span><span class="figura-tag">exercicio</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/ReducaoExemplo/ReducaoExemplo.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/ReducaoExemplo/ReducaoExemplo.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/ReducaoExemplo/ReducaoExemplo.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/ReducaoExemplo/ReducaoExemplo.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/ReducaoExemplo/ReducaoExemplo.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Exemplo de diagrama de blocos com múltiplas malhas, para exercício
+% de redução por álgebra de blocos / regra de Mason.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt,
+  bloco/.style={draw, minimum width=1.6cm, minimum height=1.0cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.6cm, inner sep=0pt},
+  seta/.style={-&gt;}]
+
+  % --- caminho direto (y = 0) ---
+  \node (r)  at (0,0)    {$R(s)$};
+  \node[soma]  (s1) at (1.4,0)  {};
+  \node[bloco] (g1) at (3.1,0)  {$G_1(s)$};
+  \node[soma]  (s2) at (4.8,0)  {};
+  \node[bloco] (g2) at (6.5,0)  {$G_2(s)$};
+  \node[bloco] (g3) at (8.4,0)  {$G_3(s)$};
+  \node (y)  at (10.1,0) {$Y(s)$};
+
+  \draw[seta] (r)  -- (s1);
+  \draw[seta] (s1) -- (g1);
+  \draw[seta] (g1) -- (s2);
+  \draw[seta] (s2) -- (g2);
+  \draw[seta] (g2) -- node[above, font=\small]{$A$} (g3);
+  \draw[seta] (g3) -- (y);
+
+  % --- malha interna: H1 realimenta de A (saída de G2) para s2 ---
+  \node[bloco] (h1) at (6.5,-1.6) {$H_1(s)$};
+  \draw[seta] (g2.south) -- (h1.north);
+  \draw[seta] (h1.west) -| (s2.south);
+
+  % --- malha externa: H2 realimenta de Y para s1 ---
+  \node[bloco] (h2) at (4.8,-3.2) {$H_2(s)$};
+  \draw[seta] (y.south) |- (h2.east);
+  \draw[seta] (h2.west) -| (s1.south);
+
+  \node[font=\small] at ($(s1.north west)+(-0.14,0.14)$) {$+$};
+  \node[font=\small] at ($(s1.south west)+(-0.14,-0.14)$) {$-$};
+  \node[font=\small] at ($(s2.north west)+(-0.14,0.14)$) {$+$};
+  \node[font=\small] at ($(s2.south west)+(-0.14,-0.14)$) {$-$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/SerieBlocos/SerieBlocos.png" alt="Álgebra de blocos: associação em série" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Álgebra de blocos: associação em série</h3>
+    <p>Redução de dois blocos G1(s) e G2(s) em cascata (série) para um único bloco equivalente G1(s)G2(s).</p>
+    <div class="figura-tags"><span class="figura-tag">algebra-de-blocos</span><span class="figura-tag">serie</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/SerieBlocos/SerieBlocos.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/SerieBlocos/SerieBlocos.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/SerieBlocos/SerieBlocos.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/SerieBlocos/SerieBlocos.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/SerieBlocos/SerieBlocos.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Álgebra de blocos: associação em série (cascata).
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt, node distance=1.3cm,
+  bloco/.style={draw, minimum width=1.8cm, minimum height=1.0cm, fill=blue!8},
+  seta/.style={-&gt;}]
+
+  \node (x) at (0,0) {$X(s)$};
+  \node[bloco, right=of x] (g1) {$G_1(s)$};
+  \node[bloco, right=of g1] (g2) {$G_2(s)$};
+  \node[right=of g2] (y) {$Y(s)$};
+  \draw[seta] (x) -- (g1);
+  \draw[seta] (g1) -- (g2);
+  \draw[seta] (g2) -- (y);
+
+  \node[font=\Large, right=1.1cm of y] (eq) {$\equiv$};
+
+  \node[right=1.1cm of eq] (x2) {$X(s)$};
+  \node[bloco, right=of x2, minimum width=2.6cm] (geq) {$G_1(s)\,G_2(s)$};
+  \node[right=of geq] (y2) {$Y(s)$};
+  \draw[seta] (x2) -- (geq);
+  \draw[seta] (geq) -- (y2);
 
 \end{tikzpicture}
 </code></pre>

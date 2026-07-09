@@ -1,0 +1,17 @@
+% ---------------------------------------------------------------
+% Sistema de controle em malha aberta.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt, node distance=1.4cm,
+  bloco/.style={draw, minimum width=2.2cm, minimum height=1.1cm, fill=blue!8},
+  seta/.style={->}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[bloco, right=of r]   (c) {Controlador};
+  \node[bloco, right=of c]   (g) {Planta};
+  \node[right=of g] (y) {$y(t)$};
+
+  \draw[seta] (r) -- (c);
+  \draw[seta] (c) -- node[above, font=\small]{$u(t)$} (g);
+  \draw[seta] (g) -- (y);
+
+\end{tikzpicture}

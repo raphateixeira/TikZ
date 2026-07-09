@@ -1,0 +1,24 @@
+% ---------------------------------------------------------------
+% Álgebra de blocos: associação em série (cascata).
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt, node distance=1.3cm,
+  bloco/.style={draw, minimum width=1.8cm, minimum height=1.0cm, fill=blue!8},
+  seta/.style={->}]
+
+  \node (x) at (0,0) {$X(s)$};
+  \node[bloco, right=of x] (g1) {$G_1(s)$};
+  \node[bloco, right=of g1] (g2) {$G_2(s)$};
+  \node[right=of g2] (y) {$Y(s)$};
+  \draw[seta] (x) -- (g1);
+  \draw[seta] (g1) -- (g2);
+  \draw[seta] (g2) -- (y);
+
+  \node[font=\Large, right=1.1cm of y] (eq) {$\equiv$};
+
+  \node[right=1.1cm of eq] (x2) {$X(s)$};
+  \node[bloco, right=of x2, minimum width=2.6cm] (geq) {$G_1(s)\,G_2(s)$};
+  \node[right=of geq] (y2) {$Y(s)$};
+  \draw[seta] (x2) -- (geq);
+  \draw[seta] (geq) -- (y2);
+
+\end{tikzpicture}

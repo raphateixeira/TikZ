@@ -1,0 +1,7 @@
+title: Regra do trapézio
+description: Aproximação da integral pela área do trapézio formado pela corda entre
+  (a,f(a)) e (b,f(b)).
+tags:
+- integracao-numerica
+- trapezio
+fonte: MetodosNumericos/CalculoNumerico/Notas/imgs/tikz/Trapezio.tikz

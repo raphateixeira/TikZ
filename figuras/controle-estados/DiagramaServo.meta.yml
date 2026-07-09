@@ -1,0 +1,8 @@
+title: Servomecanismo com ação integral
+description: Controle servo com ação integral do erro (estado z_i) somada à realimentação
+  de estados -Kc x.
+tags:
+- servomecanismo
+- acao-integral
+- espaco-de-estados
+fonte: MetodosNumericos/Notas/imgs/tikz/DiagramaServo.tikz

@@ -1,0 +1,36 @@
+% ---------------------------------------------------------------
+% Componentes de um sistema de controle em malha fechada: referência,
+% erro, controlador, atuador+planta, perturbação, sensor e saída.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt, node distance=1.5cm,
+  bloco/.style={draw, minimum width=2.4cm, minimum height=1.1cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.7cm, inner sep=0pt},
+  seta/.style={->}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[font=\scriptsize, below=1pt of r] {referência};
+  \node[soma, right=1.2cm of r]     (sum) {};
+  \node[bloco, right=1.5cm of sum]  (c)   {Controlador};
+  \node[soma, right=1.5cm of c]     (sum2) {};
+  \node[bloco, right=1.5cm of sum2] (g)   {Planta};
+  \node[right=1.6cm of g] (y) {$y(t)$};
+  \node[font=\scriptsize, below=1pt of y] {saída};
+  \node[bloco, below=1.6cm of c, xshift=2.0cm]  (h) {Sensor};
+  \node[above=1.0cm of sum2] (d) {$d(t)$};
+  \node[font=\scriptsize, above=1pt of d] {perturbação};
+
+  \draw[seta] (r) -- (sum);
+  \draw[seta] (sum) -- node[above, font=\small]{$e(t)$} (c);
+  \draw[seta] (c) -- node[above, font=\small]{$u(t)$} (sum2);
+  \draw[seta] (d) -- (sum2);
+  \draw[seta] (sum2) -- (g);
+  \draw[seta] (g) -- (y);
+  \draw[seta] (g.south) |- (h.east);
+  \draw[seta] (h.west) -| (sum.south);
+
+  \node[font=\small] at ($(sum.north west)+(-0.15,0.15)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.15,-0.15)$) {$-$};
+  \node[font=\small] at ($(sum2.north west)+(-0.15,0.15)$) {$+$};
+  \node[font=\small] at ($(sum2.north east)+(0.15,0.15)$) {$+$};
+
+\end{tikzpicture}

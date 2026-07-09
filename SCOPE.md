@@ -37,10 +37,6 @@ formatos.
 
 ## Fora de escopo da v1 (próximas iterações)
 
-- Migração em massa dos 43 `.tikz` já existentes nos projetos (decisão
-  editorial: qual variante manter, como renomear, como não duplicar).
-  A v1 traz só 4 figuras de exemplo, uma por categoria, para validar o
-  pipeline ponta a ponta.
 - Busca textual / tags clicáveis no site (Quarto `listing` com filtro).
 - Deduplicação automática de figuras semelhantes.
 - Publicação automática via GitHub Pages (o workflow existe como modelo
@@ -80,9 +76,16 @@ title: "Bloco PID em malha fechada"        # opcional; padrão = nome do arquivo
 description: "Diagrama de blocos do controlador PID com realimentação unitária."
 tags: [pid, diagrama-de-blocos, malha-fechada]
 libraries: [arrows.meta, positioning, calc, fit]   # libs TikZ extras além do conjunto padrão
+packages: [circuitikz]                              # pacotes LaTeX extras (ex.: circuitikz, pgfplots)
+pgfplots_libraries: [groupplots]                     # só quando packages inclui pgfplots
 dpi: 300                                            # opcional; densidade do PNG (padrão 300)
 fonte: "ControleClassico/Notas/imgs/tikz/PIDBloco.tikz"  # proveniência, opcional
 ```
+
+Algumas figuras não usam só `tikz` puro: circuitos (`\begin{circuitikz}`) precisam de
+`packages: [circuitikz]`; gráficos de sinais/curvas (`\begin{axis}` /
+`\begin{groupplot}`) precisam de `packages: [pgfplots]` (o build já injeta
+`\pgfplotsset{compat=1.18}` automaticamente).
 
 Sem `.meta.yml`, a figura ainda entra na galeria: título derivado do nome
 do arquivo, descrição vazia, tag = nome da categoria.
@@ -133,10 +136,29 @@ cada página de categoria.
    roda `quarto render`.
 4. Conferir em `_site/index.html` (ou `quarto preview`).
 
-## Categorias iniciais (v1)
+## Categorias (v1)
 
-Baseadas nos temas já identificados nos projetos de `GitRTx`:
-`controle-classico`, `controle-estados`, `controle-digital`,
-`circuitos-ca`, `metodos-numericos`, `identificacao`, `koopman`,
-`mpc-dmc`. A v1 semeia 4 delas com uma figura de exemplo cada; as demais
-podem ser criadas sob demanda (basta criar a pasta em `figuras/`).
+Catálogo completo migrado de todos os projetos de `GitRTx` que tinham
+`.tikz` (exceto os diagramas-modelo de demonstração dos templates, que
+não são conteúdo real):
+
+- `controle-classico` (10 figuras)
+- `controle-estados` (11 figuras — inclui as de `ControleEstados` e as
+  de tema equivalente encontradas em `MetodosNumericos/Notas`; variantes
+  com o mesmo nome de origem foram desambiguadas com o sufixo
+  `-MetodosNumericos`, já que são desenhos diferentes do mesmo sistema)
+- `circuitos-ca` (13 figuras)
+- `metodos-numericos` (6 figuras)
+- `aprendizagem-de-maquina` (1 figura — `ControleNeural`, controlador
+  neural em malha fechada, criada para este catálogo)
+
+Categorias reservadas (sem figuras ainda, criadas por corresponderem a
+projetos/temas de pesquisa ativos em `GitRTx`, mas sem `.tikz` próprio
+hoje): `algebra-linear`, `identificacao`, `mpc-dmc`. `koopman` foi
+avaliado e decidido não criar por ora — tematicamente sobrepõe
+`aprendizagem-de-maquina`/sistemas dinâmicos; criar quando houver
+conteúdo real para não acumular categorias sempre vazias.
+
+Duas figuras foram deliberadamente **não** migradas: `ExemploDiagrama.tikz`
+de `CircuitosCA` e de `TemplateNotas` — são o diagrama-modelo genérico
+dos templates ("substitua pelo seu esquema"), não conteúdo de pesquisa.

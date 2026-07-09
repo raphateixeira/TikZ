@@ -1,0 +1,7 @@
+title: 'Álgebra de blocos: associação em série'
+description: Redução de dois blocos G1(s) e G2(s) em cascata (série) para um único
+  bloco equivalente G1(s)G2(s).
+tags:
+- algebra-de-blocos
+- serie
+fonte: ControleClassico/Notas/imgs/tikz/SerieBlocos.tikz

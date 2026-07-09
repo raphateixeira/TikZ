@@ -1,0 +1,26 @@
+% ---------------------------------------------------------------
+% Sistema de controle em malha fechada com realimentação negativa.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt, node distance=1.6cm,
+  bloco/.style={draw, minimum width=2.2cm, minimum height=1.1cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.7cm, inner sep=0pt},
+  seta/.style={->}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[soma, right=1.1cm of r]  (sum) {};
+  \node[bloco, right=1.4cm of sum] (c) {$C(s)$};
+  \node[bloco, right=of c]        (g) {$G(s)$};
+  \node[right=1.4cm of g] (y) {$y(t)$};
+  \node[bloco, below=1.3cm of c]  (h) {$H(s)$};
+
+  \draw[seta] (r) -- (sum);
+  \draw[seta] (sum) -- node[above, font=\small]{$e(t)$} (c);
+  \draw[seta] (c) -- node[above, font=\small]{$u(t)$} (g);
+  \draw[seta] (g) -- (y);
+  \draw[seta] (g.south) |- (h.east);
+  \draw[seta] (h.west) -| (sum.south);
+
+  \node[font=\small] at ($(sum.north west)+(-0.15,0.15)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.15,-0.15)$) {$-$};
+
+\end{tikzpicture}

@@ -1,0 +1,8 @@
+title: Diagrama de blocos em espaço de estados (malha aberta)
+description: Representação em diagrama de blocos do modelo em espaço de estados x_dot=Ax+Bu,
+  y=Cx, em malha aberta.
+tags:
+- espaco-de-estados
+- malha-aberta
+- diagrama-de-blocos
+fonte: ControleEstados/Notas/imgs/tikz/DiagramaSSMalhaAberta.tikz

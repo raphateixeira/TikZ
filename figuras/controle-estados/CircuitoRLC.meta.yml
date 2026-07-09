@@ -1,0 +1,8 @@
+title: Circuito RLC em espaço de estados
+description: Circuito RLC com fonte u(t), cujas equações de estado (tensão no capacitor
+  e corrente no indutor) modelam a dinâmica do sistema.
+tags:
+- circuito-rlc
+- espaco-de-estados
+- modelagem
+fonte: MetodosNumericos/Notas/imgs/tikz/CircuitoRLC.tikz

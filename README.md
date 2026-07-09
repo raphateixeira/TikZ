@@ -40,7 +40,9 @@ python3 scripts/build_figuras.py --only controle-classico/PIDBloco
 ## Pré-requisitos
 
 - **Quarto**.
-- **LaTeX** (`pdflatex`) — ex. TeX Live ou MacTeX.
+- **LaTeX** (`pdflatex`) — ex. TeX Live ou MacTeX, com os pacotes
+  `circuitikz` e `pgfplots` (usados por algumas figuras de circuitos e
+  gráficos de sinais — veja `packages:` no `.meta.yml`).
 - **Poppler** (`pdftoppm`, `pdftops`) e **pdf2svg** — no macOS:
   `brew install poppler pdf2svg`.
 - **Python 3** com **PyYAML** (`pip install pyyaml`).

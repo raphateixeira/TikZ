@@ -1,0 +1,58 @@
+% ---------------------------------------------------------------
+% Motor CC: circuito de armadura (Va, R, L, eb) + carga mecânica (J, b)
+%   Va = L dia/dt + R ia + eb ,  eb = Ke·w
+%   J dw/dt = T - b·w ,  T = Kt·ia
+% Bibliotecas (carregadas no chunk .qmd):
+%   arrows.meta, positioning, calc, decorations.pathmorphing
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=1pt]
+
+  % --- Fonte de armadura Va ---
+  \draw (0,0) -- (0,1.1);
+  \draw (0,1.9) -- (0,3);
+  \draw (0,1.5) circle (0.4);
+  \draw (-0.18,1.62) -- (0.18,1.62);
+  \draw (-0.12,1.38) -- (0.12,1.38);
+  \node[left] at (-0.55,1.5) {$V_a$};
+
+  % --- Resistor R ---
+  \draw (0,3) -- (0.7,3)
+        -- (0.9,3.22) -- (1.3,2.78) -- (1.7,3.22) -- (2.1,2.78) -- (2.3,3) -- (2.6,3);
+  \node[above] at (1.6,3.3) {$R$};
+
+  % --- Indutor L ---
+  \draw[decorate, decoration={coil, aspect=0.55, segment length=5.5pt, amplitude=4.5pt}]
+        (2.6,3) -- (3.9,3);
+  \node[above] at (3.25,3.35) {$L$};
+  \draw (3.9,3) -- (4.6,3);
+
+  % --- Corrente de armadura ia ---
+  \draw[->] (0.95,3) -- (1.2,3);
+  \node[above, font=\small] at (0.55,2.98) {$i_a$};
+
+  % --- Motor (força contra-eletromotriz eb) ---
+  \draw (4.6,3) -- (4.6,2.3);
+  \draw (4.6,1.5) circle (0.8);
+  \node at (4.6,1.5) {\large $M$};
+  \draw (4.6,0.7) -- (4.6,0);
+  \node[right, font=\small] at (5.0,2.05) {$e_b$};
+
+  % --- Retorno ---
+  \draw (0,0) -- (4.6,0);
+
+  % --- Eixo / acoplamento mecânico ---
+  \draw[line width=1.4pt] (5.4,1.5) -- (6.5,1.5);
+
+  % --- Inércia J (disco) ---
+  \draw[fill=blue!8] (6.5,1.5) circle (0.7);
+  \node at (6.5,1.5) {$J$};
+  % velocidade angular w
+  \draw[->, line width=1pt] (6.5,2.45) arc (90:-30:0.95);
+  \node[above] at (7.0,2.5) {$\omega$};
+  % atrito viscoso b (apoio)
+  \draw (6.0,0.8) -- (7.0,0.8);
+  \fill[pattern=north east lines] (6.0,0.62) rectangle (7.0,0.8);
+  \draw[dashed] (6.5,1.5) -- (6.5,0.8);
+  \node[right] at (7.05,0.85) {$b$};
+
+\end{tikzpicture}

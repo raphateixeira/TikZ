@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=1.5, every node/.style={font=\normalsize}]
+  % Input signal line
+  \draw[line width=2pt] (0,0) -- (1.6,0);
+  \node[below=0.35cm] at (0.8,0) {Sinal};
+  \node[below=0.8cm] at (0.8,0) {contínuo};
+  \node[left] at (0,0) {$r(t)$};
+
+  % Left terminal (contact point)
+  \draw[line width=1.5pt, fill=white] (1.7,0) circle (3pt);
+
+  % Switch arm (chave) - diagonal open
+  \draw[line width=1.5pt] (1.7,0) -- (2.6,0.6);
+
+  % Right terminal (contact point)
+  \draw[line width=1.5pt, fill=white] (2.9,0) circle (3pt);
+
+  % Output signal line
+  \draw[line width=2pt] (3.0,0) -- (4.6,0);
+  \node[below=0.35cm] at (3.8,0) {Sinal};
+  \node[below=0.8cm] at (3.8,0) {amostrado};
+  \node[right] at (4.6,0) {$r^*(kT_s)$};
+\end{tikzpicture}

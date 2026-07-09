@@ -1,0 +1,28 @@
+% ---------------------------------------------------------------------
+% Duas senoides de mesma frequência com fases diferentes (defasagem).
+% Requer pgfplots (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{axis}[
+  width=18cm, height=8.5cm,
+  axis lines=middle,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  xlabel={$\omega t$ (rad)}, ylabel={Amplitude},
+  xtick={0,90,180,270,360},
+  xticklabels={$0$,$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+  ytick={-1,0,1},
+  ymin=-1.4, ymax=1.4,
+  xmin=0, xmax=360,
+  domain=0:360, samples=200,
+  enlargelimits=false,
+  legend pos=north east,
+  legend style={font=\Large},
+  line width=2.2pt,
+]
+\addplot[blue!70!black, line width=2.4pt] {cos(x+45)};
+\addlegendentry{$v_1 = \cos(\omega t + 45^\circ)$}
+\addplot[red!70!black, line width=2.4pt, dashed] {cos(x-45)};
+\addlegendentry{$v_2 = \cos(\omega t - 45^\circ)$}
+\end{axis}
+\end{tikzpicture}

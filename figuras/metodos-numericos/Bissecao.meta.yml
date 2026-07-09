@@ -1,0 +1,7 @@
+title: Método da bisseção
+description: 'Iteração do método da bisseção: f(a)f(b)<0 garante uma raiz no intervalo,
+  refinado pelo ponto médio m.'
+tags:
+- zeros-de-funcoes
+- bissecao
+fonte: MetodosNumericos/CalculoNumerico/Notas/imgs/tikz/Bissecao.tikz

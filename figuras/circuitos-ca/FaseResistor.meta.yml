@@ -1,0 +1,9 @@
+title: Relação de fase do resistor
+description: Tensão v(t) e corrente i(t) em fase num resistor.
+tags:
+- resistor
+- fase
+- pgfplots
+packages:
+- pgfplots
+fonte: CircuitosCA/Notas/imgs/tikz/FaseResistor.tikz

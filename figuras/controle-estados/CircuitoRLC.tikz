@@ -1,0 +1,55 @@
+% ---------------------------------------------------------------
+% Circuito RLC:  u(t) em paralelo com C  e  com o ramo série L–R
+%   C dvC/dt = u - iL ;  L diL/dt = vC - R iL ;  y = vR = R iL
+% Bibliotecas (carregadas no chunk .qmd):
+%   arrows.meta, positioning, calc, decorations.pathmorphing
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=1pt]
+
+  % --- Trilhos ---
+  \draw (0,0) -- (6,0);
+  \draw (0,3) -- (6,3);
+
+  % --- Fonte u(t) ---
+  \draw (0,0) -- (0,1.1);
+  \draw (0,1.9) -- (0,3);
+  \draw (0,1.5) circle (0.4);
+  \draw (-0.18,1.5) -- (0.18,1.5);
+  \draw (0,1.32) -- (0,1.68);
+  \node[left] at (-0.55,1.5) {$u(t)$};
+
+  % --- Capacitor C (ramo central) ---
+  \draw (2,3) -- (2,1.75);
+  \draw[line width=1.3pt] (1.65,1.75) -- (2.35,1.75);
+  \draw[line width=1.3pt] (1.65,1.45) -- (2.35,1.45);
+  \draw (2,1.45) -- (2,0);
+  \node[right] at (2.4,1.6) {$C$};
+  \node[left]  at (1.55,2.35) {$v_C$};
+
+  % --- Ramo série L–R (direita) ---
+  % Indutor L
+  \draw (4,3) -- (4,2.5);
+  \draw[decorate, decoration={coil, aspect=0.55, segment length=5.5pt, amplitude=4.5pt}]
+        (4,2.5) -- (4,1.7);
+  \node[right] at (4.35,2.1) {$L$};
+  % Resistor R (zig-zag)
+  \draw (4,1.7) -- (4,1.45)
+        -- (3.74,1.32) -- (4.26,1.12) -- (3.74,0.92) -- (4.26,0.72) -- (4,0.59)
+        -- (4,0);
+  \node[right] at (4.4,1.0) {$R$};
+
+  % --- Corrente iL ---
+  \draw[->] (4.0,2.95) -- (4.0,2.7);
+  \node[right, font=\small] at (3.55,3.25) {$i_L$};
+
+  % --- Saída y = vR ---
+  \draw[->, blue!60!black] (5.1,1.55) -- (5.1,0.05);
+  \node[right, blue!60!black] at (5.15,0.8) {$y = v_R$};
+
+  % --- Nós ---
+  \fill (2,3) circle (1.6pt);
+  \fill (4,3) circle (1.6pt);
+  \fill (2,0) circle (1.6pt);
+  \fill (4,0) circle (1.6pt);
+
+\end{tikzpicture}

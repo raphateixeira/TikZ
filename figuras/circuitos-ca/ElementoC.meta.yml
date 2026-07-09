@@ -1,0 +1,9 @@
+title: Capacitor com referências de tensão e corrente
+description: Elemento capacitor com as referências de tensão v(t) e corrente i(t)
+  indicadas.
+tags:
+- capacitor
+- circuitikz
+packages:
+- circuitikz
+fonte: CircuitosCA/Notas/imgs/tikz/ElementoC.tikz

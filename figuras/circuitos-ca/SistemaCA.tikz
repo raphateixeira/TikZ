@@ -1,0 +1,23 @@
+% ---------------------------------------------------------------------
+% Sistema de geração, transmissão e distribuição de energia em CA.
+% ---------------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=1.6pt, font=\Large,
+  bloco/.style={draw, line width=1.6pt, minimum width=3.6cm, minimum height=1.9cm,
+                fill=blue!8, align=center}]
+
+  \node[bloco] (ger)  at (0,0)   {Geração\\60\,Hz};
+  \node[bloco] (elev) at (4.8,0) {Elevação\\de tensão};
+  \node[bloco] (lt)   at (9.6,0) {Linha de\\transmissão};
+  \node[bloco] (abx)  at (14.4,0) {Abaixamento\\de tensão};
+  \node[bloco] (carga) at (19.2,0) {Carga};
+
+  \draw[->] (ger)  -- (elev);
+  \draw[->] (elev) -- (lt);
+  \draw[->] (lt)   -- (abx);
+  \draw[->] (abx)  -- (carga);
+
+  \node[font=\Large] at (0,-1.7)    {baixa tensão};
+  \node[font=\Large] at (9.6,-1.7)  {alta tensão};
+  \node[font=\Large] at (19.2,-1.7) {baixa tensão};
+
+\end{tikzpicture}

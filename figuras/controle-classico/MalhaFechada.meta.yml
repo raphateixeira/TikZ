@@ -1,0 +1,7 @@
+title: Sistema de controle em malha fechada
+description: Sistema de controle em malha fechada com realimentação negativa unitária,
+  C(s) e G(s).
+tags:
+- malha-fechada
+- diagrama-de-blocos
+fonte: ControleClassico/Notas/imgs/tikz/MalhaFechada.tikz

@@ -1,0 +1,7 @@
+title: 'Álgebra de blocos: redução de realimentação negativa'
+description: Redução de uma malha de realimentação negativa para o bloco equivalente
+  G(s)/(1+G(s)H(s)).
+tags:
+- algebra-de-blocos
+- realimentacao
+fonte: ControleClassico/Notas/imgs/tikz/RealimentacaoBlocos.tikz

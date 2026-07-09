@@ -1,0 +1,8 @@
+title: Diagrama de blocos em espaço de estados (malha fechada)
+description: Realimentação de estados u=r-Kx sobre o modelo em espaço de estados,
+  incluindo a matriz de ganho K.
+tags:
+- espaco-de-estados
+- realimentacao-de-estados
+- diagrama-de-blocos
+fonte: ControleEstados/Notas/imgs/tikz/DiagramaSSMalhaFechada.tikz

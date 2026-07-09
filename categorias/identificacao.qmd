@@ -1,0 +1,9 @@
+---
+title: "Identificação de Sistemas"
+---
+
+Categoria reservada, ainda sem figuras.
+
+````{=html}
+<p class="categoria-vazia">Nenhuma figura ainda. Deposite um <code>.tikz</code> em <code>figuras/identificacao/</code> (ou em <code>banco/</code> e mova para cá) e rode <code>scripts/rebuild.sh</code>.</p>
+````

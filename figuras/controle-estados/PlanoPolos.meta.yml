@@ -1,0 +1,8 @@
+title: Mapa de polos no plano-s
+description: Polos de malha aberta representados no plano complexo s, com valores
+  numéricos indicados.
+tags:
+- plano-s
+- polos
+- estabilidade
+fonte: MetodosNumericos/Notas/imgs/tikz/PlanoPolos.tikz

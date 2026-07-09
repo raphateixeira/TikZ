@@ -1,0 +1,7 @@
+title: Regra de Simpson
+description: Aproximação da integral por uma parábola passando por três pontos (x0,x1,x2),
+  base da regra de Simpson.
+tags:
+- integracao-numerica
+- simpson
+fonte: MetodosNumericos/CalculoNumerico/Notas/imgs/tikz/Simpson.tikz

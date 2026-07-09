@@ -1,0 +1,48 @@
+% ---------------------------------------------------------------
+% Diagrama de blocos do modelo de estados (malha aberta)
+%   x_dot = A x + B u ,  y = C x + D u
+% Bibliotecas (carregadas no chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt,
+  block/.style={draw, minimum width=1.0cm, minimum height=1.0cm, fill=blue!8},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  % --- Cadeia direta ---
+  \node (u)            at (0,0)    {$u$};
+  \node[block] (B)     at (1.5,0)  {$\mathbf{B}$};
+  \node[sum]   (s1)    at (3.2,0)  {};
+  \node[block] (int)   at (5.0,0)  {$\displaystyle\int$};
+  \node[block] (C)     at (8.0,0)  {$\mathbf{C}$};
+  \node[sum]   (s2)    at (9.7,0)  {};
+  \node (y)            at (11.3,0) {$y$};
+  \node[block] (A)     at (6.2,-2.3) {$\mathbf{A}$};
+  \node[block] (D)     at (4.8,2.1)  {$\mathbf{D}$};
+
+  % Ponto de derivação do estado x
+  \coordinate (x) at (6.2,0);
+
+  % --- Sinais nos somadores ---
+  \node[font=\scriptsize] at ($(s1)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(s1)+(0,-0.42)$)    {$+$};
+  \node[font=\scriptsize] at ($(s2)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(s2)+(0,0.42)$)     {$+$};
+
+  % --- Ligações cadeia direta ---
+  \draw[->] (u) -- (B);
+  \draw[->] (B) -- (s1);
+  \draw[->] (s1) -- (int) node[midway, above] {$\dot{\mathbf{x}}$};
+  \draw[->] (int) -- (C) node[pos=0.45, above] {$\mathbf{x}$};
+  \draw[->] (C) -- (s2);
+  \draw[->] (s2) -- (y);
+
+  % --- Realimentação A (positiva: +Ax) ---
+  \fill (x) circle (1.6pt);
+  \draw[-]  (x) -- (A.north);
+  \draw[->] (A.west) -| (s1);
+
+  % --- Transmissão direta D ---
+  \fill (0.75,0) circle (1.6pt);
+  \draw[-]  (0.75,0) |- (D.west);
+  \draw[->] (D.east) -| (s2);
+
+\end{tikzpicture}

@@ -1,0 +1,8 @@
+title: Indutor com referências de tensão e corrente
+description: Elemento indutor com as referências de tensão v(t) e corrente i(t) indicadas.
+tags:
+- indutor
+- circuitikz
+packages:
+- circuitikz
+fonte: CircuitosCA/Notas/imgs/tikz/ElementoL.tikz

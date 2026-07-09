@@ -1,0 +1,10 @@
+title: Defasagem entre senoides
+description: Duas senoides de mesma frequência com fases diferentes, ilustrando o
+  conceito de defasagem.
+tags:
+- senoides
+- defasagem
+- pgfplots
+packages:
+- pgfplots
+fonte: CircuitosCA/Notas/imgs/tikz/DefasagemSenoides.tikz

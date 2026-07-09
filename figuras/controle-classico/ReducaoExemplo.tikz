@@ -1,0 +1,41 @@
+% ---------------------------------------------------------------
+% Exemplo de diagrama de blocos com múltiplas malhas, para exercício
+% de redução por álgebra de blocos / regra de Mason.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt,
+  bloco/.style={draw, minimum width=1.6cm, minimum height=1.0cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.6cm, inner sep=0pt},
+  seta/.style={->}]
+
+  % --- caminho direto (y = 0) ---
+  \node (r)  at (0,0)    {$R(s)$};
+  \node[soma]  (s1) at (1.4,0)  {};
+  \node[bloco] (g1) at (3.1,0)  {$G_1(s)$};
+  \node[soma]  (s2) at (4.8,0)  {};
+  \node[bloco] (g2) at (6.5,0)  {$G_2(s)$};
+  \node[bloco] (g3) at (8.4,0)  {$G_3(s)$};
+  \node (y)  at (10.1,0) {$Y(s)$};
+
+  \draw[seta] (r)  -- (s1);
+  \draw[seta] (s1) -- (g1);
+  \draw[seta] (g1) -- (s2);
+  \draw[seta] (s2) -- (g2);
+  \draw[seta] (g2) -- node[above, font=\small]{$A$} (g3);
+  \draw[seta] (g3) -- (y);
+
+  % --- malha interna: H1 realimenta de A (saída de G2) para s2 ---
+  \node[bloco] (h1) at (6.5,-1.6) {$H_1(s)$};
+  \draw[seta] (g2.south) -- (h1.north);
+  \draw[seta] (h1.west) -| (s2.south);
+
+  % --- malha externa: H2 realimenta de Y para s1 ---
+  \node[bloco] (h2) at (4.8,-3.2) {$H_2(s)$};
+  \draw[seta] (y.south) |- (h2.east);
+  \draw[seta] (h2.west) -| (s1.south);
+
+  \node[font=\small] at ($(s1.north west)+(-0.14,0.14)$) {$+$};
+  \node[font=\small] at ($(s1.south west)+(-0.14,-0.14)$) {$-$};
+  \node[font=\small] at ($(s2.north west)+(-0.14,0.14)$) {$+$};
+  \node[font=\small] at ($(s2.south west)+(-0.14,-0.14)$) {$-$};
+
+\end{tikzpicture}

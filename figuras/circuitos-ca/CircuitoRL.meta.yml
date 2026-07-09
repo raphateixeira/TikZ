@@ -1,0 +1,9 @@
+title: Circuito RL série
+description: Circuito RL série alimentado por fonte de tensão senoidal, com a corrente
+  i(t) em destaque.
+tags:
+- circuito-rl
+- circuitikz
+packages:
+- circuitikz
+fonte: CircuitosCA/Notas/imgs/tikz/CircuitoRL.tikz

@@ -1,0 +1,11 @@
+title: Reatâncias indutiva e capacitiva
+description: Reatância indutiva X_L=wL e capacitiva X_C=1/(wC) em função da frequência
+  angular.
+tags:
+- reatancia
+- pgfplots
+packages:
+- pgfplots
+pgfplots_libraries:
+- groupplots
+fonte: CircuitosCA/Notas/imgs/tikz/Reatancias.tikz

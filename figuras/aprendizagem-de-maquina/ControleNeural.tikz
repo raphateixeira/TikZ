@@ -1,0 +1,50 @@
+% ---------------------------------------------------------------------
+% Malha de controle com um controlador neural (rede neural) no lugar
+% do controlador clássico: r(t) -> erro -> rede neural -> u(t) -> planta.
+% ---------------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=1pt, node distance=1.1cm,
+  bloco/.style={draw, minimum width=2.4cm, minimum height=1.0cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.65cm, inner sep=0pt},
+  neuronio/.style={circle, draw, fill=orange!85!black, minimum size=0.36cm, inner sep=0pt},
+  sinapse/.style={-, gray!45, line width=0.45pt}]
+
+  \node (r) at (0,0) {$r(t)$};
+  \node[soma, right=1.1cm of r] (sum) {};
+
+  % --- Caixa do controlador neural ---
+  \node[draw, dashed, minimum width=5.4cm, minimum height=3.4cm,
+        right=2.3cm of sum, fill=blue!4, line width=0.9pt] (nnbox) {};
+
+  % camada de entrada (2 neurônios)
+  \node[neuronio] (i1) at ($(nnbox.west)+(0.9,0.75)$) {};
+  \node[neuronio] (i2) at ($(nnbox.west)+(0.9,-0.75)$) {};
+  % camada oculta (4 neurônios)
+  \node[neuronio] (h1) at ($(nnbox.center)+(-0.1,1.15)$) {};
+  \node[neuronio] (h2) at ($(nnbox.center)+(-0.1,0.4)$) {};
+  \node[neuronio] (h3) at ($(nnbox.center)+(-0.1,-0.4)$) {};
+  \node[neuronio] (h4) at ($(nnbox.center)+(-0.1,-1.15)$) {};
+  % camada de saída (1 neurônio)
+  \node[neuronio] (o1) at ($(nnbox.east)+(-0.9,0)$) {};
+
+  % sinapses: entrada -> oculta -> saída
+  \foreach \i in {i1,i2}
+    \foreach \h in {h1,h2,h3,h4}
+      \draw[sinapse] (\i) -- (\h);
+  \foreach \h in {h1,h2,h3,h4}
+    \draw[sinapse] (\h) -- (o1);
+
+  \node[font=\small, align=center, above=0.25cm of nnbox] {Controlador neural};
+
+  \node[bloco, right=2.3cm of nnbox] (g) {$G(s)$};
+  \node[right=1.5cm of g] (y) {$y(t)$};
+
+  \draw[->] (r) -- (sum);
+  \draw[->] (sum) -- node[above, font=\small]{$e(t)$} (nnbox.west);
+  \draw[->] (nnbox.east) -- node[above, font=\small]{$u(t)$} (g);
+  \draw[->] (g) -- (y);
+  \draw[->] (g.south) |- ++(0,-2.2) -| (sum.south);
+
+  \node[font=\small] at ($(sum.north west)+(-0.14,0.14)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.14,-0.14)$) {$-$};
+
+\end{tikzpicture}

@@ -1,0 +1,8 @@
+title: 'Motor CC: circuito de armadura e carga mecânica'
+description: Motor CC com resistência e indutância de armadura, força contra-eletromotriz
+  e carga mecânica com inércia J e atrito b.
+tags:
+- motor-cc
+- modelagem
+- eletromecanica
+fonte: MetodosNumericos/Notas/imgs/tikz/MotorCC.tikz

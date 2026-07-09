@@ -1,0 +1,8 @@
+title: Motor CC controlado pela armadura
+description: Circuito elétrico de armadura do motor CC acoplado à carga mecânica,
+  exemplo de modelagem eletromecânica.
+tags:
+- motor-cc
+- modelagem
+- eletromecanica
+fonte: ControleClassico/Notas/imgs/tikz/MotorCC.tikz

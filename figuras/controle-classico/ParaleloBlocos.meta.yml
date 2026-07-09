@@ -1,0 +1,7 @@
+title: 'Álgebra de blocos: associação em paralelo'
+description: Redução de dois blocos G1(s) e G2(s) em paralelo para um único bloco
+  equivalente G1(s)+G2(s).
+tags:
+- algebra-de-blocos
+- paralelo
+fonte: ControleClassico/Notas/imgs/tikz/ParaleloBlocos.tikz

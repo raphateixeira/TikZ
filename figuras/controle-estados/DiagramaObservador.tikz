@@ -1,0 +1,38 @@
+% ---------------------------------------------------------------
+% Observador de Luenberger (nível de blocos)
+%   Planta:     x_dot = A x + B u ,  y = C x
+%   Observador: xhat_dot = A xhat + B u + L (y - C xhat)
+% Bibliotecas (chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt,
+  big/.style={draw, minimum width=3.2cm, minimum height=1.6cm, fill=blue!8, align=center},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  \node (u)             at (-1.5,0) {$u$};
+  \node[big] (plant)    at (1.8,0)  {Planta\\$\dot{\mathbf{x}}=\mathbf{A}\mathbf{x}+\mathbf{B}u$\\$y=\mathbf{C}\mathbf{x}$};
+  \node (y)             at (5.6,0)  {$y$};
+
+  \node[big] (obs)      at (1.8,-3.0) {Observador\\$\dot{\hat{\mathbf{x}}}=\mathbf{A}\hat{\mathbf{x}}+\mathbf{B}u+\mathbf{L}(y-\mathbf{C}\hat{\mathbf{x}})$};
+  \node (xhat)          at (5.6,-3.0) {$\hat{\mathbf{x}}$};
+
+  % u para planta e observador
+  \fill (-0.4,0) circle (1.6pt);
+  \draw[->] (u) -- (plant);
+  \draw[-]  (-0.4,0) -- (-0.4,-3.0);
+  \draw[->] (-0.4,-3.0) -- (obs);
+
+  % saída da planta
+  \draw[->] (plant) -- (y);
+
+  % y realimentado ao observador
+  \fill (4.6,0) circle (1.6pt);
+  \draw[-]  (4.6,0) -- (4.6,-1.6);
+  \draw[->] (4.6,-1.6) -- (4.6,-3.0) -- (obs.east -| 4.6,-3.0);
+
+  % estado estimado
+  \draw[->] (obs) -- (xhat);
+
+  \node[font=\small, gray!60!black] at (1.8,-4.4)
+        {Erro $\;e=\mathbf{x}-\hat{\mathbf{x}}\;\Rightarrow\; \dot{e}=(\mathbf{A}-\mathbf{L}\mathbf{C})e$};
+
+\end{tikzpicture}

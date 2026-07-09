@@ -1,0 +1,21 @@
+% Método da bisseção: f(a)f(b)<0, ponto médio m
+% Bibliotecas (chunk .qmd): arrows.meta
+\begin{tikzpicture}[>=Latex, xscale=2.2, yscale=1.0, line width=0.9pt]
+  \draw[->] (0.4,0) -- (3.7,0) node[right] {$x$};
+  \draw[->] (0.6,-2.3) -- (0.6,3.4) node[above] {$f(x)$};
+
+  % f(x) = 0.5 x^2 - 2  (raiz em x = 2)
+  \draw[blue!70!black, line width=1.1pt]
+        plot[domain=0.8:3.35, samples=60] (\x, {0.5*\x*\x - 2});
+
+  \def\a{1.2}\def\b{3.2}\def\m{2.2}
+  \foreach \p/\lab in {\a/a, \b/b, \m/m}{
+    \draw[dashed, gray!55] (\p,0) -- (\p, {0.5*\p*\p - 2});
+    \node[below] at (\p,-0.05) {$\lab$};
+  }
+  \fill[red] (\a, {0.5*\a*\a - 2}) circle (1.3pt);
+  \fill[red] (\b, {0.5*\b*\b - 2}) circle (1.3pt);
+  \fill (\m,0) circle (1.1pt);
+  \node[font=\small] at (2.55,2.7) {$f(a)\,f(b) < 0$};
+  \node[font=\small, align=center] at (1.55,1.6) {raiz em\\$[a,m]$ ou $[m,b]$};
+\end{tikzpicture}

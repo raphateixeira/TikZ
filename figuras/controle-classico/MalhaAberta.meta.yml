@@ -1,0 +1,7 @@
+title: Sistema de controle em malha aberta
+description: 'Estrutura básica de um sistema de controle em malha aberta: controlador
+  seguido da planta, sem realimentação.'
+tags:
+- malha-aberta
+- diagrama-de-blocos
+fonte: ControleClassico/Notas/imgs/tikz/MalhaAberta.tikz

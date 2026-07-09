@@ -1,0 +1,29 @@
+% Passo de Euler: avanço pela tangente; comparação com a solução exata
+% Bibliotecas (chunk .qmd): arrows.meta
+\begin{tikzpicture}[>=Latex, xscale=2.4, yscale=1.5, line width=0.9pt]
+  \draw[->] (0.3,0) -- (3.4,0) node[right] {$t$};
+  \draw[->] (0.5,0) -- (0.5,2.7) node[above] {$y$};
+
+  % solução exata y = 0.4 e^{0.45 t}
+  \draw[blue!70!black, line width=1.1pt]
+        plot[domain=0.5:3.0, samples=60] (\x, {0.4*exp(0.45*\x)})
+        node[right, font=\small] {$y(t)$};
+
+  \def\tk{1.0}\def\tn{2.0}
+  \pgfmathsetmacro\yk{0.4*exp(0.45*\tk)}
+  \pgfmathsetmacro\slope{0.45*\yk}
+  \pgfmathsetmacro\yeuler{\yk + \slope*(\tn-\tk)}
+
+  % passo de Euler (tangente)
+  \draw[red, line width=1pt] (\tk,\yk) -- (\tn,\yeuler);
+  \fill (\tk,\yk) circle (1.2pt);
+  \fill[red] (\tn,\yeuler) circle (1.2pt) node[right, font=\small] {$y_{k+1}$};
+  \fill (\tn, {0.4*exp(0.45*\tn)}) circle (1.2pt) node[above left, font=\small] {$y(t_{k+1})$};
+
+  \draw[dashed, gray!55] (\tk,0) -- (\tk,\yk);
+  \draw[dashed, gray!55] (\tn,0) -- (\tn,\yeuler);
+  \node[below] at (\tk,0) {$t_k$};
+  \node[below] at (\tn,0) {$t_{k+1}$};
+  \node[below left, font=\small] at (\tk,\yk) {$y_k$};
+  \draw[<->, gray!70] (\tk,-0.32) -- (\tn,-0.32) node[midway, below, font=\small] {$h$};
+\end{tikzpicture}

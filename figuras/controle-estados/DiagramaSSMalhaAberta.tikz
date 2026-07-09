@@ -1,0 +1,37 @@
+\tikzset{
+    % Estilos dos blocos
+    block/.style = {draw, fill=blue!10, rectangle, minimum height=2.5em, minimum width=2.5em, line width=0.8pt},
+    % Somador 30% menor (reduzido de 1pt/Large para algo mais compacto)
+    sum/.style = {draw, fill=white, circle, inner sep=2pt, line width=0.8pt},
+    dot/.style = {fill, circle, inner sep=1.2pt}
+}
+
+\begin{tikzpicture}[auto, node distance=1.2cm, >=Latex, line width=0.8pt]
+    % Ajuste global da escala da ponta da seta para ser proporcional ao diagrama menor
+    \begin{scope}[arrows={-Latex[scale=0.8]}]
+        
+        % Nós (Posicionamento com distâncias reduzidas)
+        \node (input) at (0,0) {};
+        \node [block, right=0.7cm of input] (matrixB) {$B$};
+        \node [sum, right=0.8cm of matrixB] (sum) {$+$};
+        \node [block, right=0.8cm of sum] (int) {$\int$};
+        \node [block, right=1.2cm of int] (matrixC) {$C$};
+        \node (output) [right=0.7cm of matrixC] {};
+        
+        % Bloco de realimentação
+        \node [block, below=1cm of int] (matrixA) {$A$};
+
+        % Caminho Principal
+        \draw [->] (input) -- (matrixB) node[left, pos=0] {$u(t)$};
+        \draw [->] (matrixB) -- (sum);
+        \draw [->] (sum) -- node[above, font=\small] {$\dot{x}$} (int);
+        \draw [->] (int) -- (matrixC) node[above, pos=0.4, font=\small] {$x$};
+        \draw [->] (matrixC) -- (output) node[right, pos=1] {$y(t)$};
+
+        % Ponto de derivação e Realimentação
+        \node [dot] (point) at ($(int.east)!0.5!(matrixC.west)$) {};
+        \draw [->] (point) |- (matrixA);
+        \draw [->] (matrixA) -| (sum);
+        
+    \end{scope}
+\end{tikzpicture}

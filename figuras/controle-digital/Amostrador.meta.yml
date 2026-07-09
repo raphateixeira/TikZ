@@ -1,0 +1,7 @@
+title: Amostrador ideal
+description: Chave amostradora que converte um sinal contínuo r(t) num sinal amostrado
+  r*(kTs).
+tags:
+- amostragem
+- controle-digital
+fonte: ControleDigital/Notas/imgs/tikz/Tikz01Amostrador.tikz

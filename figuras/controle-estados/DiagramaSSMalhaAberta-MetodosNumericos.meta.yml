@@ -1,0 +1,8 @@
+title: Diagrama de blocos em espaço de estados (malha aberta, com D)
+description: Variante do diagrama em espaço de estados incluindo a matriz de transmissão
+  direta D, além de A, B e C.
+tags:
+- espaco-de-estados
+- malha-aberta
+- diagrama-de-blocos
+fonte: MetodosNumericos/Notas/imgs/tikz/DiagramaSSMalhaAberta.tikz

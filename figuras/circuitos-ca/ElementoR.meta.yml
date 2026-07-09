@@ -1,0 +1,8 @@
+title: Resistor com referências de tensão e corrente
+description: Elemento resistor com as referências de tensão v(t) e corrente i(t) indicadas.
+tags:
+- resistor
+- circuitikz
+packages:
+- circuitikz
+fonte: CircuitosCA/Notas/imgs/tikz/ElementoR.tikz

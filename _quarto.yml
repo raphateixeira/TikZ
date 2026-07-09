@@ -23,18 +23,29 @@ website:
     left:
       - text: "Início"
         href: index.qmd
-      - text: "Controle Clássico"
-        href: categorias/controle-classico.qmd
-      - text: "Controle por Espaço de Estados"
-        href: categorias/controle-estados.qmd
-      - text: "Circuitos CA"
-        href: categorias/circuitos-ca.qmd
-      - text: "Métodos Numéricos"
-        href: categorias/metodos-numericos.qmd
+      - text: "Categorias"
+        menu:
+          - text: "Controle Clássico"
+            href: categorias/controle-classico.qmd
+          - text: "Controle por Espaço de Estados"
+            href: categorias/controle-estados.qmd
+          - text: "Controle Digital"
+            href: categorias/controle-digital.qmd
+          - text: "Circuitos CA"
+            href: categorias/circuitos-ca.qmd
+          - text: "Métodos Numéricos"
+            href: categorias/metodos-numericos.qmd
+          - text: "Aprendizagem de Máquina"
+            href: categorias/aprendizagem-de-maquina.qmd
+          - text: "Álgebra Linear"
+            href: categorias/algebra-linear.qmd
+          - text: "Identificação de Sistemas"
+            href: categorias/identificacao.qmd
+          - text: "MPC / DMC"
+            href: categorias/mpc-dmc.qmd
   page-footer:
     border: false
     left: "Coleção TikZ"
-    center: "GitRTx"
     right: "Prof. Raphael Teixeira"
 
 format:

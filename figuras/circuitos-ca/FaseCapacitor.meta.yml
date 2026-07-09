@@ -1,0 +1,9 @@
+title: Relação de fase do capacitor
+description: A corrente i(t) adianta a tensão v(t) em 90° num capacitor.
+tags:
+- capacitor
+- fase
+- pgfplots
+packages:
+- pgfplots
+fonte: CircuitosCA/Notas/imgs/tikz/FaseCapacitor.tikz

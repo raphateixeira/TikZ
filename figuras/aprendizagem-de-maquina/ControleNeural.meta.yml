@@ -1,0 +1,4 @@
+title: "Controlador neural em malha fechada"
+description: "Malha de controle onde o controlador clássico é substituído por uma rede neural: o erro e(t) alimenta a rede, que gera o sinal de controle u(t) aplicado à planta G(s)."
+tags: [aprendizagem-de-maquina, rede-neural, controle-inteligente, malha-fechada]
+dpi: 400

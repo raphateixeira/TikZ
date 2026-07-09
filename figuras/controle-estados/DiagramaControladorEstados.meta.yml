@@ -1,0 +1,8 @@
+title: Realimentação de estados com ganho de referência N
+description: Lei de controle u=Nr-Kx aplicada à planta em espaço de estados, com realimentação
+  de todos os estados.
+tags:
+- espaco-de-estados
+- realimentacao-de-estados
+- diagrama-de-blocos
+fonte: MetodosNumericos/Notas/imgs/tikz/DiagramaControladorEstados.tikz

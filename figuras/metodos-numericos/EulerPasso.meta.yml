@@ -1,0 +1,8 @@
+title: Passo do método de Euler
+description: Avanço de um passo pelo método de Euler usando a reta tangente, comparado
+  com a solução exata da EDO.
+tags:
+- edo
+- euler
+- integracao-numerica
+fonte: MetodosNumericos/CalculoNumerico/Notas/imgs/tikz/EulerPasso.tikz

@@ -21,12 +21,16 @@ BUILD_DIR = ROOT / "_build"
 CATEGORIAS_DIR = ROOT / "categorias"
 BANCO_DIR = ROOT / "banco"
 
+HERO_FIGURE = ("aprendizagem-de-maquina", "ControleNeural")
+
 CATEGORY_LABELS = {
     "controle-classico": "Controle Clássico",
     "controle-estados": "Controle por Espaço de Estados",
     "controle-digital": "Controle Digital",
     "circuitos-ca": "Circuitos CA",
     "metodos-numericos": "Métodos Numéricos",
+    "aprendizagem-de-maquina": "Aprendizagem de Máquina",
+    "algebra-linear": "Álgebra Linear",
     "identificacao": "Identificação de Sistemas",
     "koopman": "Koopman",
     "mpc-dmc": "MPC / DMC",
@@ -94,18 +98,26 @@ def card_html(tikz_path: Path, categoria: str) -> str:
 def write_categoria_page(categoria_dir: Path) -> int:
     categoria = categoria_dir.name
     tikz_files = sorted(categoria_dir.glob("*.tikz"))
-    cards = "\n".join(card_html(p, categoria) for p in tikz_files)
+
+    if tikz_files:
+        grid = f"""<div class="figura-grid">
+{chr(10).join(card_html(p, categoria) for p in tikz_files)}
+</div>"""
+        intro = f"{len(tikz_files)} figura(s) nesta categoria. Fonte em `figuras/{categoria}/`."
+    else:
+        grid = '<p class="categoria-vazia">Nenhuma figura ainda. Deposite um <code>.tikz</code> em ' \
+               f'<code>figuras/{categoria}/</code> (ou em <code>banco/</code> e mova para cá) e rode ' \
+               '<code>scripts/rebuild.sh</code>.</p>'
+        intro = "Categoria reservada, ainda sem figuras."
 
     content = f"""---
 title: "{label_for(categoria)}"
 ---
 
-{len(tikz_files)} figura(s) nesta categoria. Fonte em `figuras/{categoria}/`.
+{intro}
 
 ````{{=html}}
-<div class="figura-grid">
-{cards}
-</div>
+{grid}
 ````
 """
     CATEGORIAS_DIR.mkdir(exist_ok=True)
@@ -131,10 +143,22 @@ def write_index(counts: dict[str, int]) -> None:
         else ""
     )
 
+    hero_categoria, hero_nome = HERO_FIGURE
+    hero_png = BUILD_DIR / hero_categoria / hero_nome / f"{hero_nome}.png"
+    hero_html = ""
+    if hero_png.exists():
+        hero_html = f"""````{{=html}}
+<div class="hero-figura">
+  <img src="_build/{hero_categoria}/{hero_nome}/{hero_nome}.png" alt="Controlador neural em malha fechada">
+</div>
+````
+"""
+
     content = f"""---
 title: "Coleção TikZ"
 ---
 
+{hero_html}
 Coleção organizada de figuras TikZ reutilizáveis nas disciplinas e
 projetos de pesquisa. Cada figura pode ser baixada em PNG, SVG, EPS ou
 como fonte `.tikz` / `.tex` standalone. Veja `SCOPE.md` para o desenho

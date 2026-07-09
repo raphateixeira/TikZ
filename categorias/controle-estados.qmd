@@ -2,10 +2,469 @@
 title: "Controle por Espaço de Estados"
 ---
 
-1 figura(s) nesta categoria. Fonte em `figuras/controle-estados/`.
+11 figura(s) nesta categoria. Fonte em `figuras/controle-estados/`.
 
 ````{=html}
 <div class="figura-grid">
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/CircuitoRLC/CircuitoRLC.png" alt="Circuito RLC em espaço de estados" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Circuito RLC em espaço de estados</h3>
+    <p>Circuito RLC com fonte u(t), cujas equações de estado (tensão no capacitor e corrente no indutor) modelam a dinâmica do sistema.</p>
+    <div class="figura-tags"><span class="figura-tag">circuito-rlc</span><span class="figura-tag">espaco-de-estados</span><span class="figura-tag">modelagem</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/CircuitoRLC/CircuitoRLC.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/CircuitoRLC/CircuitoRLC.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/CircuitoRLC/CircuitoRLC.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/CircuitoRLC/CircuitoRLC.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/CircuitoRLC/CircuitoRLC.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Circuito RLC:  u(t) em paralelo com C  e  com o ramo série L–R
+%   C dvC/dt = u - iL ;  L diL/dt = vC - R iL ;  y = vR = R iL
+% Bibliotecas (carregadas no chunk .qmd):
+%   arrows.meta, positioning, calc, decorations.pathmorphing
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=1pt]
+
+  % --- Trilhos ---
+  \draw (0,0) -- (6,0);
+  \draw (0,3) -- (6,3);
+
+  % --- Fonte u(t) ---
+  \draw (0,0) -- (0,1.1);
+  \draw (0,1.9) -- (0,3);
+  \draw (0,1.5) circle (0.4);
+  \draw (-0.18,1.5) -- (0.18,1.5);
+  \draw (0,1.32) -- (0,1.68);
+  \node[left] at (-0.55,1.5) {$u(t)$};
+
+  % --- Capacitor C (ramo central) ---
+  \draw (2,3) -- (2,1.75);
+  \draw[line width=1.3pt] (1.65,1.75) -- (2.35,1.75);
+  \draw[line width=1.3pt] (1.65,1.45) -- (2.35,1.45);
+  \draw (2,1.45) -- (2,0);
+  \node[right] at (2.4,1.6) {$C$};
+  \node[left]  at (1.55,2.35) {$v_C$};
+
+  % --- Ramo série L–R (direita) ---
+  % Indutor L
+  \draw (4,3) -- (4,2.5);
+  \draw[decorate, decoration={coil, aspect=0.55, segment length=5.5pt, amplitude=4.5pt}]
+        (4,2.5) -- (4,1.7);
+  \node[right] at (4.35,2.1) {$L$};
+  % Resistor R (zig-zag)
+  \draw (4,1.7) -- (4,1.45)
+        -- (3.74,1.32) -- (4.26,1.12) -- (3.74,0.92) -- (4.26,0.72) -- (4,0.59)
+        -- (4,0);
+  \node[right] at (4.4,1.0) {$R$};
+
+  % --- Corrente iL ---
+  \draw[-&gt;] (4.0,2.95) -- (4.0,2.7);
+  \node[right, font=\small] at (3.55,3.25) {$i_L$};
+
+  % --- Saída y = vR ---
+  \draw[-&gt;, blue!60!black] (5.1,1.55) -- (5.1,0.05);
+  \node[right, blue!60!black] at (5.15,0.8) {$y = v_R$};
+
+  % --- Nós ---
+  \fill (2,3) circle (1.6pt);
+  \fill (4,3) circle (1.6pt);
+  \fill (2,0) circle (1.6pt);
+  \fill (4,0) circle (1.6pt);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/DiagramaControladorEstados/DiagramaControladorEstados.png" alt="Realimentação de estados com ganho de referência N" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Realimentação de estados com ganho de referência N</h3>
+    <p>Lei de controle u=Nr-Kx aplicada à planta em espaço de estados, com realimentação de todos os estados.</p>
+    <div class="figura-tags"><span class="figura-tag">espaco-de-estados</span><span class="figura-tag">realimentacao-de-estados</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/DiagramaControladorEstados/DiagramaControladorEstados.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/DiagramaControladorEstados/DiagramaControladorEstados.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/DiagramaControladorEstados/DiagramaControladorEstados.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/DiagramaControladorEstados/DiagramaControladorEstados.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/DiagramaControladorEstados/DiagramaControladorEstados.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Realimentação de estados:  u = N r - K x ,  planta x_dot = A x + B u
+% Bibliotecas (chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt,
+  block/.style={draw, minimum width=1.0cm, minimum height=1.0cm, fill=blue!8},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  \node (r)          at (-1.5,0) {$r$};
+  \node[block] (N)   at (0,0)    {$N$};
+  \node[sum]   (si)  at (1.6,0)  {};
+  \node[block] (B)   at (3.1,0)  {$\mathbf{B}$};
+  \node[sum]   (ss)  at (4.6,0)  {};
+  \node[block] (int) at (6.1,0)  {$\displaystyle\int$};
+  \node[block] (C)   at (9.4,0)  {$\mathbf{C}$};
+  \node (y)          at (11.0,0) {$y$};
+
+  \node[block] (A)   at (7.4,-2.0) {$\mathbf{A}$};
+  \node[block] (K)   at (3.1,-3.4) {$\mathbf{K}$};
+
+  \coordinate (x) at (7.4,0);
+
+  % sinais
+  \node[font=\scriptsize] at ($(si)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(si)+(0,-0.42)$)    {$-$};
+  \node[font=\scriptsize] at ($(ss)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(ss)+(0,-0.42)$)    {$+$};
+
+  % cadeia direta
+  \draw[-&gt;] (r) -- (N);
+  \draw[-&gt;] (N) -- (si);
+  \draw[-&gt;] (si) -- (B) node[midway, above] {$u$};
+  \draw[-&gt;] (B) -- (ss);
+  \draw[-&gt;] (ss) -- (int) node[midway, above] {$\dot{\mathbf{x}}$};
+  \draw[-&gt;] (int) -- (C) node[pos=0.42, above] {$\mathbf{x}$};
+  \draw[-&gt;] (C) -- (y);
+
+  % realimentação A (+)
+  \fill (x) circle (1.6pt);
+  \draw[-]  (x) -- (A.north);
+  \draw[-&gt;] (A.west) -| (ss);
+
+  % realimentação de estados -K
+  \draw[-]  (7.4,0) -- (7.4,-3.4) -- (K.east);
+  \draw[-&gt;] (K.west) -| (si);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/DiagramaObservador/DiagramaObservador.png" alt="Observador de Luenberger" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Observador de Luenberger</h3>
+    <p>Diagrama de blocos do observador de Luenberger estimando o estado x a partir da entrada u e da saída y da planta.</p>
+    <div class="figura-tags"><span class="figura-tag">observador</span><span class="figura-tag">luenberger</span><span class="figura-tag">espaco-de-estados</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/DiagramaObservador/DiagramaObservador.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/DiagramaObservador/DiagramaObservador.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/DiagramaObservador/DiagramaObservador.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/DiagramaObservador/DiagramaObservador.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/DiagramaObservador/DiagramaObservador.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Observador de Luenberger (nível de blocos)
+%   Planta:     x_dot = A x + B u ,  y = C x
+%   Observador: xhat_dot = A xhat + B u + L (y - C xhat)
+% Bibliotecas (chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt,
+  big/.style={draw, minimum width=3.2cm, minimum height=1.6cm, fill=blue!8, align=center},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  \node (u)             at (-1.5,0) {$u$};
+  \node[big] (plant)    at (1.8,0)  {Planta\\$\dot{\mathbf{x}}=\mathbf{A}\mathbf{x}+\mathbf{B}u$\\$y=\mathbf{C}\mathbf{x}$};
+  \node (y)             at (5.6,0)  {$y$};
+
+  \node[big] (obs)      at (1.8,-3.0) {Observador\\$\dot{\hat{\mathbf{x}}}=\mathbf{A}\hat{\mathbf{x}}+\mathbf{B}u+\mathbf{L}(y-\mathbf{C}\hat{\mathbf{x}})$};
+  \node (xhat)          at (5.6,-3.0) {$\hat{\mathbf{x}}$};
+
+  % u para planta e observador
+  \fill (-0.4,0) circle (1.6pt);
+  \draw[-&gt;] (u) -- (plant);
+  \draw[-]  (-0.4,0) -- (-0.4,-3.0);
+  \draw[-&gt;] (-0.4,-3.0) -- (obs);
+
+  % saída da planta
+  \draw[-&gt;] (plant) -- (y);
+
+  % y realimentado ao observador
+  \fill (4.6,0) circle (1.6pt);
+  \draw[-]  (4.6,0) -- (4.6,-1.6);
+  \draw[-&gt;] (4.6,-1.6) -- (4.6,-3.0) -- (obs.east -| 4.6,-3.0);
+
+  % estado estimado
+  \draw[-&gt;] (obs) -- (xhat);
+
+  \node[font=\small, gray!60!black] at (1.8,-4.4)
+        {Erro $\;e=\mathbf{x}-\hat{\mathbf{x}}\;\Rightarrow\; \dot{e}=(\mathbf{A}-\mathbf{L}\mathbf{C})e$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/DiagramaSSMalhaAberta-MetodosNumericos/DiagramaSSMalhaAberta-MetodosNumericos.png" alt="Diagrama de blocos em espaço de estados (malha aberta, com D)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Diagrama de blocos em espaço de estados (malha aberta, com D)</h3>
+    <p>Variante do diagrama em espaço de estados incluindo a matriz de transmissão direta D, além de A, B e C.</p>
+    <div class="figura-tags"><span class="figura-tag">espaco-de-estados</span><span class="figura-tag">malha-aberta</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta-MetodosNumericos/DiagramaSSMalhaAberta-MetodosNumericos.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta-MetodosNumericos/DiagramaSSMalhaAberta-MetodosNumericos.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta-MetodosNumericos/DiagramaSSMalhaAberta-MetodosNumericos.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta-MetodosNumericos/DiagramaSSMalhaAberta-MetodosNumericos.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta-MetodosNumericos/DiagramaSSMalhaAberta-MetodosNumericos.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Diagrama de blocos do modelo de estados (malha aberta)
+%   x_dot = A x + B u ,  y = C x + D u
+% Bibliotecas (carregadas no chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt,
+  block/.style={draw, minimum width=1.0cm, minimum height=1.0cm, fill=blue!8},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  % --- Cadeia direta ---
+  \node (u)            at (0,0)    {$u$};
+  \node[block] (B)     at (1.5,0)  {$\mathbf{B}$};
+  \node[sum]   (s1)    at (3.2,0)  {};
+  \node[block] (int)   at (5.0,0)  {$\displaystyle\int$};
+  \node[block] (C)     at (8.0,0)  {$\mathbf{C}$};
+  \node[sum]   (s2)    at (9.7,0)  {};
+  \node (y)            at (11.3,0) {$y$};
+  \node[block] (A)     at (6.2,-2.3) {$\mathbf{A}$};
+  \node[block] (D)     at (4.8,2.1)  {$\mathbf{D}$};
+
+  % Ponto de derivação do estado x
+  \coordinate (x) at (6.2,0);
+
+  % --- Sinais nos somadores ---
+  \node[font=\scriptsize] at ($(s1)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(s1)+(0,-0.42)$)    {$+$};
+  \node[font=\scriptsize] at ($(s2)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(s2)+(0,0.42)$)     {$+$};
+
+  % --- Ligações cadeia direta ---
+  \draw[-&gt;] (u) -- (B);
+  \draw[-&gt;] (B) -- (s1);
+  \draw[-&gt;] (s1) -- (int) node[midway, above] {$\dot{\mathbf{x}}$};
+  \draw[-&gt;] (int) -- (C) node[pos=0.45, above] {$\mathbf{x}$};
+  \draw[-&gt;] (C) -- (s2);
+  \draw[-&gt;] (s2) -- (y);
+
+  % --- Realimentação A (positiva: +Ax) ---
+  \fill (x) circle (1.6pt);
+  \draw[-]  (x) -- (A.north);
+  \draw[-&gt;] (A.west) -| (s1);
+
+  % --- Transmissão direta D ---
+  \fill (0.75,0) circle (1.6pt);
+  \draw[-]  (0.75,0) |- (D.west);
+  \draw[-&gt;] (D.east) -| (s2);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/DiagramaSSMalhaAberta/DiagramaSSMalhaAberta.png" alt="Diagrama de blocos em espaço de estados (malha aberta)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Diagrama de blocos em espaço de estados (malha aberta)</h3>
+    <p>Representação em diagrama de blocos do modelo em espaço de estados x_dot=Ax+Bu, y=Cx, em malha aberta.</p>
+    <div class="figura-tags"><span class="figura-tag">espaco-de-estados</span><span class="figura-tag">malha-aberta</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta/DiagramaSSMalhaAberta.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta/DiagramaSSMalhaAberta.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta/DiagramaSSMalhaAberta.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta/DiagramaSSMalhaAberta.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaAberta/DiagramaSSMalhaAberta.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>\tikzset{
+    % Estilos dos blocos
+    block/.style = {draw, fill=blue!10, rectangle, minimum height=2.5em, minimum width=2.5em, line width=0.8pt},
+    % Somador 30% menor (reduzido de 1pt/Large para algo mais compacto)
+    sum/.style = {draw, fill=white, circle, inner sep=2pt, line width=0.8pt},
+    dot/.style = {fill, circle, inner sep=1.2pt}
+}
+
+\begin{tikzpicture}[auto, node distance=1.2cm, &gt;=Latex, line width=0.8pt]
+    % Ajuste global da escala da ponta da seta para ser proporcional ao diagrama menor
+    \begin{scope}[arrows={-Latex[scale=0.8]}]
+        
+        % Nós (Posicionamento com distâncias reduzidas)
+        \node (input) at (0,0) {};
+        \node [block, right=0.7cm of input] (matrixB) {$B$};
+        \node [sum, right=0.8cm of matrixB] (sum) {$+$};
+        \node [block, right=0.8cm of sum] (int) {$\int$};
+        \node [block, right=1.2cm of int] (matrixC) {$C$};
+        \node (output) [right=0.7cm of matrixC] {};
+        
+        % Bloco de realimentação
+        \node [block, below=1cm of int] (matrixA) {$A$};
+
+        % Caminho Principal
+        \draw [-&gt;] (input) -- (matrixB) node[left, pos=0] {$u(t)$};
+        \draw [-&gt;] (matrixB) -- (sum);
+        \draw [-&gt;] (sum) -- node[above, font=\small] {$\dot{x}$} (int);
+        \draw [-&gt;] (int) -- (matrixC) node[above, pos=0.4, font=\small] {$x$};
+        \draw [-&gt;] (matrixC) -- (output) node[right, pos=1] {$y(t)$};
+
+        % Ponto de derivação e Realimentação
+        \node [dot] (point) at ($(int.east)!0.5!(matrixC.west)$) {};
+        \draw [-&gt;] (point) |- (matrixA);
+        \draw [-&gt;] (matrixA) -| (sum);
+        
+    \end{scope}
+\end{tikzpicture}</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/DiagramaSSMalhaFechada/DiagramaSSMalhaFechada.png" alt="Diagrama de blocos em espaço de estados (malha fechada)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Diagrama de blocos em espaço de estados (malha fechada)</h3>
+    <p>Realimentação de estados u=r-Kx sobre o modelo em espaço de estados, incluindo a matriz de ganho K.</p>
+    <div class="figura-tags"><span class="figura-tag">espaco-de-estados</span><span class="figura-tag">realimentacao-de-estados</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaFechada/DiagramaSSMalhaFechada.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaFechada/DiagramaSSMalhaFechada.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaFechada/DiagramaSSMalhaFechada.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaFechada/DiagramaSSMalhaFechada.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/DiagramaSSMalhaFechada/DiagramaSSMalhaFechada.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>\tikzset{
+    block/.style = {draw, fill=blue!10, rectangle, minimum height=2.5em, minimum width=2.5em, line width=0.8pt},
+    sum/.style   = {draw, fill=white, circle, inner sep=2pt, line width=0.8pt},
+    dot/.style   = {fill, circle, inner sep=1.2pt}
+}
+\begin{tikzpicture}[auto, node distance=1.2cm, &gt;=Latex, line width=0.8pt]
+    \begin{scope}[arrows={-Latex[scale=0.8]}]
+
+        % --- Malha Direta ---
+        \node (input) at (0,0) {};
+        \node [sum,   right=0.7cm of input]   (sumU)    {$+$};
+        \node [block, right=0.8cm of sumU]    (matrixB) {$B$};
+        \node [sum,   right=0.8cm of matrixB] (sumX)    {$+$};
+        \node [block, right=0.8cm of sumX]    (int)     {$\int$};
+        \node [block, right=1.5cm of int]     (matrixC) {$C$};
+        \node (output) [right=0.7cm of matrixC] {};
+
+        % --- Malhas de Realimentação ---
+        \node [block,                  below=1.0cm of int] (matrixA) {$A$};
+        \node [block, fill=green!10,   below=2.2cm of int] (matrixK) {$K$};
+
+        % --- Conexões ---
+
+        % Referência r(t)
+        \draw [-&gt;] (input) -- (sumU) node[left, pos=0] {$r(t)$};
+
+        % u(t)
+        \draw [-&gt;] (sumU)    -- node[above, font=\small] {$u(t)$} (matrixB);
+        \draw [-&gt;] (matrixB) -- (sumX);
+
+        % Dinâmica de estados
+        \draw [-&gt;] (sumX) -- node[above, font=\small] {$\dot{x}$} (int);
+        \draw [-&gt;] (int)  -- (matrixC) node[above, pos=0.5, font=\small] {$x$};
+        \draw [-&gt;] (matrixC) -- (output) node[right, pos=1] {$y(t)$};
+
+        % Ponto de derivação do estado x
+        \node [dot] (pointX) at ($(int.east)!0.4!(matrixC.west)$) {};
+
+        % Realimentação interna (A)
+        \draw [-&gt;] (pointX) |- (matrixA);
+        \draw [-&gt;] (matrixA) -| (sumX);
+
+        % Realimentação de controle (K)
+        \draw [-&gt;] (pointX) |- (matrixK);
+        \draw [-&gt;] (matrixK) -| node[left, pos=0.9, font=\small] {$-$} (sumU);
+
+    \end{scope}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/DiagramaServo/DiagramaServo.png" alt="Servomecanismo com ação integral" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Servomecanismo com ação integral</h3>
+    <p>Controle servo com ação integral do erro (estado z_i) somada à realimentação de estados -Kc x.</p>
+    <div class="figura-tags"><span class="figura-tag">servomecanismo</span><span class="figura-tag">acao-integral</span><span class="figura-tag">espaco-de-estados</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/DiagramaServo/DiagramaServo.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/DiagramaServo/DiagramaServo.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/DiagramaServo/DiagramaServo.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/DiagramaServo/DiagramaServo.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/DiagramaServo/DiagramaServo.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Servomecanismo (ação integral):  zi_dot = r - y ,  u = -Kc x - Ki zi
+% Bibliotecas (chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt,
+  block/.style={draw, minimum width=1.0cm, minimum height=1.0cm, fill=blue!8},
+  big/.style={draw, minimum width=3.0cm, minimum height=1.5cm, fill=blue!8, align=center},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  \node (r)            at (-1.6,0) {$r$};
+  \node[sum]   (se)    at (0,0)    {};
+  \node[block] (intz)  at (1.6,0)  {$\displaystyle\frac{1}{s}$};
+  \node[block] (Ki)    at (3.3,0)  {$K_i$};
+  \node[sum]   (su)    at (4.9,0)  {};
+  \node[big]   (plant) at (7.6,0)  {Planta\\$\dot{\mathbf{x}}=\mathbf{A}\mathbf{x}+\mathbf{B}u$\\$y=\mathbf{C}\mathbf{x}$};
+  \node (y)            at (11.0,0) {$y$};
+
+  \node[block] (Kc)    at (7.6,-2.4) {$K_c$};
+
+  % sinais
+  \node[font=\scriptsize] at ($(se)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(se)+(0,-0.42)$)    {$-$};
+  \node[font=\scriptsize] at ($(su)+(-0.30,0.30)$) {$-$};
+  \node[font=\scriptsize] at ($(su)+(0,-0.42)$)    {$-$};
+
+  % cadeia direta
+  \draw[-&gt;] (r) -- (se);
+  \draw[-&gt;] (se) -- (intz) node[midway, above, font=\small] {$e$};
+  \draw[-&gt;] (intz) -- (Ki) node[midway, above, font=\small] {$z_i$};
+  \draw[-&gt;] (Ki) -- (su);
+  \draw[-&gt;] (su) -- (plant) node[midway, above] {$u$};
+  \draw[-&gt;] (plant) -- (y);
+
+  % realimentação de y ao erro
+  \fill (10.2,0) circle (1.6pt);
+  \draw[-]  (10.2,0) -- (10.2,-3.4) -- (0,-3.4) -- (se);
+
+  % realimentação de estados -Kc
+  \fill (6.0,0) circle (1.6pt);
+  \draw[-]  (6.0,0) -- (6.0,-2.4) -- (Kc.east);
+  \draw[-&gt;] (Kc.west) -| (su);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/MassaMolaAmortecedor-MetodosNumericos/MassaMolaAmortecedor-MetodosNumericos.png" alt="Sistema massa-mola-amortecedor (variante)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Sistema massa-mola-amortecedor (variante)</h3>
+    <p>Outra representação gráfica do sistema massa-mola-amortecedor, com força de entrada u(t) e saída y(t).</p>
+    <div class="figura-tags"><span class="figura-tag">massa-mola-amortecedor</span><span class="figura-tag">modelagem</span><span class="figura-tag">espaco-de-estados</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/MassaMolaAmortecedor-MetodosNumericos/MassaMolaAmortecedor-MetodosNumericos.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/MassaMolaAmortecedor-MetodosNumericos/MassaMolaAmortecedor-MetodosNumericos.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/MassaMolaAmortecedor-MetodosNumericos/MassaMolaAmortecedor-MetodosNumericos.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/MassaMolaAmortecedor-MetodosNumericos/MassaMolaAmortecedor-MetodosNumericos.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/MassaMolaAmortecedor-MetodosNumericos/MassaMolaAmortecedor-MetodosNumericos.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Sistema massa-mola-amortecedor
+% Bibliotecas (carregadas no chunk .qmd):
+%   arrows.meta, positioning, calc, decorations.pathmorphing, patterns
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.9pt]
+
+  % --- Parede fixa ---
+  \fill[pattern=north east lines] (-0.45,-1.6) rectangle (0,1.6);
+  \draw[line width=1.3pt] (0,-1.6) -- (0,1.6);
+
+  % --- Massa ---
+  \def\mx{4.4}
+  \draw[fill=blue!8, line width=1pt] (\mx,-1.05) rectangle (\mx+1.8,1.05);
+  \node at (\mx+0.9,0) {\large $m$};
+
+  % --- Mola (ramo superior) ---
+  \draw[decorate, decoration={coil, aspect=0.6, segment length=7pt, amplitude=7pt}]
+        (0,0.55) -- (\mx,0.55);
+  \node at (\mx/2,1.15) {$k$};
+
+  % --- Amortecedor (ramo inferior) ---
+  \draw (0,-0.55) -- (1.5,-0.55);
+  \draw (1.5,-0.95) rectangle (2.25,-0.15);
+  \draw[line width=1.1pt] (1.95,-0.85) -- (1.95,-0.25);
+  \draw (1.95,-0.55) -- (\mx,-0.55);
+  \node at (\mx/2,-1.15) {$b$};
+
+  % --- Força de entrada ---
+  \draw[-&gt;, red!75!black, line width=1.3pt]
+        (\mx+1.8,0) -- (\mx+3.2,0) node[midway, above] {$u(t)$};
+
+  % --- Deslocamento ---
+  \draw[-&gt;] (\mx+0.9,1.45) -- (\mx+2.05,1.45) node[midway, above] {$y(t)$};
+
+  % --- Solo ---
+  \fill[pattern=north east lines] (-0.45,-1.9) rectangle (\mx+3.4,-1.6);
+  \draw[line width=1.3pt] (-0.45,-1.6) -- (\mx+3.4,-1.6);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
 <div class="figura-card">
   <div class="figura-preview"><img src="../_build/controle-estados/MassaMolaAmortecedor/MassaMolaAmortecedor.png" alt="Sistema massa-mola-amortecedor" loading="lazy"></div>
   <div class="figura-body">
@@ -38,6 +497,132 @@ title: "Controle por Espaço de Estados"
 \draw[-{Latex[scale=1.2]}, very thick, black] (M.east) -- ++(1.8,0) node[right] {$u(t)$};
 \draw[dashed, gray] (M.center |- 0, 2.1) -- ++(0, 1.2);
 \draw[-{Latex[scale=1.2]}, very thick, black] ($(M.center |- 0, 3.0)$) -- ++(1.2,0) node[midway, above] {$y(t)$};
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/MotorCC/MotorCC.png" alt="Motor CC: circuito de armadura e carga mecânica" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Motor CC: circuito de armadura e carga mecânica</h3>
+    <p>Motor CC com resistência e indutância de armadura, força contra-eletromotriz e carga mecânica com inércia J e atrito b.</p>
+    <div class="figura-tags"><span class="figura-tag">motor-cc</span><span class="figura-tag">modelagem</span><span class="figura-tag">eletromecanica</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/MotorCC/MotorCC.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/MotorCC/MotorCC.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/MotorCC/MotorCC.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/MotorCC/MotorCC.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/MotorCC/MotorCC.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Motor CC: circuito de armadura (Va, R, L, eb) + carga mecânica (J, b)
+%   Va = L dia/dt + R ia + eb ,  eb = Ke·w
+%   J dw/dt = T - b·w ,  T = Kt·ia
+% Bibliotecas (carregadas no chunk .qmd):
+%   arrows.meta, positioning, calc, decorations.pathmorphing
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=1pt]
+
+  % --- Fonte de armadura Va ---
+  \draw (0,0) -- (0,1.1);
+  \draw (0,1.9) -- (0,3);
+  \draw (0,1.5) circle (0.4);
+  \draw (-0.18,1.62) -- (0.18,1.62);
+  \draw (-0.12,1.38) -- (0.12,1.38);
+  \node[left] at (-0.55,1.5) {$V_a$};
+
+  % --- Resistor R ---
+  \draw (0,3) -- (0.7,3)
+        -- (0.9,3.22) -- (1.3,2.78) -- (1.7,3.22) -- (2.1,2.78) -- (2.3,3) -- (2.6,3);
+  \node[above] at (1.6,3.3) {$R$};
+
+  % --- Indutor L ---
+  \draw[decorate, decoration={coil, aspect=0.55, segment length=5.5pt, amplitude=4.5pt}]
+        (2.6,3) -- (3.9,3);
+  \node[above] at (3.25,3.35) {$L$};
+  \draw (3.9,3) -- (4.6,3);
+
+  % --- Corrente de armadura ia ---
+  \draw[-&gt;] (0.95,3) -- (1.2,3);
+  \node[above, font=\small] at (0.55,2.98) {$i_a$};
+
+  % --- Motor (força contra-eletromotriz eb) ---
+  \draw (4.6,3) -- (4.6,2.3);
+  \draw (4.6,1.5) circle (0.8);
+  \node at (4.6,1.5) {\large $M$};
+  \draw (4.6,0.7) -- (4.6,0);
+  \node[right, font=\small] at (5.0,2.05) {$e_b$};
+
+  % --- Retorno ---
+  \draw (0,0) -- (4.6,0);
+
+  % --- Eixo / acoplamento mecânico ---
+  \draw[line width=1.4pt] (5.4,1.5) -- (6.5,1.5);
+
+  % --- Inércia J (disco) ---
+  \draw[fill=blue!8] (6.5,1.5) circle (0.7);
+  \node at (6.5,1.5) {$J$};
+  % velocidade angular w
+  \draw[-&gt;, line width=1pt] (6.5,2.45) arc (90:-30:0.95);
+  \node[above] at (7.0,2.5) {$\omega$};
+  % atrito viscoso b (apoio)
+  \draw (6.0,0.8) -- (7.0,0.8);
+  \fill[pattern=north east lines] (6.0,0.62) rectangle (7.0,0.8);
+  \draw[dashed] (6.5,1.5) -- (6.5,0.8);
+  \node[right] at (7.05,0.85) {$b$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/PlanoPolos/PlanoPolos.png" alt="Mapa de polos no plano-s" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Mapa de polos no plano-s</h3>
+    <p>Polos de malha aberta representados no plano complexo s, com valores numéricos indicados.</p>
+    <div class="figura-tags"><span class="figura-tag">plano-s</span><span class="figura-tag">polos</span><span class="figura-tag">estabilidade</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/PlanoPolos/PlanoPolos.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/PlanoPolos/PlanoPolos.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/PlanoPolos/PlanoPolos.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/PlanoPolos/PlanoPolos.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/PlanoPolos/PlanoPolos.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------
+% Mapa de polos no plano-s  (recriação de &quot;Polos de Malha Aberta&quot;)
+% Bibliotecas (carregadas no chunk .qmd): arrows.meta
+% ---------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=0.8pt]
+
+  % --- Grade ---
+  \draw[help lines, gray!25] (-7,-2) grid[step=1] (1,2);
+
+  % --- Eixos ---
+  \draw[-&gt;, gray!60, dashed, line width=1pt] (-7,0) -- (1.5,0)
+        node[right, black] {$\mathrm{Re}(s)$};
+  \draw[-&gt;, gray!60, dashed, line width=1pt] (0,-2.3) -- (0,2.4)
+        node[above, black] {$\mathrm{Im}(s)$};
+
+  % --- Marcações ---
+  \foreach \x in {-7,-6,-5,-4,-3,-2,-1,1}
+    \draw (\x,0.07)--(\x,-0.07) node[below, font=\scriptsize, fill=white, inner sep=1pt]{$\x$};
+  \foreach \y in {-2,-1,1,2}
+    \draw (0.07,\y)--(-0.07,\y) node[left, font=\scriptsize]{$\y$};
+
+  % --- Polos (x vermelho) ---
+  \def\polo(#1,#2){%
+    \draw[red, line width=2.2pt] (#1-0.13,#2-0.13)--(#1+0.13,#2+0.13);
+    \draw[red, line width=2.2pt] (#1-0.13,#2+0.13)--(#1+0.13,#2-0.13);}
+  \polo(-5.049,0)
+  \polo(-0.643,0)
+  \polo(-0.308,0)
+
+  % --- Rótulos sem sobreposição ---
+  \node[above, font=\small] at (-5.049,0.25) {$p_1=-5{,}049$};
+
+  \node[above, font=\small] at (-2.2,1.1) {$p_2=-0{,}643$};
+  \draw[gray!60] (-2.2,1.0) -- (-0.643,0.18);
+
+  \node[above, font=\small] at (0.9,1.55) {$p_3=-0{,}308$};
+  \draw[gray!60] (0.9,1.45) -- (-0.308,0.18);
+
+  % --- Título ---
+  \node[font=\bfseries] at (-3,2.85) {Polos de Malha Aberta};
+
 \end{tikzpicture}
 </code></pre>
     </details>

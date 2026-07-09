@@ -1,0 +1,40 @@
+% ---------------------------------------------------------------
+% Sistema massa-mola-amortecedor
+% Bibliotecas (carregadas no chunk .qmd):
+%   arrows.meta, positioning, calc, decorations.pathmorphing, patterns
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt]
+
+  % --- Parede fixa ---
+  \fill[pattern=north east lines] (-0.45,-1.6) rectangle (0,1.6);
+  \draw[line width=1.3pt] (0,-1.6) -- (0,1.6);
+
+  % --- Massa ---
+  \def\mx{4.4}
+  \draw[fill=blue!8, line width=1pt] (\mx,-1.05) rectangle (\mx+1.8,1.05);
+  \node at (\mx+0.9,0) {\large $m$};
+
+  % --- Mola (ramo superior) ---
+  \draw[decorate, decoration={coil, aspect=0.6, segment length=7pt, amplitude=7pt}]
+        (0,0.55) -- (\mx,0.55);
+  \node at (\mx/2,1.15) {$k$};
+
+  % --- Amortecedor (ramo inferior) ---
+  \draw (0,-0.55) -- (1.5,-0.55);
+  \draw (1.5,-0.95) rectangle (2.25,-0.15);
+  \draw[line width=1.1pt] (1.95,-0.85) -- (1.95,-0.25);
+  \draw (1.95,-0.55) -- (\mx,-0.55);
+  \node at (\mx/2,-1.15) {$b$};
+
+  % --- Força de entrada ---
+  \draw[->, red!75!black, line width=1.3pt]
+        (\mx+1.8,0) -- (\mx+3.2,0) node[midway, above] {$u(t)$};
+
+  % --- Deslocamento ---
+  \draw[->] (\mx+0.9,1.45) -- (\mx+2.05,1.45) node[midway, above] {$y(t)$};
+
+  % --- Solo ---
+  \fill[pattern=north east lines] (-0.45,-1.9) rectangle (\mx+3.4,-1.6);
+  \draw[line width=1.3pt] (-0.45,-1.6) -- (\mx+3.4,-1.6);
+
+\end{tikzpicture}

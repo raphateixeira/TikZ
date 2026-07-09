@@ -34,14 +34,26 @@ DEFAULT_LIBRARIES = [
 ]
 DEFAULT_DPI = 300
 
-TEX_TEMPLATE = r"""\documentclass[tikz,border=2pt]{{standalone}}
+TEX_TEMPLATE = r"""\documentclass[border=2pt]{{standalone}}
+\usepackage{{tikz}}
 \usepackage{{amsmath}}
+{extra_packages}
 \usetikzlibrary{{{libraries}}}
-
+{pgfplots_setup}
 \begin{{document}}
 \input{{{tikz_file}}}
 \end{{document}}
 """
+
+
+def pgfplots_setup(packages: list[str], meta: dict) -> str:
+    if "pgfplots" not in packages:
+        return ""
+    lines = [r"\pgfplotsset{compat=1.18}"]
+    pgf_libs = meta.get("pgfplots_libraries", [])
+    if pgf_libs:
+        lines.append(r"\usepgfplotslibrary{" + ", ".join(pgf_libs) + "}")
+    return "\n".join(lines)
 
 
 def load_meta(tikz_path: Path) -> dict:
@@ -89,11 +101,14 @@ def build_one(tikz_path: Path, categoria: str, force: bool) -> None:
     meta = load_meta(tikz_path)
     libraries = DEFAULT_LIBRARIES + list(meta.get("libraries", []))
     dpi = int(meta.get("dpi", DEFAULT_DPI))
+    packages = list(meta.get("packages", []))
 
     tex_path = out_dir / f"{nome}.tex"
     tex_path.write_text(
         TEX_TEMPLATE.format(
+            extra_packages="\n".join(f"\\usepackage{{{p}}}" for p in packages),
             libraries=", ".join(dict.fromkeys(libraries)),  # dedup mantendo ordem
+            pgfplots_setup=pgfplots_setup(packages, meta),
             tikz_file=tikz_path.resolve(),
         ),
         encoding="utf-8",

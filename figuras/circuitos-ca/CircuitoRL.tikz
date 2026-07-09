@@ -1,0 +1,14 @@
+% ---------------------------------------------------------------------
+% Circuito RL série alimentado por fonte senoidal.
+% Requer circuitikz (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\ctikzset{bipoles/length=2.2cm}
+\begin{circuitikz}[scale=2.6, line width=1.6pt, font=\Large]
+\draw (0,0)
+  to[sinusoidal voltage source, l=$v_s(t)$] (0,4)
+  to[short] (2,4)
+  to[R=$R$, i=$i(t)$] (5,4)
+  to[L=$L$] (8,4)
+  to[short] (8,0)
+  to[short] (0,0);
+\end{circuitikz}

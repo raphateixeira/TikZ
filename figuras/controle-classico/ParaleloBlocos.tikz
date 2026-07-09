@@ -1,0 +1,33 @@
+% ---------------------------------------------------------------
+% Álgebra de blocos: associação em paralelo.
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt, node distance=1.3cm,
+  bloco/.style={draw, minimum width=1.8cm, minimum height=1.0cm, fill=blue!8},
+  soma/.style={draw, circle, minimum size=0.6cm, inner sep=0pt},
+  seta/.style={->}]
+
+  \node (x) at (0,0) {$X(s)$};
+  \coordinate (bx) at (1.0,0);
+  \node[bloco, right=1.9cm of x, yshift=0.9cm]  (g1) {$G_1(s)$};
+  \node[bloco, right=1.9cm of x, yshift=-0.9cm] (g2) {$G_2(s)$};
+  \node[soma, right=4.6cm of x] (sum) {};
+  \node[right=0.9cm of sum] (y) {$Y(s)$};
+
+  \draw[seta] (x) -- (bx);
+  \draw[seta] (bx) |- (g1.west);
+  \draw[seta] (bx) |- (g2.west);
+  \draw[seta] (g1.east) -| (sum.north);
+  \draw[seta] (g2.east) -| (sum.south);
+  \draw[seta] (sum) -- (y);
+  \node[font=\small] at ($(sum.north west)+(-0.12,0.12)$) {$+$};
+  \node[font=\small] at ($(sum.south west)+(-0.12,-0.12)$) {$+$};
+
+  \node[font=\Large, right=1.1cm of y] (eq) {$\equiv$};
+
+  \node[right=1.1cm of eq] (x2) {$X(s)$};
+  \node[bloco, right=of x2, minimum width=2.8cm] (geq) {$G_1(s)+G_2(s)$};
+  \node[right=of geq] (y2) {$Y(s)$};
+  \draw[seta] (x2) -- (geq);
+  \draw[seta] (geq) -- (y2);
+
+\end{tikzpicture}

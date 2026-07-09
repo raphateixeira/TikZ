@@ -1,0 +1,30 @@
+% ---------------------------------------------------------------------
+% Reatância indutiva X_L = wL e capacitiva X_C = 1/(wC) versus frequência.
+% Requer pgfplots + biblioteca groupplots (usetikzlibrary/usepgfplotslibrary
+% no chunk que faz o \input).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 1, horizontal sep=3cm},
+  width=10cm, height=9cm,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  title style={font=\Large},
+  ymin=0,
+]
+\nextgroupplot[
+  xlabel={$\omega$ (rad/s)}, ylabel={$X_L$ ($\Omega$)},
+  title={$X_L = \omega L$ ($L=0{,}1$ H)},
+  domain=1:1000, samples=100,
+]
+\addplot[blue!70!black, line width=2.6pt] {0.1*x};
+
+\nextgroupplot[
+  xlabel={$\omega$ (rad/s)}, ylabel={$X_C$ ($\Omega$)},
+  title={$X_C = 1/(\omega C)$ ($C=1$ mF)},
+  domain=1:1000, samples=100,
+  ymax=200,
+]
+\addplot[red!70!black, line width=2.6pt] {1/(0.001*x)};
+\end{groupplot}
+\end{tikzpicture}

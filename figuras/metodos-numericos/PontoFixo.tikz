@@ -1,0 +1,24 @@
+% Iteração de ponto fixo x = g(x) com cobweb
+% Bibliotecas (chunk .qmd): arrows.meta
+\begin{tikzpicture}[>=Latex, scale=2.2, line width=0.9pt]
+  \draw[->] (0,0) -- (2.2,0) node[right] {$x$};
+  \draw[->] (0,0) -- (0,2.1) node[above] {$y$};
+
+  % reta y = x
+  \draw[gray!70] (0,0) -- (2.0,2.0) node[right, font=\small] {$y=x$};
+  % g(x) = sqrt(x+1)
+  \draw[blue!70!black, line width=1.1pt]
+        plot[domain=0:2.0, samples=60] (\x, {sqrt(\x+1)})
+        node[right, font=\small] {$y=g(x)$};
+
+  % cobweb (valores pré-computados)
+  \draw[red, line width=0.9pt]
+        (0.5,0) -- (0.5,1.2247) -- (1.2247,1.2247)
+        -- (1.2247,1.4914) -- (1.4914,1.4914)
+        -- (1.4914,1.5785) -- (1.5785,1.5785);
+
+  % ponto fixo
+  \fill (1.618,1.618) circle (1.3pt);
+  \node[above left, font=\small] at (1.618,1.618) {$x^{*}$};
+  \node[below] at (0.5,-0.03) {$x_0$};
+\end{tikzpicture}

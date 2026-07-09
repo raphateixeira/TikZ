@@ -1,0 +1,7 @@
+title: Componentes de um sistema de controle em malha fechada
+description: Referência, erro, controlador, planta, perturbação, sensor e saída de
+  um sistema de controle realimentado.
+tags:
+- malha-fechada
+- diagrama-de-blocos
+fonte: ControleClassico/Notas/imgs/tikz/ComponentesSistema.tikz

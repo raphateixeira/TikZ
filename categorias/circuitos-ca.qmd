@@ -2,10 +2,115 @@
 title: "Circuitos CA"
 ---
 
-1 figura(s) nesta categoria. Fonte em `figuras/circuitos-ca/`.
+13 figura(s) nesta categoria. Fonte em `figuras/circuitos-ca/`.
 
 ````{=html}
 <div class="figura-grid">
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/AdicaoFasores/AdicaoFasores.png" alt="Adição de fasores (regra do paralelogramo)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Adição de fasores (regra do paralelogramo)</h3>
+    <p>Soma vetorial de dois fasores no plano complexo pela regra do paralelogramo (V = V1 + V2).</p>
+    <div class="figura-tags"><span class="figura-tag">fasores</span><span class="figura-tag">plano-complexo</span><span class="figura-tag">soma-vetorial</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/AdicaoFasores/AdicaoFasores.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/AdicaoFasores/AdicaoFasores.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/AdicaoFasores/AdicaoFasores.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/AdicaoFasores/AdicaoFasores.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/AdicaoFasores/AdicaoFasores.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Adição de fasores pela regra do paralelogramo.
+% V1 = 12∠60°, V2 = 8∠-30°, V = V1 + V2
+% ---------------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=1.8pt, font=\Large, scale=1.3]
+
+  \draw[-&gt;] (-1,0) -- (10,0) node[right] {Re};
+  \draw[-&gt;] (0,-3.5) -- (0,8) node[above] {Im};
+
+  \coordinate (V1) at ({12*cos(60)},{12*sin(60)});
+  \coordinate (V2) at ({8*cos(-30)},{8*sin(-30)});
+  \coordinate (V)  at ($(V1)+(V2)$);
+
+  \draw[-&gt;, blue!70!black, line width=2.6pt] (0,0) -- (V1)
+    node[above left] {$\mathbf{V}_1 = 12\angle 60^\circ$};
+  \draw[-&gt;, red!70!black, line width=2.6pt] (0,0) -- (V2)
+    node[below right] {$\mathbf{V}_2 = 8\angle{-30^\circ}$};
+  \draw[-&gt;, violet!80!black, line width=3pt] (0,0) -- (V)
+    node[above right] {$\mathbf{V} = \mathbf{V}_1+\mathbf{V}_2$};
+
+  \draw[dashed, gray, line width=1.4pt] (V1) -- (V);
+  \draw[dashed, gray, line width=1.4pt] (V2) -- (V);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/CircuitoRL/CircuitoRL.png" alt="Circuito RL série" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Circuito RL série</h3>
+    <p>Circuito RL série alimentado por fonte de tensão senoidal, com a corrente i(t) em destaque.</p>
+    <div class="figura-tags"><span class="figura-tag">circuito-rl</span><span class="figura-tag">circuitikz</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/CircuitoRL/CircuitoRL.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoRL/CircuitoRL.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoRL/CircuitoRL.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoRL/CircuitoRL.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoRL/CircuitoRL.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Circuito RL série alimentado por fonte senoidal.
+% Requer circuitikz (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\ctikzset{bipoles/length=2.2cm}
+\begin{circuitikz}[scale=2.6, line width=1.6pt, font=\Large]
+\draw (0,0)
+  to[sinusoidal voltage source, l=$v_s(t)$] (0,4)
+  to[short] (2,4)
+  to[R=$R$, i=$i(t)$] (5,4)
+  to[L=$L$] (8,4)
+  to[short] (8,0)
+  to[short] (0,0);
+\end{circuitikz}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/DefasagemSenoides/DefasagemSenoides.png" alt="Defasagem entre senoides" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Defasagem entre senoides</h3>
+    <p>Duas senoides de mesma frequência com fases diferentes, ilustrando o conceito de defasagem.</p>
+    <div class="figura-tags"><span class="figura-tag">senoides</span><span class="figura-tag">defasagem</span><span class="figura-tag">pgfplots</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/DefasagemSenoides/DefasagemSenoides.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/DefasagemSenoides/DefasagemSenoides.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/DefasagemSenoides/DefasagemSenoides.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/DefasagemSenoides/DefasagemSenoides.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/DefasagemSenoides/DefasagemSenoides.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Duas senoides de mesma frequência com fases diferentes (defasagem).
+% Requer pgfplots (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{axis}[
+  width=18cm, height=8.5cm,
+  axis lines=middle,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  xlabel={$\omega t$ (rad)}, ylabel={Amplitude},
+  xtick={0,90,180,270,360},
+  xticklabels={$0$,$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+  ytick={-1,0,1},
+  ymin=-1.4, ymax=1.4,
+  xmin=0, xmax=360,
+  domain=0:360, samples=200,
+  enlargelimits=false,
+  legend pos=north east,
+  legend style={font=\Large},
+  line width=2.2pt,
+]
+\addplot[blue!70!black, line width=2.4pt] {cos(x+45)};
+\addlegendentry{$v_1 = \cos(\omega t + 45^\circ)$}
+\addplot[red!70!black, line width=2.4pt, dashed] {cos(x-45)};
+\addlegendentry{$v_2 = \cos(\omega t - 45^\circ)$}
+\end{axis}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
 <div class="figura-card">
   <div class="figura-preview"><img src="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.png" alt="Diagrama fasorial" loading="lazy"></div>
   <div class="figura-body">
@@ -37,6 +142,310 @@ title: "Circuitos CA"
 
   \draw[gray, line width=1.2pt] (0.8,0) arc (0:30:0.8);
   \node[gray] at (1.2,0.35) {$30^\circ$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/ElementoC/ElementoC.png" alt="Capacitor com referências de tensão e corrente" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Capacitor com referências de tensão e corrente</h3>
+    <p>Elemento capacitor com as referências de tensão v(t) e corrente i(t) indicadas.</p>
+    <div class="figura-tags"><span class="figura-tag">capacitor</span><span class="figura-tag">circuitikz</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/ElementoC/ElementoC.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/ElementoC/ElementoC.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/ElementoC/ElementoC.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/ElementoC/ElementoC.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/ElementoC/ElementoC.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Capacitor com referências de tensão e corrente.
+% Requer circuitikz (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\ctikzset{bipoles/length=2.2cm}
+\begin{circuitikz}[scale=3, line width=1.6pt, font=\huge]
+\draw (0,0) to[C=$C$, i=$i(t)$, v=$v(t)$] (5,0);
+\end{circuitikz}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/ElementoL/ElementoL.png" alt="Indutor com referências de tensão e corrente" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Indutor com referências de tensão e corrente</h3>
+    <p>Elemento indutor com as referências de tensão v(t) e corrente i(t) indicadas.</p>
+    <div class="figura-tags"><span class="figura-tag">indutor</span><span class="figura-tag">circuitikz</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/ElementoL/ElementoL.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/ElementoL/ElementoL.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/ElementoL/ElementoL.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/ElementoL/ElementoL.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/ElementoL/ElementoL.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Indutor com referências de tensão e corrente.
+% Requer circuitikz (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\ctikzset{bipoles/length=2.2cm}
+\begin{circuitikz}[scale=3, line width=1.6pt, font=\huge]
+\draw (0,0) to[L=$L$, i=$i(t)$, v=$v(t)$] (5,0);
+\end{circuitikz}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/ElementoR/ElementoR.png" alt="Resistor com referências de tensão e corrente" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Resistor com referências de tensão e corrente</h3>
+    <p>Elemento resistor com as referências de tensão v(t) e corrente i(t) indicadas.</p>
+    <div class="figura-tags"><span class="figura-tag">resistor</span><span class="figura-tag">circuitikz</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/ElementoR/ElementoR.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/ElementoR/ElementoR.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/ElementoR/ElementoR.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/ElementoR/ElementoR.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/ElementoR/ElementoR.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Resistor com referências de tensão e corrente.
+% Requer circuitikz (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\ctikzset{bipoles/length=2.2cm}
+\begin{circuitikz}[scale=3, line width=1.6pt, font=\huge]
+\draw (0,0) to[R=$R$, i=$i(t)$, v=$v(t)$] (5,0);
+\end{circuitikz}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/FaseCapacitor/FaseCapacitor.png" alt="Relação de fase do capacitor" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Relação de fase do capacitor</h3>
+    <p>A corrente i(t) adianta a tensão v(t) em 90° num capacitor.</p>
+    <div class="figura-tags"><span class="figura-tag">capacitor</span><span class="figura-tag">fase</span><span class="figura-tag">pgfplots</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/FaseCapacitor/FaseCapacitor.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/FaseCapacitor/FaseCapacitor.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/FaseCapacitor/FaseCapacitor.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/FaseCapacitor/FaseCapacitor.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/FaseCapacitor/FaseCapacitor.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Capacitor: i(t) adianta v(t) em 90°.
+% Requer pgfplots (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{axis}[
+  width=18cm, height=8.5cm,
+  axis lines=middle,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  xlabel={$\omega t$ (rad)}, ylabel={Amplitude},
+  xtick={0,90,180,270,360},
+  xticklabels={$0$,$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+  ytick=\empty,
+  ymin=-1.4, ymax=1.4,
+  xmin=0, xmax=360,
+  domain=0:360, samples=200,
+  enlargelimits=false,
+  legend pos=north east,
+  legend style={font=\Large},
+  line width=2.2pt,
+]
+\addplot[blue!70!black, line width=2.6pt] {cos(x)};
+\addlegendentry{$v(t)$}
+\addplot[red!70!black, line width=2.6pt, dashed] {cos(x+90)};
+\addlegendentry{$i(t)$}
+\end{axis}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/FaseIndutor/FaseIndutor.png" alt="Relação de fase do indutor" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Relação de fase do indutor</h3>
+    <p>A tensão v(t) adianta a corrente i(t) em 90° num indutor.</p>
+    <div class="figura-tags"><span class="figura-tag">indutor</span><span class="figura-tag">fase</span><span class="figura-tag">pgfplots</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/FaseIndutor/FaseIndutor.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/FaseIndutor/FaseIndutor.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/FaseIndutor/FaseIndutor.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/FaseIndutor/FaseIndutor.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/FaseIndutor/FaseIndutor.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Indutor: v(t) adianta i(t) em 90°.
+% Requer pgfplots (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{axis}[
+  width=18cm, height=8.5cm,
+  axis lines=middle,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  xlabel={$\omega t$ (rad)}, ylabel={Amplitude},
+  xtick={0,90,180,270,360},
+  xticklabels={$0$,$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+  ytick=\empty,
+  ymin=-1.4, ymax=1.4,
+  xmin=0, xmax=360,
+  domain=0:360, samples=200,
+  enlargelimits=false,
+  legend pos=north east,
+  legend style={font=\Large},
+  line width=2.2pt,
+]
+\addplot[blue!70!black, line width=2.6pt] {cos(x+90)};
+\addlegendentry{$v(t)$}
+\addplot[red!70!black, line width=2.6pt, dashed] {cos(x)};
+\addlegendentry{$i(t)$}
+\end{axis}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/FaseResistor/FaseResistor.png" alt="Relação de fase do resistor" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Relação de fase do resistor</h3>
+    <p>Tensão v(t) e corrente i(t) em fase num resistor.</p>
+    <div class="figura-tags"><span class="figura-tag">resistor</span><span class="figura-tag">fase</span><span class="figura-tag">pgfplots</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/FaseResistor/FaseResistor.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/FaseResistor/FaseResistor.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/FaseResistor/FaseResistor.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/FaseResistor/FaseResistor.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/FaseResistor/FaseResistor.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Resistor: v(t) e i(t) em fase.
+% Requer pgfplots (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{axis}[
+  width=18cm, height=8.5cm,
+  axis lines=middle,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  xlabel={$\omega t$ (rad)}, ylabel={Amplitude},
+  xtick={0,90,180,270,360},
+  xticklabels={$0$,$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+  ytick=\empty,
+  ymin=-1.4, ymax=1.4,
+  xmin=0, xmax=360,
+  domain=0:360, samples=200,
+  enlargelimits=false,
+  legend pos=north east,
+  legend style={font=\Large},
+  line width=2.2pt,
+]
+\addplot[blue!70!black, line width=2.6pt] {cos(x)};
+\addlegendentry{$v(t)$}
+\addplot[red!70!black, line width=2.6pt, dashed] {cos(x)};
+\addlegendentry{$i(t)$}
+\end{axis}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/Reatancias/Reatancias.png" alt="Reatâncias indutiva e capacitiva" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Reatâncias indutiva e capacitiva</h3>
+    <p>Reatância indutiva X_L=wL e capacitiva X_C=1/(wC) em função da frequência angular.</p>
+    <div class="figura-tags"><span class="figura-tag">reatancia</span><span class="figura-tag">pgfplots</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/Reatancias/Reatancias.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/Reatancias/Reatancias.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/Reatancias/Reatancias.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/Reatancias/Reatancias.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/Reatancias/Reatancias.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Reatância indutiva X_L = wL e capacitiva X_C = 1/(wC) versus frequência.
+% Requer pgfplots + biblioteca groupplots (usetikzlibrary/usepgfplotslibrary
+% no chunk que faz o \input).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 1, horizontal sep=3cm},
+  width=10cm, height=9cm,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  title style={font=\Large},
+  ymin=0,
+]
+\nextgroupplot[
+  xlabel={$\omega$ (rad/s)}, ylabel={$X_L$ ($\Omega$)},
+  title={$X_L = \omega L$ ($L=0{,}1$ H)},
+  domain=1:1000, samples=100,
+]
+\addplot[blue!70!black, line width=2.6pt] {0.1*x};
+
+\nextgroupplot[
+  xlabel={$\omega$ (rad/s)}, ylabel={$X_C$ ($\Omega$)},
+  title={$X_C = 1/(\omega C)$ ($C=1$ mF)},
+  domain=1:1000, samples=100,
+  ymax=200,
+]
+\addplot[red!70!black, line width=2.6pt] {1/(0.001*x)};
+\end{groupplot}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/SenoideBasica/SenoideBasica.png" alt="Sinal senoidal básico" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Sinal senoidal básico</h3>
+    <p>Sinal senoidal v(t)=cos(wt) com o período T em destaque.</p>
+    <div class="figura-tags"><span class="figura-tag">senoide</span><span class="figura-tag">pgfplots</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/SenoideBasica/SenoideBasica.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/SenoideBasica/SenoideBasica.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/SenoideBasica/SenoideBasica.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/SenoideBasica/SenoideBasica.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/SenoideBasica/SenoideBasica.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Sinal senoidal v(t) = cos(omega t), com o período T em destaque.
+% Requer pgfplots (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\begin{tikzpicture}
+\begin{axis}[
+  width=18cm, height=8.5cm,
+  axis lines=middle,
+  label style={font=\Large},
+  tick label style={font=\Large},
+  xlabel={$\omega t$ (rad)}, ylabel={$v(t)/V_m$},
+  xtick={0,90,180,270,360},
+  xticklabels={$0$,$\pi/2$,$\pi$,$3\pi/2$,$2\pi$},
+  ytick={-1,0,1},
+  ymin=-1.4, ymax=1.4,
+  xmin=0, xmax=360,
+  domain=0:360, samples=200,
+  enlargelimits=false,
+  clip=false,
+  line width=2.2pt,
+]
+\addplot[blue!70!black, line width=2.4pt] {cos(x)};
+\draw[red!70!black, &lt;-&gt;, line width=2pt] (axis cs:0,-1.25) -- (axis cs:360,-1.25)
+  node[midway, below, font=\Large, black, fill=white] {$T = 2\pi/\omega$};
+\end{axis}
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/SistemaCA/SistemaCA.png" alt="Sistema de geração, transmissão e distribuição em CA" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Sistema de geração, transmissão e distribuição em CA</h3>
+    <p>Diagrama de blocos do sistema elétrico de potência: geração, elevação de tensão, transmissão, abaixamento e carga.</p>
+    <div class="figura-tags"><span class="figura-tag">sistema-de-potencia</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/SistemaCA/SistemaCA.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/SistemaCA/SistemaCA.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/SistemaCA/SistemaCA.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/SistemaCA/SistemaCA.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/SistemaCA/SistemaCA.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Sistema de geração, transmissão e distribuição de energia em CA.
+% ---------------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=1.6pt, font=\Large,
+  bloco/.style={draw, line width=1.6pt, minimum width=3.6cm, minimum height=1.9cm,
+                fill=blue!8, align=center}]
+
+  \node[bloco] (ger)  at (0,0)   {Geração\\60\,Hz};
+  \node[bloco] (elev) at (4.8,0) {Elevação\\de tensão};
+  \node[bloco] (lt)   at (9.6,0) {Linha de\\transmissão};
+  \node[bloco] (abx)  at (14.4,0) {Abaixamento\\de tensão};
+  \node[bloco] (carga) at (19.2,0) {Carga};
+
+  \draw[-&gt;] (ger)  -- (elev);
+  \draw[-&gt;] (elev) -- (lt);
+  \draw[-&gt;] (lt)   -- (abx);
+  \draw[-&gt;] (abx)  -- (carga);
+
+  \node[font=\Large] at (0,-1.7)    {baixa tensão};
+  \node[font=\Large] at (9.6,-1.7)  {alta tensão};
+  \node[font=\Large] at (19.2,-1.7) {baixa tensão};
 
 \end{tikzpicture}
 </code></pre>

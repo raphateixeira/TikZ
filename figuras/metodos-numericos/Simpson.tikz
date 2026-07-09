@@ -1,0 +1,21 @@
+% Regra de Simpson: parábola por 3 pontos (x0, x1, x2)
+% Bibliotecas (chunk .qmd): arrows.meta
+\begin{tikzpicture}[>=Latex, xscale=2.0, yscale=0.85, line width=0.9pt]
+  \draw[->] (0.2,0) -- (4.1,0) node[right] {$x$};
+  \draw[->] (0.5,0) -- (0.5,4.4) node[above] {$f(x)$};
+
+  \def\xz{1.0}\def\xu{2.0}\def\xd{3.0}
+  % f(x) = -0.35 x^2 + 1.7 x + 0.3  (parábola — coincide com a interpoladora)
+  \fill[blue!12]
+        plot[domain=\xz:\xd, samples=40] (\x, {-0.35*\x*\x + 1.7*\x + 0.3})
+        -- (\xd,0) -- (\xz,0) -- cycle;
+  \draw[blue!70!black, line width=1.1pt]
+        plot[domain=0.6:3.5, samples=60] (\x, {-0.35*\x*\x + 1.7*\x + 0.3});
+
+  \foreach \p/\lab in {\xz/{x_0}, \xu/{x_1}, \xd/{x_2}}{
+    \draw[dashed, gray!55] (\p,0) -- (\p, {-0.35*\p*\p + 1.7*\p + 0.3});
+    \fill (\p, {-0.35*\p*\p + 1.7*\p + 0.3}) circle (1.3pt);
+    \node[below] at (\p,0) {$\lab$};
+  }
+  \node[font=\small, align=center] at (2.0,1.0) {parábola\\por 3 pontos};
+\end{tikzpicture}

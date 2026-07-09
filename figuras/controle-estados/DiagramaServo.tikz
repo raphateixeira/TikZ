@@ -1,0 +1,43 @@
+% ---------------------------------------------------------------
+% Servomecanismo (ação integral):  zi_dot = r - y ,  u = -Kc x - Ki zi
+% Bibliotecas (chunk .qmd): arrows.meta, positioning, calc
+% ---------------------------------------------------------------
+\begin{tikzpicture}[>=Latex, line width=0.9pt,
+  block/.style={draw, minimum width=1.0cm, minimum height=1.0cm, fill=blue!8},
+  big/.style={draw, minimum width=3.0cm, minimum height=1.5cm, fill=blue!8, align=center},
+  sum/.style={draw, circle, minimum size=8mm, inner sep=0pt}]
+
+  \node (r)            at (-1.6,0) {$r$};
+  \node[sum]   (se)    at (0,0)    {};
+  \node[block] (intz)  at (1.6,0)  {$\displaystyle\frac{1}{s}$};
+  \node[block] (Ki)    at (3.3,0)  {$K_i$};
+  \node[sum]   (su)    at (4.9,0)  {};
+  \node[big]   (plant) at (7.6,0)  {Planta\\$\dot{\mathbf{x}}=\mathbf{A}\mathbf{x}+\mathbf{B}u$\\$y=\mathbf{C}\mathbf{x}$};
+  \node (y)            at (11.0,0) {$y$};
+
+  \node[block] (Kc)    at (7.6,-2.4) {$K_c$};
+
+  % sinais
+  \node[font=\scriptsize] at ($(se)+(-0.30,0.30)$) {$+$};
+  \node[font=\scriptsize] at ($(se)+(0,-0.42)$)    {$-$};
+  \node[font=\scriptsize] at ($(su)+(-0.30,0.30)$) {$-$};
+  \node[font=\scriptsize] at ($(su)+(0,-0.42)$)    {$-$};
+
+  % cadeia direta
+  \draw[->] (r) -- (se);
+  \draw[->] (se) -- (intz) node[midway, above, font=\small] {$e$};
+  \draw[->] (intz) -- (Ki) node[midway, above, font=\small] {$z_i$};
+  \draw[->] (Ki) -- (su);
+  \draw[->] (su) -- (plant) node[midway, above] {$u$};
+  \draw[->] (plant) -- (y);
+
+  % realimentação de y ao erro
+  \fill (10.2,0) circle (1.6pt);
+  \draw[-]  (10.2,0) -- (10.2,-3.4) -- (0,-3.4) -- (se);
+
+  % realimentação de estados -Kc
+  \fill (6.0,0) circle (1.6pt);
+  \draw[-]  (6.0,0) -- (6.0,-2.4) -- (Kc.east);
+  \draw[->] (Kc.west) -| (su);
+
+\end{tikzpicture}

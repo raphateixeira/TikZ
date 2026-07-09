@@ -1,0 +1,8 @@
+% ---------------------------------------------------------------------
+% Indutor com referências de tensão e corrente.
+% Requer circuitikz (habilitado via engine.opts na aula).
+% ---------------------------------------------------------------------
+\ctikzset{bipoles/length=2.2cm}
+\begin{circuitikz}[scale=3, line width=1.6pt, font=\huge]
+\draw (0,0) to[L=$L$, i=$i(t)$, v=$v(t)$] (5,0);
+\end{circuitikz}
