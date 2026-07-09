@@ -1,0 +1,24 @@
+\begin{tikzpicture}[every node/.style={outer sep=0pt, thick}]
+\tikzset{
+    preenchimento/.style={fill=lightgray!30},
+    hachura/.style={pattern=north east lines, pattern color=gray},
+    mola/.style={decorate, decoration={zigzag, segment length=3pt, amplitude=4.2pt, pre length=1.15cm, post length=1.15cm}, draw=black, thick},
+    massa/.style={draw, fill=blue!70!white, text=white, font=\large\bfseries, rounded corners=6pt}
+}
+\node[preenchimento, minimum width=0.3cm, minimum height=3.15cm, anchor=south east] (parede_fundo) at (0,-0.16) {};
+\node[hachura, minimum width=0.3cm, minimum height=3.15cm, anchor=south east] (parede_listras) at (0,-0.16) {};
+\draw[thick] (-0.3, -0.15) -- (7.5, -0.15);
+\draw[thick] (-0.3, -0.15) -- (-0.3, 3) -- (0, 3) -- (0,-0.15);
+\node[massa, minimum width=2.4cm, minimum height=2.0cm, anchor=south] (M) at (4.5, 0.1) {$m$};
+\draw[mola] (0, 1.6) -- (M.west |- 0, 1.6) node[midway, above=5pt] {$k$};
+\begin{scope}[yshift=0.7cm]
+    \draw[thick] (0,0) -- (1.5,0);
+    \draw[thick] (1.5,-0.2) -- (1.5,0.2);
+    \draw[thick] (2.1,0.2) -- (1.1,0.2) -- (1.1,-0.2) -- (2.1,-0.2);
+    \draw[thick] (2.1,0) -- (M.west |- 0, 0);
+    \node at (1.6, -0.5) {$b$};
+\end{scope}
+\draw[-{Latex[scale=1.2]}, very thick, black] (M.east) -- ++(1.8,0) node[right] {$u(t)$};
+\draw[dashed, gray] (M.center |- 0, 2.1) -- ++(0, 1.2);
+\draw[-{Latex[scale=1.2]}, very thick, black] ($(M.center |- 0, 3.0)$) -- ++(1.2,0) node[midway, above] {$y(t)$};
+\end{tikzpicture}

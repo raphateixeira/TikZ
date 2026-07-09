@@ -1,0 +1,22 @@
+% Método de Newton: reta tangente em x_k cruza o eixo em x_{k+1}
+% Bibliotecas (chunk .qmd): arrows.meta
+\begin{tikzpicture}[>=Latex, xscale=2.3, yscale=1.0, line width=0.9pt]
+  \draw[->] (0.4,0) -- (3.9,0) node[right] {$x$};
+  \draw[->] (0.6,-1.0) -- (0.6,3.6) node[above] {$f(x)$};
+
+  % f(x) = 0.5 x^2 - 2
+  \draw[blue!70!black, line width=1.1pt]
+        plot[domain=1.0:3.45, samples=60] (\x, {0.5*\x*\x - 2});
+
+  \def\xk{3.0}\def\xn{2.1667}      % x_{k+1} = x_k - f/f'
+  \coordinate (P) at (\xk, {0.5*\xk*\xk - 2});
+  % tangente (inclinação f'(x_k)=x_k=3)
+  \draw[red, line width=1pt] (\xn,0) -- (P);
+  \draw[red, line width=1pt] (P) -- (3.45, {0.5*\xk*\xk - 2 + 3*(3.45-\xk)});
+
+  \draw[dashed, gray!55] (\xk,0) -- (P);
+  \fill (P) circle (1.3pt);
+  \fill (\xk,0) circle (1pt) node[below] {$x_k$};
+  \fill (\xn,0) circle (1pt) node[below] {$x_{k+1}$};
+  \node[right, font=\small] at (P) {$\bigl(x_k,\,f(x_k)\bigr)$};
+\end{tikzpicture}

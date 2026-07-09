@@ -1,0 +1,47 @@
+---
+title: "Circuitos CA"
+---
+
+1 figura(s) nesta categoria. Fonte em `figuras/circuitos-ca/`.
+
+````{=html}
+<div class="figura-grid">
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.png" alt="Diagrama fasorial" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Diagrama fasorial</h3>
+    <p>Dois fasores no plano complexo (V1 = 5∠30°, V2 = 3∠-45°) com projeções e ângulo destacados.</p>
+    <div class="figura-tags"><span class="figura-tag">fasores</span><span class="figura-tag">plano-complexo</span><span class="figura-tag">circuitos-ca</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/DiagramaFasorial/DiagramaFasorial.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% ---------------------------------------------------------------------
+% Diagrama fasorial: dois fasores no plano complexo.
+% V1 = 5∠30°, V2 = 3∠-45°
+% ---------------------------------------------------------------------
+\begin{tikzpicture}[&gt;=Latex, line width=1.8pt, font=\Large, scale=1.6]
+
+  \draw[-&gt;] (-1,0) -- (6,0) node[right] {Re};
+  \draw[-&gt;] (0,-3.2) -- (0,3.5) node[above] {Im};
+
+  \draw[-&gt;, blue!70!black, line width=2.4pt]
+    (0,0) -- ({5*cos(30)},{5*sin(30)})
+    node[above right] {$\mathbf{V}_1 = 5\angle 30^\circ$};
+
+  \draw[-&gt;, red!70!black, line width=2.4pt]
+    (0,0) -- ({3*cos(-45)},{3*sin(-45)})
+    node[below right] {$\mathbf{V}_2 = 3\angle{-45^\circ}$};
+
+  \draw[dashed, gray, line width=1.2pt] ({5*cos(30)},0) -- ({5*cos(30)},{5*sin(30)});
+  \draw[dashed, gray, line width=1.2pt] (0,{5*sin(30)}) -- ({5*cos(30)},{5*sin(30)});
+
+  \draw[gray, line width=1.2pt] (0.8,0) arc (0:30:0.8);
+  \node[gray] at (1.2,0.35) {$30^\circ$};
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+</div>
+````

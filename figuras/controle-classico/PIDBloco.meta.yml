@@ -1,0 +1,4 @@
+title: "Bloco PID em malha fechada"
+description: "Estrutura interna do controlador PID (proporcional, integral e derivativo) atuando em malha fechada sobre uma planta G(s)."
+tags: [pid, diagrama-de-blocos, malha-fechada, controle-classico]
+fonte: "ControleClassico/Notas/imgs/tikz/PIDBloco.tikz"

@@ -1,0 +1,30 @@
+---
+title: "Coleção TikZ"
+---
+
+Coleção organizada de figuras TikZ reutilizáveis nas disciplinas e
+projetos de pesquisa. Cada figura pode ser baixada em PNG, SVG, EPS ou
+como fonte `.tikz` / `.tex` standalone. Veja `SCOPE.md` para o desenho
+completo e `README.md` para o fluxo de contribuição.
+
+
+````{=html}
+<div class="categoria-grid">
+<a class="categoria-card" href="categorias/circuitos-ca.qmd">
+  <h3>Circuitos CA</h3>
+  <p>1 figura(s)</p>
+</a>
+<a class="categoria-card" href="categorias/controle-classico.qmd">
+  <h3>Controle Clássico</h3>
+  <p>1 figura(s)</p>
+</a>
+<a class="categoria-card" href="categorias/controle-estados.qmd">
+  <h3>Controle por Espaço de Estados</h3>
+  <p>1 figura(s)</p>
+</a>
+<a class="categoria-card" href="categorias/metodos-numericos.qmd">
+  <h3>Métodos Numéricos</h3>
+  <p>1 figura(s)</p>
+</a>
+</div>
+````

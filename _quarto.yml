@@ -1,0 +1,45 @@
+# ---------------------------------------------------------------------
+#  Configuração do site Quarto da Coleção TikZ.
+#  Segue o mesmo padrão de TemplateNotas/_quarto.yml.
+# ---------------------------------------------------------------------
+
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - _build/**
+  render:
+    - index.qmd
+    - categorias/*.qmd
+
+website:
+  title: "Coleção TikZ"
+  description: "Figuras TikZ organizadas por tema, com download em PNG/SVG/EPS"
+  reader-mode: true
+  navbar:
+    background: "#1F3A5F"
+    foreground: "#FFFFFF"
+    title: "Coleção TikZ"
+    left:
+      - text: "Início"
+        href: index.qmd
+      - text: "Controle Clássico"
+        href: categorias/controle-classico.qmd
+      - text: "Controle por Espaço de Estados"
+        href: categorias/controle-estados.qmd
+      - text: "Circuitos CA"
+        href: categorias/circuitos-ca.qmd
+      - text: "Métodos Numéricos"
+        href: categorias/metodos-numericos.qmd
+  page-footer:
+    border: false
+    left: "Coleção TikZ"
+    center: "GitRTx"
+    right: "Prof. Raphael Teixeira"
+
+format:
+  html:
+    theme: [cosmo, TemaModelo.scss]
+    toc: false
+    page-layout: article
+    lang: pt-BR

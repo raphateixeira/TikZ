@@ -1,0 +1,45 @@
+---
+title: "Métodos Numéricos"
+---
+
+1 figura(s) nesta categoria. Fonte em `figuras/metodos-numericos/`.
+
+````{=html}
+<div class="figura-grid">
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/metodos-numericos/Newton/Newton.png" alt="Método de Newton" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Método de Newton</h3>
+    <p>Iteração geométrica do método de Newton: a reta tangente em x_k cruza o eixo x em x_{k+1}.</p>
+    <div class="figura-tags"><span class="figura-tag">zeros-de-funcoes</span><span class="figura-tag">newton-raphson</span><span class="figura-tag">metodos-numericos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/metodos-numericos/Newton/Newton.png" download>PNG</a><a class="figura-download" href="../_build/metodos-numericos/Newton/Newton.svg" download>SVG</a><a class="figura-download" href="../_build/metodos-numericos/Newton/Newton.eps" download>EPS</a><a class="figura-download" href="../_build/metodos-numericos/Newton/Newton.tikz" download>.tikz</a><a class="figura-download" href="../_build/metodos-numericos/Newton/Newton.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>% Método de Newton: reta tangente em x_k cruza o eixo em x_{k+1}
+% Bibliotecas (chunk .qmd): arrows.meta
+\begin{tikzpicture}[&gt;=Latex, xscale=2.3, yscale=1.0, line width=0.9pt]
+  \draw[-&gt;] (0.4,0) -- (3.9,0) node[right] {$x$};
+  \draw[-&gt;] (0.6,-1.0) -- (0.6,3.6) node[above] {$f(x)$};
+
+  % f(x) = 0.5 x^2 - 2
+  \draw[blue!70!black, line width=1.1pt]
+        plot[domain=1.0:3.45, samples=60] (\x, {0.5*\x*\x - 2});
+
+  \def\xk{3.0}\def\xn{2.1667}      % x_{k+1} = x_k - f/f&#x27;
+  \coordinate (P) at (\xk, {0.5*\xk*\xk - 2});
+  % tangente (inclinação f&#x27;(x_k)=x_k=3)
+  \draw[red, line width=1pt] (\xn,0) -- (P);
+  \draw[red, line width=1pt] (P) -- (3.45, {0.5*\xk*\xk - 2 + 3*(3.45-\xk)});
+
+  \draw[dashed, gray!55] (\xk,0) -- (P);
+  \fill (P) circle (1.3pt);
+  \fill (\xk,0) circle (1pt) node[below] {$x_k$};
+  \fill (\xn,0) circle (1pt) node[below] {$x_{k+1}$};
+  \node[right, font=\small] at (P) {$\bigl(x_k,\,f(x_k)\bigr)$};
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+</div>
+````

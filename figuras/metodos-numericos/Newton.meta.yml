@@ -1,0 +1,4 @@
+title: "Método de Newton"
+description: "Iteração geométrica do método de Newton: a reta tangente em x_k cruza o eixo x em x_{k+1}."
+tags: [zeros-de-funcoes, newton-raphson, metodos-numericos]
+fonte: "MetodosNumericos/CalculoNumerico/Notas/imgs/tikz/Newton.tikz"

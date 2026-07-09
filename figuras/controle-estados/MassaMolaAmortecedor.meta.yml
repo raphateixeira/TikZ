@@ -1,0 +1,4 @@
+title: "Sistema massa-mola-amortecedor"
+description: "Sistema massa-mola-amortecedor com entrada de força u(t) e saída de deslocamento y(t), usado na modelagem em espaço de estados."
+tags: [massa-mola-amortecedor, modelagem, espaco-de-estados, controle-estados]
+fonte: "ControleEstados/Notas/imgs/tikz/MassaMolaAmortecedor.tikz"
