@@ -38,8 +38,10 @@ jobs:
       - name: Instalar TinyTeX + pacotes TikZ
         run: |
           quarto install tinytex --no-prompt
-          ~/.TinyTeX/bin/*/tlmgr update --self
-          ~/.TinyTeX/bin/*/tlmgr install \
+          echo "$HOME/.TinyTeX/bin/x86_64-linux" >> "$GITHUB_PATH"
+          export PATH="$HOME/.TinyTeX/bin/x86_64-linux:$PATH"
+          tlmgr update --self
+          tlmgr install \
             standalone pgf pgfplots xcolor circuitikz \
             listofitems currfile siunitx tools
 
