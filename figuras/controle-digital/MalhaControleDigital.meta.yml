@@ -1,0 +1,4 @@
+title: "Malha de Controle Digital"
+description: "Diagrama de blocos de malha fechada com controlador e planta discretos, no domínio Z."
+tags: [diagrama-de-blocos, malha-fechada, digital]
+fonte: "ImagensTikz/Tikz/MalhaControleDigital.tex"

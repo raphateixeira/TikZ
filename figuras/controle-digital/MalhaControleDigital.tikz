@@ -1,0 +1,55 @@
+\begin{tikzpicture}[
+    auto,
+    % Distância padrão entre os nós para compactar
+    node distance=1.6cm,
+    % Estilo padrão para blocos (Planta)
+    block/.style={draw, fill=blue!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    % Estilo específico para o Controlador (cor diferente)
+    block_ctrl/.style={draw, fill=green!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    % Estilo para o ponto de soma (menor)
+    sum/.style={draw, circle, minimum size=0.5cm, thick},
+    % Estilo para as setas
+    arrow/.style={-Stealth, thick},
+    % Ponto de derivação
+    dot/.style={fill, circle, minimum size=3pt, inner sep=0pt},
+    % Define o tamanho da fonte padrão para os rótulos
+    every node/.style={font=\small}
+]
+
+    % --- Nós ---
+    \node (input) {};
+    % Aproximei o ponto de soma da entrada
+    \node [sum, right=0.8cm of input] (sum) {};
+    
+    % Controlador (usando o estilo block_ctrl)
+    \node [block_ctrl, right=of sum] (controller) {Controlador \\ $C(z)$};
+    
+    % Planta
+    \node [block, right=of controller] (plant) {Planta \\ $G(z)$};
+    
+    % Reduzi o tamanho da seta de saída para compactar
+    \node [right=1.8cm of plant] (output) {};
+
+    % --- Caminho Direto ---
+    % Removido o nó que continha o sinal de "+" na entrada
+    \draw [arrow] (input) -- node {$R(z)$} (sum);
+    
+    \draw [arrow] (sum) -- node {$E(z)$} (controller);
+    
+    \draw [arrow] (controller) -- node {$U(z)$} (plant);
+    
+    % Posição do rótulo de saída ajustada
+    \draw [arrow] (plant) -- node (y_out) [pos=0.6] {$Y(z)$} (output);
+
+    % --- Realimentação (Feedback) ---
+    % Ponto de ramificação ajustado para a saída menor
+    \node [dot, right=1.0cm of plant] (branch) {};
+    
+    % Caminho de volta mais próximo e com sinal '-' deslocado
+    \draw [thick] (branch) |- ++(0,-1.3) -| node[pos=0.95, xshift=0.4cm] {\textbf{--}} (sum);
+
+    % Detalhe interno do ponto de soma
+    \draw (sum.north east) -- (sum.south west);
+    \draw (sum.north west) -- (sum.south east);
+
+\end{tikzpicture}

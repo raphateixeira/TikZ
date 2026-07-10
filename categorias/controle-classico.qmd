@@ -2,10 +2,37 @@
 title: "Controle Clássico"
 ---
 
-10 figura(s) nesta categoria. Fonte em `figuras/controle-classico/`.
+13 figura(s) nesta categoria. Fonte em `figuras/controle-classico/`.
 
 ````{=html}
 <div class="figura-grid">
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/BlocoTF/BlocoTF.png" alt="Bloco de Função de Transferência" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Bloco de Função de Transferência</h3>
+    <p>Bloco genérico de entrada/saída G(s), com sinais U(s) e Y(s) — base para diagramas de malha de controle.</p>
+    <div class="figura-tags"><span class="figura-tag">diagrama-de-blocos</span><span class="figura-tag">funcao-de-transferencia</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/BlocoTF/BlocoTF.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/BlocoTF/BlocoTF.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/BlocoTF/BlocoTF.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/BlocoTF/BlocoTF.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/BlocoTF/BlocoTF.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>\begin{tikzpicture}[auto, node distance=2.5cm, &gt;=latex]
+    % Estilo dos blocos
+    \tikzstyle{block} = [draw, rectangle, minimum height=1.3cm, minimum width=1.4cm, line width=0.8pt]
+    \tikzstyle{input} = [coordinate]
+    \tikzstyle{output} = [coordinate]
+
+    % Nós
+    \node [input, name=input] {};
+    \node [block, right of=input, text centered, text width=2.5cm] (system) {$G(s)$};
+    \node [output, right of=system] (output) {};
+
+    % Conexões
+    \draw [draw, -&gt;, line width=1pt] (input) -- node {$U(s)$} (system);
+    \draw [draw, -&gt;, line width=1pt] (system) -- node {$Y(s)$} (output);
+\end{tikzpicture}</code></pre>
+    </details>
+  </div>
+</div>
 <div class="figura-card">
   <div class="figura-preview"><img src="../_build/controle-classico/ComponentesSistema/ComponentesSistema.png" alt="Componentes de um sistema de controle em malha fechada" loading="lazy"></div>
   <div class="figura-body">
@@ -82,6 +109,145 @@ title: "Controle Clássico"
 
 \end{tikzpicture}
 </code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/MalhaControleContinuo/MalhaControleContinuo.png" alt="Malha de Controle Contínua (Domínio da Frequência)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Malha de Controle Contínua (Domínio da Frequência)</h3>
+    <p>Diagrama de blocos de malha fechada com controlador C(s), planta G(s) e sensor M(s), no domínio de Laplace.</p>
+    <div class="figura-tags"><span class="figura-tag">diagrama-de-blocos</span><span class="figura-tag">malha-fechada</span><span class="figura-tag">dominio-da-frequencia</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/MalhaControleContinuo/MalhaControleContinuo.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/MalhaControleContinuo/MalhaControleContinuo.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/MalhaControleContinuo/MalhaControleContinuo.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/MalhaControleContinuo/MalhaControleContinuo.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/MalhaControleContinuo/MalhaControleContinuo.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>    \begin{tikzpicture}
+     
+        % Desenha o comparador:
+        \node [draw, circle, 
+                minimum size=0.6cm, 
+                fill=blue!20] 
+              (comp) at (0,0) {};
+        \draw (comp.north east) -- (comp.south west)
+              (comp.north west) -- (comp.south east);
+        \node [left=-1pt] 
+                at (comp.center){\tiny $+$};
+        \node [below]     
+                at (comp.center){\tiny $-$};
+        
+        % Bloco do controlador:
+        \node [draw,
+            fill=blue!20,
+            minimum width=2cm,
+            minimum height=1.2cm,
+            right=1cm of comp
+        ]  (controlador) {$C(s)$};
+        
+        % Bloco da planta:
+        \node [draw,
+            fill=blue!20, 
+            minimum width=2cm, 
+            minimum height=1.2cm,
+            right=1.5cm of controlador
+        ] (sistema) {$G(s)$};
+     
+        % Bloco do sensor:
+        \node [draw,
+            fill=blue!20, 
+            minimum width=2cm, 
+            minimum height=1.2cm, 
+            below right= 1cm and -0.25cm of controlador
+        ]  (sensor) {$M(s)$};
+        
+        % Ramos de sinais:
+        % - Erro:
+        \draw[-stealth] (comp.east) -- (controlador.west) 
+        node[midway,above]{$e$};
+    
+        % - Controle:
+        \draw[-stealth] (controlador.east) -- (sistema.west) 
+        node[midway,above] (u) {$u$};
+        
+        % - Saída:
+        \draw[-stealth] (sistema.east) -- ++ (1.25,0) 
+        node[midway](saida){}
+        node[midway,above]{$y$};
+        
+        % - Realimentação:
+        \draw[-stealth] (saida.center) |- (sensor.east);
+        \draw[-stealth] (sensor.west) -| (comp.south) 
+        node[near end,left]{$y_m$};
+        
+        % - Referência:
+        \draw[-stealth] (-1.25,0) -- (comp.west) 
+        node[midway,above]{$y_{r}$};
+
+    \end{tikzpicture}
+ 
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-classico/MalhaControleTempoContinuo/MalhaControleTempoContinuo.png" alt="Malha de Controle Contínua (Domínio do Tempo)" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Malha de Controle Contínua (Domínio do Tempo)</h3>
+    <p>Diagrama de blocos de malha fechada com controlador c(t) e planta g(t), sinais no domínio do tempo.</p>
+    <div class="figura-tags"><span class="figura-tag">diagrama-de-blocos</span><span class="figura-tag">malha-fechada</span><span class="figura-tag">dominio-do-tempo</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-classico/MalhaControleTempoContinuo/MalhaControleTempoContinuo.png" download>PNG</a><a class="figura-download" href="../_build/controle-classico/MalhaControleTempoContinuo/MalhaControleTempoContinuo.svg" download>SVG</a><a class="figura-download" href="../_build/controle-classico/MalhaControleTempoContinuo/MalhaControleTempoContinuo.eps" download>EPS</a><a class="figura-download" href="../_build/controle-classico/MalhaControleTempoContinuo/MalhaControleTempoContinuo.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-classico/MalhaControleTempoContinuo/MalhaControleTempoContinuo.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>\begin{tikzpicture}[
+    auto,
+    % Distância padrão entre os nós para compactar
+    node distance=1.6cm,
+    % Estilo padrão para blocos (Planta)
+    block/.style={draw, fill=blue!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    % Estilo específico para o Controlador (cor diferente)
+    block_ctrl/.style={draw, fill=green!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    % Estilo para o ponto de soma (menor)
+    sum/.style={draw, circle, minimum size=0.5cm, thick},
+    % Estilo para as setas
+    arrow/.style={-Stealth, thick},
+    % Ponto de derivação
+    dot/.style={fill, circle, minimum size=3pt, inner sep=0pt},
+    % Define o tamanho da fonte padrão para os rótulos
+    every node/.style={font=\small}
+]
+
+    % --- Nós ---
+    \node (input) {};
+    \node [sum, right=0.8cm of input] (sum) {};
+    
+    % Controlador (domínio do tempo)
+    \node [block_ctrl, right=of sum] (controller) {Controlador \\ $c(t)$};
+    
+    % Planta (domínio do tempo)
+    \node [block, right=of controller] (plant) {Planta \\ $g(t)$};
+    
+    \node [right=1.8cm of plant] (output) {};
+
+    % --- Caminho Direto ---
+    \draw [arrow] (input) -- node {$r(t)$} (sum);
+    
+    \draw [arrow] (sum) -- node {$e(t)$} (controller);
+    
+    \draw [arrow] (controller) -- node {$u(t)$} (plant);
+    
+    % Posição do rótulo de saída ajustada
+    \draw [arrow] (plant) -- node (y_out) [pos=0.6] {$y(t)$} (output);
+
+    % --- Realimentação (Feedback) ---
+    \node [dot, right=1.0cm of plant] (branch) {};
+    
+    % Caminho de volta
+    \draw [thick] (branch) |- ++(0,-1.3) -| node[pos=0.95, xshift=0.4cm] {\textbf{--}} (sum);
+
+    % Detalhe interno do ponto de soma (X)
+    \draw (sum.north east) -- (sum.south west);
+    \draw (sum.north west) -- (sum.south east);
+
+\end{tikzpicture}</code></pre>
     </details>
   </div>
 </div>

@@ -1,0 +1,5 @@
+title: "Sinais Contínuo, Amostrado e Digital"
+description: "Três gráficos lado a lado comparando o mesmo sinal em suas representações contínua y(t), amostrada y(nTs) e digital/quantizada y[k]."
+tags: [sinais, amostragem, quantizacao, digital]
+packages: [pgfplots]
+fonte: "ImagensTikz/Tikz/SinaisContinuoDigital.tex"

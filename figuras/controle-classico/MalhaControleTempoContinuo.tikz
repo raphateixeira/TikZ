@@ -1,0 +1,51 @@
+\begin{tikzpicture}[
+    auto,
+    % Distância padrão entre os nós para compactar
+    node distance=1.6cm,
+    % Estilo padrão para blocos (Planta)
+    block/.style={draw, fill=blue!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    % Estilo específico para o Controlador (cor diferente)
+    block_ctrl/.style={draw, fill=green!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    % Estilo para o ponto de soma (menor)
+    sum/.style={draw, circle, minimum size=0.5cm, thick},
+    % Estilo para as setas
+    arrow/.style={-Stealth, thick},
+    % Ponto de derivação
+    dot/.style={fill, circle, minimum size=3pt, inner sep=0pt},
+    % Define o tamanho da fonte padrão para os rótulos
+    every node/.style={font=\small}
+]
+
+    % --- Nós ---
+    \node (input) {};
+    \node [sum, right=0.8cm of input] (sum) {};
+    
+    % Controlador (domínio do tempo)
+    \node [block_ctrl, right=of sum] (controller) {Controlador \\ $c(t)$};
+    
+    % Planta (domínio do tempo)
+    \node [block, right=of controller] (plant) {Planta \\ $g(t)$};
+    
+    \node [right=1.8cm of plant] (output) {};
+
+    % --- Caminho Direto ---
+    \draw [arrow] (input) -- node {$r(t)$} (sum);
+    
+    \draw [arrow] (sum) -- node {$e(t)$} (controller);
+    
+    \draw [arrow] (controller) -- node {$u(t)$} (plant);
+    
+    % Posição do rótulo de saída ajustada
+    \draw [arrow] (plant) -- node (y_out) [pos=0.6] {$y(t)$} (output);
+
+    % --- Realimentação (Feedback) ---
+    \node [dot, right=1.0cm of plant] (branch) {};
+    
+    % Caminho de volta
+    \draw [thick] (branch) |- ++(0,-1.3) -| node[pos=0.95, xshift=0.4cm] {\textbf{--}} (sum);
+
+    % Detalhe interno do ponto de soma (X)
+    \draw (sum.north east) -- (sum.south west);
+    \draw (sum.north west) -- (sum.south east);
+
+\end{tikzpicture}

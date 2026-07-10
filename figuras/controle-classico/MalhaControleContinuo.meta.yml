@@ -1,0 +1,4 @@
+title: "Malha de Controle Contínua (Domínio da Frequência)"
+description: "Diagrama de blocos de malha fechada com controlador C(s), planta G(s) e sensor M(s), no domínio de Laplace."
+tags: [diagrama-de-blocos, malha-fechada, dominio-da-frequencia]
+fonte: "ImagensTikz/Tikz/MalhaControleContinuo.tex"

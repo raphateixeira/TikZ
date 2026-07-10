@@ -2,7 +2,7 @@
 title: "Controle por Espaço de Estados"
 ---
 
-11 figura(s) nesta categoria. Fonte em `figuras/controle-estados/`.
+12 figura(s) nesta categoria. Fonte em `figuras/controle-estados/`.
 
 ````{=html}
 <div class="figura-grid">
@@ -499,6 +499,63 @@ title: "Controle por Espaço de Estados"
 \draw[-{Latex[scale=1.2]}, very thick, black] ($(M.center |- 0, 3.0)$) -- ++(1.2,0) node[midway, above] {$y(t)$};
 \end{tikzpicture}
 </code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/controle-estados/ModeloEstados/ModeloEstados.png" alt="Diagrama de Blocos do Modelo em Espaço de Estados" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Diagrama de Blocos do Modelo em Espaço de Estados</h3>
+    <p>Representação canônica ẋ = Ax + Bu, y = Cx em diagrama de blocos, com integrador e realimentação interna pela matriz A.</p>
+    <div class="figura-tags"><span class="figura-tag">espaco-de-estados</span><span class="figura-tag">diagrama-de-blocos</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/controle-estados/ModeloEstados/ModeloEstados.png" download>PNG</a><a class="figura-download" href="../_build/controle-estados/ModeloEstados/ModeloEstados.svg" download>SVG</a><a class="figura-download" href="../_build/controle-estados/ModeloEstados/ModeloEstados.eps" download>EPS</a><a class="figura-download" href="../_build/controle-estados/ModeloEstados/ModeloEstados.tikz" download>.tikz</a><a class="figura-download" href="../_build/controle-estados/ModeloEstados/ModeloEstados.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>\begin{tikzpicture}[
+    bloco/.style={
+        draw, 
+        rectangle, 
+        minimum height=3em, 
+        minimum width=3em, 
+        fill=blue!10, 
+        line width=1.2pt
+    },
+    somador/.style={
+        draw, 
+        circle, 
+        minimum size=7mm, 
+        line width=1.2pt
+    },
+    vetor/.style={
+        -&gt;, 
+        &gt;=Stealth, 
+        line width=1.2pt
+    },
+    % Distâncias reduzidas para compactar o diagrama
+    node distance=1.0cm and 1.2cm
+]
+
+    % Nós
+    \node (input) {$u(t)$};
+    \node [bloco, right=of input] (B) {$B$};
+    \node [somador, right=of B] (sum) {$+$};
+    \node [bloco, right=of sum] (int) {$\int$};
+    \node [bloco, right=of int] (C) {$C$};
+    \node [right=of C] (output) {$y(t)$};
+    \node [bloco, below=of int] (A) {$A$};
+
+    % Conexões
+    \draw [vetor] (input) -- (B);
+    \draw [vetor] (B) -- (sum);
+    \draw [vetor] (sum) -- node[above] {$\dot{x}$} (int);
+    \draw [vetor] (int) -- node[above, name=x] {$x$} (C);
+    \draw [vetor] (C) -- (output);
+    
+    % Realimentação
+    \draw [vetor] (x) |- (A);
+    \draw [vetor] (A) -| (sum);
+
+\end{tikzpicture}</code></pre>
     </details>
   </div>
 </div>

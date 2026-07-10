@@ -1,0 +1,53 @@
+\begin{tikzpicture}[
+    auto,
+    node distance=1.5cm,
+    block/.style={draw, fill=blue!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    block_ctrl/.style={draw, fill=green!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    sum/.style={draw, circle, minimum size=0.5cm, thick},
+    arrow/.style={-Stealth, thick},
+    dot/.style={fill, circle, minimum size=3pt, inner sep=0pt},
+    every node/.style={font=\small}
+]
+
+    % --- Nós ---
+    \node (input) {};
+    \node [sum, right=0.8cm of input] (sum) {};
+    \node [block_ctrl, right=of sum] (controller) {Controlador};
+    \node [block, right=of controller] (interpolator) {Interpolador};
+    \node [block, right=1.5cm of interpolator] (plant) {Planta};
+    \node [right=1.2cm of plant] (output) {};
+
+    % --- Caminho Direto ---
+    \draw [arrow] (input) -- node {$r(nT_s)$} (sum);
+    \draw (sum.north east) -- (sum.south west); 
+    \draw (sum.north west) -- (sum.south east);
+    
+    \draw [arrow] (sum) -- node {$e(nT_s)$} (controller);
+    \draw [arrow] (controller) -- node {$u(nT_s)$} (interpolator);
+    \draw [arrow] (interpolator) -- node {$\bar{u}(t)$} (plant);
+    \draw [arrow] (plant) -- node [pos=0.6] (c_node) {$y(t)$} (output);
+
+    % --- Realimentação ---
+    \node [dot] at ($(plant.east)!0.5!(output)$) (branch) {};
+    
+    % Desce da ramificação
+    \draw [thick] (branch) |- ++(0,-1.5) coordinate (corner);
+    % Linha horizontal até a chave
+    \draw [thick] (corner) -- ++(-1.2,0) coordinate (sampler_tip);
+    
+    % Chave (amostrador) com T_s (sem a seta curva)
+    \draw [thick] (sampler_tip) -- ++(-0.5,0.4) node[above left] {$T_s$};
+    
+    % O fechamento:
+    \draw [arrow] ($(sampler_tip)+(-0.6,0)$) -| (sum.south) 
+        node[pos=0.9, left] {\textbf{--}};
+
+    % --- Containers (Medidas Originais) ---
+    \draw [dashed, thick] ($(sum.north west)+(-1.0,0.9)$) rectangle ($(interpolator.south east)+(0.35,-1.5)$);
+    \draw [dotted, thick] ($(controller.north east)+(1.25,0.49)$) -- ($(controller.south east)+(1.25,-1.5)$);
+
+    % Rótulos
+    \node [anchor=south west] at ($(sum.north west)+(-0.8,-2.3)$) {\textbf{Computador}};
+    \node [anchor=north west] at ($(controller.south east)+(1.7,-0.95)$) {\textbf{Interface}};
+
+\end{tikzpicture}

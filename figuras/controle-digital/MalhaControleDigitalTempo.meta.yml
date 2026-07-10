@@ -1,0 +1,4 @@
+title: "Malha de Controle Digital (Domínio do Tempo Discreto)"
+description: "Diagrama de blocos de malha fechada digital com sinais no domínio do tempo discreto (amostras k)."
+tags: [diagrama-de-blocos, malha-fechada, digital, tempo-discreto]
+fonte: "ImagensTikz/Tikz/MalhaControleDigitalTempo.tex"

@@ -1,0 +1,5 @@
+title: "Conversor Buck"
+description: "Topologia do conversor CC-CC Buck: chave IGBT, diodo de roda livre, indutor, capacitor e carga resistiva."
+tags: [eletronica-potencia, conversor-dc-dc, buck, circuito]
+packages: [circuitikz]
+fonte: "ImagensTikz/Tikz/ConversorBuck.tex"

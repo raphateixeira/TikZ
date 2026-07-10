@@ -1,0 +1,4 @@
+title: "Bloco de Função de Transferência"
+description: "Bloco genérico de entrada/saída G(s), com sinais U(s) e Y(s) — base para diagramas de malha de controle."
+tags: [diagrama-de-blocos, funcao-de-transferencia]
+fonte: "ImagensTikz/Tikz/BlocoTF.tex"

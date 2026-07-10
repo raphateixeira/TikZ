@@ -1,0 +1,4 @@
+title: "Malha de Controle com Sinal Amostrado"
+description: "Diagrama de blocos de uma malha de controle digital destacando o amostrador entre o controlador discreto e a planta contínua."
+tags: [diagrama-de-blocos, malha-fechada, amostragem, digital]
+fonte: "ImagensTikz/Tikz/MalhaControleAmostrado.tex"

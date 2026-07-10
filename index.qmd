@@ -26,19 +26,23 @@ completo e `README.md` para o fluxo de contribuição.
 </a>
 <a class="categoria-card" href="categorias/circuitos-ca.qmd">
   <h3>Circuitos CA</h3>
-  <p>13 figura(s)</p>
+  <p>14 figura(s)</p>
 </a>
 <a class="categoria-card" href="categorias/controle-classico.qmd">
   <h3>Controle Clássico</h3>
-  <p>10 figura(s)</p>
+  <p>13 figura(s)</p>
 </a>
 <a class="categoria-card" href="categorias/controle-digital.qmd">
   <h3>Controle Digital</h3>
-  <p>1 figura(s)</p>
+  <p>5 figura(s)</p>
 </a>
 <a class="categoria-card" href="categorias/controle-estados.qmd">
   <h3>Controle por Espaço de Estados</h3>
-  <p>11 figura(s)</p>
+  <p>12 figura(s)</p>
+</a>
+<a class="categoria-card" href="categorias/eletronica-potencia.qmd">
+  <h3>Eletronica Potencia</h3>
+  <p>2 figura(s)</p>
 </a>
 <a class="categoria-card" href="categorias/identificacao.qmd">
   <h3>Identificação de Sistemas</h3>

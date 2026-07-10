@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+  % Coordenadas
+  \coordinate (A) at (0,2);
+  \coordinate (B) at (3,2);
+  \coordinate (C) at (3,0);
+  \coordinate (D) at (0,0);
+
+  % Fonte de tensão CA
+  \draw (D) to[vsourcesin, l=$v(t)$] (A);
+
+  % Fio superior com apenas o rótulo i(t) (sem seta)
+  \draw (A) -- (B) node[midway, above] {$i(t)$};
+
+  % Carga (retângulo)
+  \draw (B) to[generic, l=$R$] (C);
+
+  % Fio inferior com referência no ponto médio
+  \draw (C) -- (D);
+  \draw ($(C)!0.5!(D)$) node[ground]{};
+
+\end{tikzpicture}

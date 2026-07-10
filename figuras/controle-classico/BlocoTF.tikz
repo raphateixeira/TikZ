@@ -1,0 +1,15 @@
+\begin{tikzpicture}[auto, node distance=2.5cm, >=latex]
+    % Estilo dos blocos
+    \tikzstyle{block} = [draw, rectangle, minimum height=1.3cm, minimum width=1.4cm, line width=0.8pt]
+    \tikzstyle{input} = [coordinate]
+    \tikzstyle{output} = [coordinate]
+
+    % Nós
+    \node [input, name=input] {};
+    \node [block, right of=input, text centered, text width=2.5cm] (system) {$G(s)$};
+    \node [output, right of=system] (output) {};
+
+    % Conexões
+    \draw [draw, ->, line width=1pt] (input) -- node {$U(s)$} (system);
+    \draw [draw, ->, line width=1pt] (system) -- node {$Y(s)$} (output);
+\end{tikzpicture}

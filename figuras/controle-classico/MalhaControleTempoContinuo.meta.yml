@@ -1,0 +1,4 @@
+title: "Malha de Controle Contínua (Domínio do Tempo)"
+description: "Diagrama de blocos de malha fechada com controlador c(t) e planta g(t), sinais no domínio do tempo."
+tags: [diagrama-de-blocos, malha-fechada, dominio-do-tempo]
+fonte: "ImagensTikz/Tikz/MalhaControleTempoContinuo.tex"

@@ -1,0 +1,4 @@
+title: "Diagrama de Blocos do Modelo em Espaço de Estados"
+description: "Representação canônica ẋ = Ax + Bu, y = Cx em diagrama de blocos, com integrador e realimentação interna pela matriz A."
+tags: [espaco-de-estados, diagrama-de-blocos]
+fonte: "ImagensTikz/ControleEstados/ModeloEstados.tex"

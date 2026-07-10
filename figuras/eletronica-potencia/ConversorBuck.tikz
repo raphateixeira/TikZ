@@ -1,0 +1,49 @@
+\begin{circuitikz}[american]
+    % --- CONFIGURAÇÕES LOCAIS (Substituem as opções de pacote) ---
+    \ctikzset{
+        inductor=cute,       % Equivalente a cuteinductors
+        label/align=smart,   % Equivalente a smartlabels
+        bipoles/thickness=0.7,
+        bipoles/length=1.5cm,
+        bipoles/resistor/width=0.7,
+        bipoles/resistor/height=0.25,
+        bipoles/diode/height=0.3,
+        bipoles/diode/width=0.3,
+        tripoles/thickness=0.5,
+        bipoles/battery1/height=0.7
+    }
+    
+    \tikzset{
+        nodes={font=\large}, % Forma segura de definir fonte sem loop infinito
+        every path/.style={line width=0.9pt, line cap=round, line join=round}
+    }
+
+    % --- DESENHO DO CIRCUITO ---
+    \coordinate (VBottom) at (0,0); 
+
+    % Fonte de entrada
+    \draw (VBottom) to [battery1, l=$V_{s}$, invert] ++(0,3) coordinate (VTop);
+
+    % Chave IGBT
+    \draw (VTop) to [short] ++(0.8,0) 
+        node [nigbt, anchor=C, rotate=90] (nigbt1){}; 
+    
+    % Conexões superiores (Diodo e Indutor)
+    \draw (nigbt1.E) to [short] ++(0.5,0) coordinate (DiodeTop) 
+          to [short] ++(0.5,0) 
+          to [L, l_=$L$, v^=$v_L$, i>_=$i_L$] ++ (2,0) coordinate (InductorRight);
+    
+    % Diodo de roda livre
+    \draw (DiodeTop) to [D*, invert] (DiodeTop|-VBottom);
+    
+    % Capacitor e Carga
+    \draw (InductorRight) to [short] ++(0.5,0) coordinate (CapacitorTop) 
+          to [C, l_=$C$, i>^=$i_c$] (CapacitorTop|-VBottom);
+    
+    \draw (CapacitorTop) to [short] ++(1.5,0) coordinate (ResistorTop) 
+          to [R, l_=$R$, v^=$V_{o}$] (ResistorTop|-VBottom) coordinate (ResistorBottom);
+
+    % Fechamento da malha inferior
+    \draw (ResistorBottom) -- (VBottom);
+
+\end{circuitikz}

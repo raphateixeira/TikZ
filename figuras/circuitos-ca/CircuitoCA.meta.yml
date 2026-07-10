@@ -1,0 +1,5 @@
+title: "Circuito CA Simples com Carga Resistiva"
+description: "Fonte de tensão senoidal v(t) alimentando uma carga resistiva R, com corrente i(t) e referência de terra."
+tags: [circuito, ca, carga-resistiva]
+packages: [circuitikz]
+fonte: "ImagensTikz/Tikz/CircuitoCA.tex"

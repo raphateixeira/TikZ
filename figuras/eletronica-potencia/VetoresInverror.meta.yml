@@ -1,0 +1,5 @@
+title: "Vetores de Tensão do VSI Trifásico no Plano αβ"
+description: "Hexágono de vetores de comutação de um inversor de tensão trifásico de dois níveis (V0-V7), usado em controle preditivo (FCS-MPC) e SVM."
+tags: [eletronica-potencia, vsi, inversor, mpc, svm]
+packages: [siunitx]
+fonte: "ImagensTikz/Tikz/VetoresInverror.tex"

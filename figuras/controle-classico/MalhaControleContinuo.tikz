@@ -1,0 +1,63 @@
+    \begin{tikzpicture}
+     
+        % Desenha o comparador:
+        \node [draw, circle, 
+                minimum size=0.6cm, 
+                fill=blue!20] 
+              (comp) at (0,0) {};
+        \draw (comp.north east) -- (comp.south west)
+              (comp.north west) -- (comp.south east);
+        \node [left=-1pt] 
+                at (comp.center){\tiny $+$};
+        \node [below]     
+                at (comp.center){\tiny $-$};
+        
+        % Bloco do controlador:
+        \node [draw,
+            fill=blue!20,
+            minimum width=2cm,
+            minimum height=1.2cm,
+            right=1cm of comp
+        ]  (controlador) {$C(s)$};
+        
+        % Bloco da planta:
+        \node [draw,
+            fill=blue!20, 
+            minimum width=2cm, 
+            minimum height=1.2cm,
+            right=1.5cm of controlador
+        ] (sistema) {$G(s)$};
+     
+        % Bloco do sensor:
+        \node [draw,
+            fill=blue!20, 
+            minimum width=2cm, 
+            minimum height=1.2cm, 
+            below right= 1cm and -0.25cm of controlador
+        ]  (sensor) {$M(s)$};
+        
+        % Ramos de sinais:
+        % - Erro:
+        \draw[-stealth] (comp.east) -- (controlador.west) 
+        node[midway,above]{$e$};
+    
+        % - Controle:
+        \draw[-stealth] (controlador.east) -- (sistema.west) 
+        node[midway,above] (u) {$u$};
+        
+        % - Saída:
+        \draw[-stealth] (sistema.east) -- ++ (1.25,0) 
+        node[midway](saida){}
+        node[midway,above]{$y$};
+        
+        % - Realimentação:
+        \draw[-stealth] (saida.center) |- (sensor.east);
+        \draw[-stealth] (sensor.west) -| (comp.south) 
+        node[near end,left]{$y_m$};
+        
+        % - Referência:
+        \draw[-stealth] (-1.25,0) -- (comp.west) 
+        node[midway,above]{$y_{r}$};
+
+    \end{tikzpicture}
+ 

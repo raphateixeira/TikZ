@@ -2,7 +2,7 @@
 title: "Circuitos CA"
 ---
 
-13 figura(s) nesta categoria. Fonte em `figuras/circuitos-ca/`.
+14 figura(s) nesta categoria. Fonte em `figuras/circuitos-ca/`.
 
 ````{=html}
 <div class="figura-grid">
@@ -37,6 +37,40 @@ title: "Circuitos CA"
 
   \draw[dashed, gray, line width=1.4pt] (V1) -- (V);
   \draw[dashed, gray, line width=1.4pt] (V2) -- (V);
+
+\end{tikzpicture}
+</code></pre>
+    </details>
+  </div>
+</div>
+<div class="figura-card">
+  <div class="figura-preview"><img src="../_build/circuitos-ca/CircuitoCA/CircuitoCA.png" alt="Circuito CA Simples com Carga Resistiva" loading="lazy"></div>
+  <div class="figura-body">
+    <h3>Circuito CA Simples com Carga Resistiva</h3>
+    <p>Fonte de tensão senoidal v(t) alimentando uma carga resistiva R, com corrente i(t) e referência de terra.</p>
+    <div class="figura-tags"><span class="figura-tag">circuito</span><span class="figura-tag">ca</span><span class="figura-tag">carga-resistiva</span></div>
+    <div class="figura-downloads"><a class="figura-download" href="../_build/circuitos-ca/CircuitoCA/CircuitoCA.png" download>PNG</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoCA/CircuitoCA.svg" download>SVG</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoCA/CircuitoCA.eps" download>EPS</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoCA/CircuitoCA.tikz" download>.tikz</a><a class="figura-download" href="../_build/circuitos-ca/CircuitoCA/CircuitoCA.tex" download>.tex</a></div>
+    <details>
+      <summary>Ver código TikZ</summary>
+      <pre><code>\begin{tikzpicture}
+  % Coordenadas
+  \coordinate (A) at (0,2);
+  \coordinate (B) at (3,2);
+  \coordinate (C) at (3,0);
+  \coordinate (D) at (0,0);
+
+  % Fonte de tensão CA
+  \draw (D) to[vsourcesin, l=$v(t)$] (A);
+
+  % Fio superior com apenas o rótulo i(t) (sem seta)
+  \draw (A) -- (B) node[midway, above] {$i(t)$};
+
+  % Carga (retângulo)
+  \draw (B) to[generic, l=$R$] (C);
+
+  % Fio inferior com referência no ponto médio
+  \draw (C) -- (D);
+  \draw ($(C)!0.5!(D)$) node[ground]{};
 
 \end{tikzpicture}
 </code></pre>

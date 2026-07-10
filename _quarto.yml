@@ -43,6 +43,8 @@ website:
             href: categorias/identificacao.qmd
           - text: "MPC / DMC"
             href: categorias/mpc-dmc.qmd
+          - text: "Eletrônica de Potência"
+            href: categorias/eletronica-potencia.qmd
   page-footer:
     border: false
     left: "Coleção TikZ"

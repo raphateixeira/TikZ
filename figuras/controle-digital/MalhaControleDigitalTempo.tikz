@@ -1,0 +1,53 @@
+\begin{tikzpicture}[
+    auto,
+    node distance=1.5cm,
+    block/.style={draw, fill=blue!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    block_ctrl/.style={draw, fill=green!5, rectangle, minimum height=1.2cm, minimum width=2.2cm, align=center, thick},
+    sum/.style={draw, circle, minimum size=0.5cm, thick},
+    arrow/.style={-Stealth, thick},
+    dot/.style={fill, circle, minimum size=3pt, inner sep=0pt},
+    every node/.style={font=\small}
+]
+
+    % --- Nós ---
+    \node (input) {};
+    \node [sum, right=1.2cm of input] (sum) {};
+    \node [block_ctrl, right=of sum] (controller) {Controlador};
+    
+    % Conversor D/A
+    \node [block, right=1.5cm of controller, minimum width=1.5cm] (da) {D/A};
+    
+    % Planta
+    \node [block, right=1.5cm of da] (plant) {Planta};
+    \node [right=1.2cm of plant] (output) {};
+
+    % --- Caminho Direto ---
+    \draw [arrow] (input) -- node {$r(nT_s)$} (sum);
+    \draw (sum.north east) -- (sum.south west); 
+    \draw (sum.north west) -- (sum.south east);
+    
+    \draw [arrow] (sum) -- node {$e(nT_s)$} (controller);
+    \draw [arrow] (controller) -- node {$u(nT_s)$} (da);
+    \draw [arrow] (da) -- node {$\bar{u}(t)$} (plant);
+    \draw [arrow] (plant) -- node [pos=0.6] (c_node) {$y(t)$} (output);
+
+    % --- Realimentação com A/D Alinhado ---
+    \node [dot] at ($(plant.east)!0.5!(output)$) (branch) {};
+    
+    % Posicionando o A/D exatamente abaixo do D/A
+    \node [block, minimum width=1.5cm] at (da.center |- 0,-2.5) (ad) {A/D};
+    
+    % Caminho da realimentação
+    \draw [thick] (branch) |- (ad);
+    \draw [arrow] (ad) -| (sum.south) 
+        node [pos=0.4, above] {$y(nT_s)$}
+        node [pos=0.9, left] {\textbf{--}};
+
+    % --- Container do Computador Digital ---
+    % Ajustado para englobar a referência interna e o caminho de volta
+    \draw [dashed, thick] ($(sum.north west)+(-1.4,0.8)$) rectangle ($(controller.south east)+(2.7,-2.8)$);
+    
+    % Rótulo do Computador
+    \node [anchor=south west] at ($(sum.north west)+(-0.8,0.8)$) {\textbf{Computador Digital}};
+
+\end{tikzpicture}

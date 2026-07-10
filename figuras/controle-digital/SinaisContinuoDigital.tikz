@@ -1,0 +1,72 @@
+\begin{tikzpicture}
+    % Configurações compartilhadas
+    \pgfplotsset{
+        my_axis_style/.style={
+            width=5.5cm, height=4.5cm,
+            axis lines=middle,
+            xmin=0, xmax=8.5,
+            ymin=-0.8, ymax=1.2,
+            % Remove números e marcas dos eixos
+            xtick=\empty, 
+            ytick={-0.75,-0.5,-0.25,0.25,0.5,0.75,1.0},
+            yticklabels=\empty, 
+            extra y ticks={0},
+            extra y tick labels=\empty,
+            domain=0:8,
+            samples=100,
+            thick,
+            % Rótulo do eixo Y à esquerda
+            every axis y label/.style={at={(ticklabel* cs:0.95)}, anchor=east, xshift=-2pt},
+            every axis x label/.style={at={(ticklabel* cs:0.95)}, anchor=north}
+        }
+    }
+
+    % 1. Sinal Contínuo y(t)
+    \begin{axis}[
+        my_axis_style,
+        title={\textbf{Contínuo: $y(t)$}},
+        name=cont,
+        ylabel={$y(t)$},
+        xlabel={$t$},
+        ytick=\empty % Sem grid no contínuo
+    ]
+        \addplot[blue, smooth] {exp(-0.3*x)*sin(deg(2*x))};
+    \end{axis}
+
+    % 2. Sinal Amostrado y(nTs)
+    \begin{axis}[
+        my_axis_style,
+        title={\textbf{Amostrado: $y(nT_s)$}},
+        name=amost,
+        at={(cont.right of south east)}, 
+        xshift=1.5cm,                     
+        anchor=south west,
+        ylabel={$y(nT_s)$},
+        xlabel={$nT_s$},
+        % Correção do Grid
+        ymajorgrids=true,
+        grid style={dashed, gray!30}
+    ]
+        \addplot[gray, dashed, opacity=0.2] {exp(-0.3*x)*sin(deg(2*x))};
+        \addplot[blue, ycomb, samples=16, mark=*, mark size=1.5pt] {exp(-0.3*x)*sin(deg(2*x))};
+    \end{axis}
+
+    % 3. Sinal Digital yq[k]
+    \begin{axis}[
+        my_axis_style,
+        title={\textbf{Digital: $y[k]$}},
+        name=dig,
+        at={(amost.right of south east)},
+        xshift=1.5cm,
+        anchor=south west,
+        ylabel={$y[k]$},
+        xlabel={$k$},
+        % Correção do Grid
+        ymajorgrids=true,
+        grid style={dashed, gray!30}
+    ]
+        \addplot[gray, dashed, opacity=0.2] {exp(-0.3*x)*sin(deg(2*x))};
+        \addplot[red, const plot, samples=16, mark=square*, mark size=1.5pt] {round(exp(-0.3*x)*sin(deg(2*x))*4)/4};
+    \end{axis}
+
+\end{tikzpicture}
