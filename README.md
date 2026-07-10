@@ -57,12 +57,17 @@ categorias/*.qmd                           páginas geradas — não editar à m
 scripts/                                   pipeline de build e geração da galeria
 ```
 
-## Sobre publicar no GitHub Pages
+## Publicação no GitHub Pages
 
 `_build/` e `_site/` estão no `.gitignore` — cada máquina recompila
-localmente. Para publicar via CI (como em `TemplateNotas/.github/workflows/publish.yml`),
-o workflow precisa instalar TeX Live + poppler + pdf2svg e rodar
-`scripts/build_figuras.py` e `scripts/generate_gallery.py` antes de
-`quarto render`. Alternativa mais simples: parar de ignorar `_build/` e
-versionar os artefatos já compilados. Nenhuma das duas está feita ainda
-— fica para quando o conteúdo estiver maduro (ver `SCOPE.md`).
+localmente, e o site publicado é gerado do zero a cada push para `main`
+pelo workflow `.github/workflows/publish.yml`. O pipeline no CI:
+instala TinyTeX (`standalone`, `pgf`, `pgfplots`, `xcolor`,
+`circuitikz` e dependências) + Poppler + pdf2svg, roda
+`scripts/build_figuras.py` e `scripts/generate_gallery.py`, e então
+`quarto render`, publicando `_site/` via GitHub Pages (Actions).
+
+Passo único necessário no GitHub: em **Settings → Pages → Build and
+deployment → Source**, selecionar **GitHub Actions**. Depois disso, todo
+push em `main` publica automaticamente em
+`https://raphateixeira.github.io/TikZ/`.

@@ -1,0 +1,72 @@
+name: Build e Publicar Coleção TikZ
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Instalar dependências Python
+        run: pip install pyyaml
+
+      - name: Instalar Poppler e pdf2svg
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils pdf2svg
+
+      - name: Instalar TinyTeX + pacotes TikZ
+        run: |
+          quarto install tinytex --no-prompt
+          ~/.TinyTeX/bin/*/tlmgr install \
+            standalone pgf pgfplots xcolor circuitikz \
+            listofitems currfile siunitx tools
+
+      - name: 🔨 Compilar figuras TikZ
+        run: python3 scripts/build_figuras.py --force
+
+      - name: 🖼️ Gerar galeria (index + páginas de categoria)
+        run: python3 scripts/generate_gallery.py
+
+      - name: 💻 Renderizar o Quarto
+        run: quarto render
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: ⬆️ Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 🚀 Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
