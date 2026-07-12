@@ -1,0 +1,18 @@
+\begin{tikzpicture}[vec/.style={-{Latex[length=3mm]}, thick}, >=Latex]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4,0.6);
+  \coordinate (B) at (1.2,3.2);
+  \coordinate (C) at ($(A)+(B)$);
+
+  \fill[teal!25] (O) -- (A) -- (C) -- (B) -- cycle;
+
+  \draw[->, gray] (-0.6,0) -- (5.2,0);
+  \draw[->, gray] (0,-0.6) -- (0,4.2);
+
+  \draw[dashed, gray] (A) -- (C) -- (B);
+
+  \draw[vec, red!70!black] (O) -- (A) node[below right, black] {$v_1=(a,b)$};
+  \draw[vec, blue!70!black] (O) -- (B) node[above left, black] {$v_2=(c,d)$};
+
+  \node[teal!50!black] at ($(A)!0.5!(C)$) {Área $=|\det A|$};
+\end{tikzpicture}

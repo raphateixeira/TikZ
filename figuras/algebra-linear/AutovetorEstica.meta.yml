@@ -1,0 +1,4 @@
+title: "Autovetor: direção preservada sob transformação"
+description: "Vetor v e sua imagem Av=λv na mesma direção (autovetor), contrastados com um vetor genérico u cuja imagem Au não é múltiplo de u."
+tags: [autovalores, autovetores, interpretacao-geometrica]
+fonte: "AlgebraLinear/tikz/autovetor-estica.tex"

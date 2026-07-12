@@ -1,0 +1,4 @@
+title: "Classificação de sistemas lineares 2×2"
+description: "Três painéis mostrando a interpretação geométrica de sistemas lineares 2x2 em retas: concorrentes (SPD, solução única), paralelas distintas (SI, nenhuma solução) e coincidentes (SPI, infinitas soluções)."
+tags: [sistemas-lineares, spd-spi-si, interpretacao-geometrica]
+fonte: "AlgebraLinear/tikz/sistema-retas.tex"

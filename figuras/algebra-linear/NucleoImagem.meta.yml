@@ -1,0 +1,4 @@
+title: "Núcleo e imagem de uma transformação linear"
+description: "Diagrama esquemático de uma transformação linear T:V→W, mostrando o núcleo ker(T) dentro de V mapeado na origem de W, e a imagem Im(T) dentro de W."
+tags: [transformacoes-lineares, nucleo, imagem, diagrama-de-blocos]
+fonte: "AlgebraLinear/tikz/nucleo-imagem.tex"

@@ -1,0 +1,4 @@
+title: "Determinante como área"
+description: "Paralelogramo formado por dois vetores-coluna v1=(a,b) e v2=(c,d) a partir da origem, ilustrando que a área da figura é igual ao valor absoluto do determinante da matriz formada pelos vetores."
+tags: [determinantes, interpretacao-geometrica, area]
+fonte: "AlgebraLinear/tikz/determinante-area.tex"

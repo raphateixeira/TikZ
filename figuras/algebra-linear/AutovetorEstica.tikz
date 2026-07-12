@@ -1,0 +1,23 @@
+\begin{tikzpicture}[vec/.style={-{Latex[length=3mm]}, thick}, >=Latex]
+
+  \coordinate (O) at (0,0);
+
+  % --- Autovetor v e sua imagem Av = lambda v (mesma direcao) ---
+  \coordinate (V) at (1.6,1.0);
+  \coordinate (AV) at (3.68,2.3);
+
+  \draw[vec, blue!70!black] (O) -- (V) node[midway, above left, black] {$v$};
+  \draw[vec, red!70!black] (O) -- (AV) node[right, black] {$Av=\lambda v$};
+  \draw[dotted, gray] (V) -- (AV);
+
+  % --- Vetor generico u e sua imagem Au (direcao diferente) ---
+  \coordinate (U) at (0.6,-1.6);
+  \coordinate (AU) at (2.6,-0.6);
+
+  \draw[vec, blue!40!white] (O) -- (U) node[midway, below left, black] {$u$};
+  \draw[vec, red!40!white] (O) -- (AU) node[right, black] {$Au$};
+  \draw[dashed, gray] (U) -- (AU);
+
+  \node[gray, align=center] at (5.6,-1.6) {$Au$ não é\\múltiplo de $u$};
+
+\end{tikzpicture}

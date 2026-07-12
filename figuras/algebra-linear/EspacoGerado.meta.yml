@@ -1,0 +1,4 @@
+title: "Espaço gerado por um e por dois vetores"
+description: "Dois painéis com eixos pseudo-3D: (a) um vetor não nulo v e a reta que ele gera pela origem; (b) dois vetores LI u,w e o plano que eles geram pela origem."
+tags: [espacos-vetoriais, espaco-gerado, subespacos]
+fonte: "AlgebraLinear/tikz/espaco-gerado.tex"

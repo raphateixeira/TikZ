@@ -1,0 +1,34 @@
+\begin{tikzpicture}[vec/.style={-{Latex[length=3mm]}, thick}, >=Latex]
+
+% ---------- Painel (a): vetores LD (colineares) ----------
+\begin{scope}
+  \coordinate (O) at (0,0);
+  \draw[gray] (-0.3,0) -- (2.6,1.6);
+
+  \coordinate (U) at (30:1.3);
+  \coordinate (V) at (30:2.3);
+
+  \draw[vec, red!70!black] (O) -- (U) node[below right, black] {$u$};
+  \draw[vec, blue!70!black] (O) -- (V) node[above right, black] {$v$};
+  \fill (O) circle (1.2pt);
+
+  \draw[{Latex[length=2mm]}-{Latex[length=2mm]}, gray] (1.5,-0.4) to[bend right=25] node[below,black,align=center] {\scriptsize múltiplo escalar\\[-2pt]\scriptsize $v = k\,u$} (2.0,0.0);
+
+  \node[align=center] at (0.9,-1.5) {\small (a) LD: $u,v$ colineares};
+\end{scope}
+
+% ---------- Painel (b): vetores LI (não colineares) ----------
+\begin{scope}[xshift=6.5cm]
+  \coordinate (O) at (0,0);
+
+  \coordinate (A) at (15:1.7);
+  \coordinate (B) at (100:1.5);
+
+  \draw[vec, red!70!black] (O) -- (A) node[below right, black] {$u$};
+  \draw[vec, blue!70!black] (O) -- (B) node[above left, black] {$v$};
+  \fill (O) circle (1.2pt);
+
+  \node[align=center] at (0.9,-1.5) {\small (b) LI: $u,v$ não colineares};
+\end{scope}
+
+\end{tikzpicture}

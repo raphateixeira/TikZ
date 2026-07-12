@@ -1,0 +1,4 @@
+title: "Rotação de um quadrado unitário"
+description: "Quadrado unitário original (tracejado) e sua imagem sob rotação de 45° (sólido, colorido), ilustrando o efeito geométrico de uma transformação linear de rotação em R²."
+tags: [transformacoes-lineares, rotacao, transformacoes-geometricas]
+fonte: "AlgebraLinear/tikz/transformacoes-geometricas.tex"

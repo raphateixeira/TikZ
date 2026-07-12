@@ -18,7 +18,7 @@ completo e `README.md` para o fluxo de contribuição.
 <div class="categoria-grid">
 <a class="categoria-card" href="categorias/algebra-linear.qmd">
   <h3>Álgebra Linear</h3>
-  <p>0 figura(s)</p>
+  <p>7 figura(s)</p>
 </a>
 <a class="categoria-card" href="categorias/aprendizagem-de-maquina.qmd">
   <h3>Aprendizagem de Máquina</h3>

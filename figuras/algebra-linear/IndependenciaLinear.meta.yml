@@ -1,0 +1,4 @@
+title: "Dependência vs. independência linear"
+description: "Dois painéis contrastando vetores linearmente dependentes (colineares, v = k·u) e linearmente independentes (não colineares) em R²."
+tags: [espacos-vetoriais, dependencia-linear, independencia-linear]
+fonte: "AlgebraLinear/tikz/independencia-linear.tex"
