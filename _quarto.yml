@@ -52,7 +52,7 @@ website:
 
 format:
   html:
-    theme: [cosmo, TemaModelo.scss]
+    theme: [cosmo, TemaRTx.scss]
     toc: false
     page-layout: article
     lang: pt-BR
