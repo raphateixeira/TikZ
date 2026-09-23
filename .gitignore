@@ -6,3 +6,6 @@ _build/
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Tema compartilhado: baixado de raphateixeira/.github no build (ver GitRTx/atualizar-tema.sh)
+/TemaRTx.scss

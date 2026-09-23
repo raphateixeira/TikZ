@@ -21,6 +21,12 @@ jobs:
       - name: 📥 Checkout do repositório
         uses: actions/checkout@v4
 
+      - name: Baixar tema compartilhado (TemaRTx.scss)
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/raphateixeira/.github/main/assets/TemaRTx.scss \
+            -o TemaRTx.scss
+
       - name: ⚙️ Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
